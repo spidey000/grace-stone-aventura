@@ -1,21 +1,20 @@
-import { useEffect, useMemo, useState } from 'react';
-import { adventure, stations } from './data/stations.js';
+import { useEffect, useMemo, useState, useRef, useCallback } from 'react';
+import { itineraries } from './data/stations.js';
 
-const STORAGE_KEY = 'grace-stone-progress-v1';
+const STORAGE_KEY = 'grace-stone-progress-v2';
 
 function loadProgress() {
   try {
-    const saved = window.localStorage.getItem(STORAGE_KEY);
-    if (!saved) return { currentIndex: 0, completed: [] };
-
-    const parsed = JSON.parse(saved);
-    return {
-      currentIndex: Number.isInteger(parsed.currentIndex) ? parsed.currentIndex : 0,
-      completed: Array.isArray(parsed.completed) ? parsed.completed : [],
-    };
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return null;
+    return JSON.parse(saved);
   } catch {
-    return { currentIndex: 0, completed: [] };
+    return null;
   }
+}
+
+function saveProgress(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 }
 
 function normalizeAnswer(value) {
@@ -26,37 +25,230 @@ function normalizeAnswer(value) {
     .replace(/\p{Diacritic}/gu, '');
 }
 
-function App() {
-  const [progress, setProgress] = useState(loadProgress);
-  const [answer, setAnswer] = useState('');
-  const [feedback, setFeedback] = useState('');
+function useNarration(userName) {
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const audioCtxRef = useRef(null);
 
-  const currentIndex = Math.min(progress.currentIndex, stations.length - 1);
-  const currentStation = stations[currentIndex];
-  const completedSet = useMemo(() => new Set(progress.completed), [progress.completed]);
-  const completedCount = progress.completed.length;
-  const percent = Math.round((completedCount / stations.length) * 100);
+  function getAudioCtx() {
+    if (!audioCtxRef.current) {
+      audioCtxRef.current = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    return audioCtxRef.current;
+  }
+
+  const speakStory = useCallback(
+    async (story) => {
+      const resolved = story.replace('{username}', userName || 'Explorador');
+      setIsLoading(true);
+      setIsSpeaking(true);
+
+      const hasUsername = story.includes('{username}');
+
+      if (!hasUsername) {
+        const utterance = new SpeechSynthesisUtterance(resolved);
+        utterance.lang = 'es-ES';
+        utterance.rate = 0.95;
+        utterance.pitch = 1.08;
+        utterance.onend = () => {
+          setIsSpeaking(false);
+          setIsLoading(false);
+        };
+        utterance.onerror = () => {
+          setIsSpeaking(false);
+          setIsLoading(false);
+        };
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(utterance);
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(resolved);
+      utterance.lang = 'es-ES';
+      utterance.rate = 0.95;
+      utterance.pitch = 1.08;
+      utterance.onend = () => {
+        setIsSpeaking(false);
+        setIsLoading(false);
+      };
+      utterance.onerror = () => {
+        setIsSpeaking(false);
+        setIsLoading(false);
+      };
+      window.speechSynthesis.speak(utterance);
+    },
+    [userName]
+  );
+
+  function stopSpeaking() {
+    window.speechSynthesis.cancel();
+    setIsSpeaking(false);
+    setIsLoading(false);
+  }
 
   useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
-  }, [progress]);
+    return () => {
+      window.speechSynthesis.cancel();
+    };
+  }, []);
+
+  return { speakStory, stopSpeaking, isSpeaking, isLoading };
+}
+
+function Lobby({ onStart }) {
+  const [name, setName] = useState('');
+  const [selected, setSelected] = useState(null);
+  const [error, setError] = useState('');
+
+  function handleStart() {
+    const trimmed = name.trim();
+    if (!trimmed) {
+      setError('Escribe tu nombre para empezar la aventura.');
+      return;
+    }
+    if (!selected) {
+      setError('Elige un itinerario para empezar.');
+      return;
+    }
+    onStart(trimmed, selected);
+  }
+
+  return (
+    <main className="app-shell lobby-shell">
+      <div className="lobby-card">
+        <header className="lobby-header">
+          <span className="lobby-eyebrow">Audio-aventura guiada</span>
+          <h1>La Aventura de Grace Stone</h1>
+          <p>Elige tu misión y empieza a explorar</p>
+        </header>
+
+        <div className="lobby-form">
+          <label htmlFor="name-input">¿Cómo te llamas, explorador?</label>
+          <input
+            id="name-input"
+            type="text"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+              setError('');
+            }}
+            placeholder="Tu nombre"
+            autoComplete="off"
+            autoFocus
+          />
+
+          <p className="itinerary-label">¿Adónde vamos hoy?</p>
+
+          <div className="itinerary-cards">
+            {Object.values(itineraries).map((it) => (
+              <button
+                key={it.id}
+                type="button"
+                className={`itinerary-card ${selected === it.id ? 'selected' : ''}`}
+                onClick={() => {
+                  setSelected(it.id);
+                  setError('');
+                }}
+                style={{ '--it-color': it.color }}
+              >
+                <span className="it-icon">{it.icon}</span>
+                <strong>{it.title}</strong>
+                <small>{it.subtitle}</small>
+                <span className="it-duration">{it.durationLabel}</span>
+              </button>
+            ))}
+          </div>
+
+          {error && <p className="lobby-error">{error}</p>}
+
+          <button className="start-button" type="button" onClick={handleStart}>
+            Empezar aventura
+          </button>
+        </div>
+      </div>
+    </main>
+  );
+}
+
+function FinalScreen({ itinerary, userName, onReset }) {
+  const isOceanografic = itinerary.id === 'oceanografic';
+  const isMuseu = itinerary.id === 'museu';
+  const insigTitle = isOceanografic ? 'Explorador Honorífico' : 'Científico Honorífico';
+
+  return (
+    <main className="app-shell final-shell">
+      <div className="final-card">
+        <span className="final-badge">{itinerary.icon}</span>
+        <h1>¡{userName}, mission completada!</h1>
+        <p>
+          {isOceanografic
+            ? 'Has navegado por el acuario más grande de Europa. Has encontrado tiburones, belugas, pingüinos y leones marinos. El océano te ha visto.'
+            : 'Has explorado el museo de ciencias más interactivo de Valencia. Has experimentado con los sentidos, observado el péndulo y descifrado el código de la vida. La ciencia te ha visto.'}
+        </p>
+        <div className="final-insig" style={{ '--it-color': itinerary.color }}>
+          <strong>{insigTitle}</strong>
+          <span>{userName}</span>
+        </div>
+        <p className="final-tagline">
+          {isOceanografic
+            ? 'El océano necesita exploradores valientes como tú.'
+            : 'La ciencia necesita mentes curiosas como la tuya.'}
+        </p>
+        <button type="button" className="start-button" onClick={onReset}>
+          Nueva aventura
+        </button>
+      </div>
+    </main>
+  );
+}
+
+function Adventure({ itinerary, userName, onFinal, onReset }) {
+  const saved = loadProgress();
+  const initialIndex = saved?.itineraryId === itinerary.id ? saved.currentIndex : 0;
+  const initialCompleted = saved?.itineraryId === itinerary.id ? saved.completed : [];
+
+  const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const [completed, setCompleted] = useState(initialCompleted);
+  const [answer, setAnswer] = useState('');
+  const [feedback, setFeedback] = useState('');
+
+  const { speakStory, stopSpeaking, isSpeaking, isLoading } = useNarration(userName);
+
+  const stations = itinerary.stations;
+  const currentStation = stations[currentIndex];
+  const completedSet = useMemo(() => new Set(completed), [completed]);
+  const completedCount = completed.length;
+  const totalCount = stations.length;
+  const percent = Math.round((completedCount / totalCount) * 100);
+  const isLastStation = currentIndex >= totalCount - 1;
+
+  useEffect(() => {
+    saveProgress({ itineraryId: itinerary.id, currentIndex, completed });
+  }, [itinerary.id, currentIndex, completed]);
 
   useEffect(() => {
     setAnswer('');
     setFeedback('');
-    window.speechSynthesis?.cancel();
-    setIsSpeaking(false);
+    stopSpeaking();
   }, [currentStation.id]);
 
-  function completeStation(message = currentStation.challenge.success) {
-    const completed = completedSet.has(currentStation.id)
-      ? progress.completed
-      : [...progress.completed, currentStation.id];
-    const nextIndex = Math.min(currentIndex + 1, stations.length - 1);
-
-    setProgress({ currentIndex: nextIndex, completed });
-    setFeedback(message);
+  function completeStation(message) {
+    const successMsg = message || currentStation.challenge.success;
+    if (isLastStation) {
+      setCompleted((prev) => {
+        const next = completedSet.has(currentStation.id) ? prev : [...prev, currentStation.id];
+        saveProgress({ itineraryId: itinerary.id, currentIndex, completed: next });
+        return next;
+      });
+      onFinal();
+      return;
+    }
+    const next = completedSet.has(currentStation.id) ? completed : [...completed, currentStation.id];
+    const nextIdx = currentIndex + 1;
+    setCompleted(next);
+    setCurrentIndex(nextIdx);
+    setFeedback(successMsg);
   }
 
   function handleSubmit(event) {
@@ -80,7 +272,6 @@ function App() {
     if (challenge.type === 'text') {
       const normalized = normalizeAnswer(answer);
       const accepted = challenge.acceptedAnswers.map(normalizeAnswer);
-
       if (accepted.includes(normalized)) {
         completeStation();
       } else {
@@ -90,47 +281,23 @@ function App() {
   }
 
   function goToStation(index) {
-    setProgress((current) => ({ ...current, currentIndex: index }));
+    setCurrentIndex(index);
+    stopSpeaking();
   }
 
   function resetMission() {
-    window.speechSynthesis?.cancel();
-    setProgress({ currentIndex: 0, completed: [] });
+    stopSpeaking();
+    saveProgress({ itineraryId: itinerary.id, currentIndex: 0, completed: [] });
+    onReset();
   }
-
-  function speakStory() {
-    if (!('speechSynthesis' in window)) {
-      setFeedback('Este navegador no tiene lectura de voz integrada.');
-      return;
-    }
-
-    if (isSpeaking) {
-      window.speechSynthesis.cancel();
-      setIsSpeaking(false);
-      return;
-    }
-
-    const utterance = new SpeechSynthesisUtterance(currentStation.story);
-    utterance.lang = 'es-ES';
-    utterance.rate = 0.95;
-    utterance.pitch = 1.08;
-    utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = () => setIsSpeaking(false);
-
-    setIsSpeaking(true);
-    window.speechSynthesis.speak(utterance);
-  }
-
-  const isComplete = completedCount === stations.length;
 
   return (
     <main className="app-shell">
       <section className="mission-panel" aria-labelledby="mission-title">
         <div className="mission-heading">
           <div>
-            <p className="eyebrow">Audio-aventura guiada</p>
-            <h1 id="mission-title">{adventure.title}</h1>
-            <p>{adventure.subtitle}</p>
+            <p className="eyebrow">{itinerary.icon} {itinerary.title}</p>
+            <h1 id="mission-title">{currentStation.title}</h1>
           </div>
           <div className="progress-dial" aria-label={`Progreso ${percent}%`}>
             <span>{percent}%</span>
@@ -144,12 +311,11 @@ function App() {
         <div className="station-layout">
           <aside className="route-list" aria-label="Ruta de estaciones">
             {stations.map((station, index) => {
-              const completed = completedSet.has(station.id);
-              const active = index === currentIndex;
-
+              const isCompleted = completedSet.has(station.id);
+              const isActive = index === currentIndex;
               return (
                 <button
-                  className={`route-step ${active ? 'active' : ''} ${completed ? 'completed' : ''}`}
+                  className={`route-step ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}`}
                   key={station.id}
                   onClick={() => goToStation(index)}
                   type="button"
@@ -157,7 +323,7 @@ function App() {
                   <span className="step-code">{station.id}</span>
                   <span>
                     <strong>{station.shortName}</strong>
-                    <small>{completed ? station.crystal : station.area}</small>
+                    <small>{isCompleted ? station.crystal : station.area}</small>
                   </span>
                 </button>
               );
@@ -170,13 +336,17 @@ function App() {
               <span>{currentStation.duration}</span>
             </div>
 
-            <h2>{currentStation.title}</h2>
             <p className="route-hint">{currentStation.routeHint}</p>
 
             <div className="story-box">
-              <p>{currentStation.story}</p>
-              <button className="icon-button" type="button" onClick={speakStory}>
-                {isSpeaking ? 'Pausar voz' : 'Escuchar a Grace'}
+              <p>{currentStation.story.replace('{username}', userName)}</p>
+              <button
+                className="icon-button"
+                type="button"
+                onClick={() => speakStory(currentStation.story)}
+                disabled={isLoading}
+              >
+                {isSpeaking ? '⏸ Pausar' : '🔊 Escuchar a Grace'}
               </button>
             </div>
 
@@ -186,7 +356,7 @@ function App() {
               {currentStation.challenge.type === 'text' && (
                 <input
                   autoComplete="off"
-                  onChange={(event) => setAnswer(event.target.value)}
+                  onChange={(e) => setAnswer(e.target.value)}
                   placeholder="Respuesta"
                   value={answer}
                 />
@@ -208,7 +378,9 @@ function App() {
               )}
 
               <button className="primary-action" type="submit">
-                {currentStation.challenge.type === 'confirm' ? 'Confirmar pista' : 'Enviar a Grace'}
+                {currentStation.challenge.type === 'confirm'
+                  ? 'Confirmar pista'
+                  : 'Enviar a Grace'}
               </button>
             </form>
 
@@ -228,7 +400,11 @@ function App() {
         </div>
 
         <footer className="mission-footer">
-          <span>{isComplete ? 'Misión completa' : `${completedCount} de ${stations.length} cristales`}</span>
+          <span>
+            {completedCount === totalCount
+              ? '¡Misión completa!'
+              : `${completedCount} de ${totalCount} cristales`}
+          </span>
           <button type="button" onClick={resetMission}>
             Reiniciar misión
           </button>
@@ -238,5 +414,53 @@ function App() {
   );
 }
 
-export default App;
+function App() {
+  const saved = loadProgress();
+  const [phase, setPhase] = useState(saved ? 'adventure' : 'lobby');
+  const [itinerary, setItinerary] = useState(
+    saved ? itineraries[saved.itineraryId] : null
+  );
+  const [userName, setUserName] = useState(saved?.userName || '');
 
+  function handleStart(name, itId) {
+    setUserName(name);
+    setItinerary(itineraries[itId]);
+    setPhase('adventure');
+  }
+
+  function handleFinal() {
+    setPhase('final');
+  }
+
+  function handleReset() {
+    localStorage.removeItem(STORAGE_KEY);
+    setPhase('lobby');
+    setItinerary(null);
+    setUserName('');
+  }
+
+  if (phase === 'lobby') {
+    return <Lobby onStart={handleStart} />;
+  }
+
+  if (phase === 'final') {
+    return (
+      <FinalScreen
+        itinerary={itinerary}
+        userName={userName}
+        onReset={handleReset}
+      />
+    );
+  }
+
+  return (
+    <Adventure
+      itinerary={itinerary}
+      userName={userName}
+      onFinal={handleFinal}
+      onReset={handleReset}
+    />
+  );
+}
+
+export default App;

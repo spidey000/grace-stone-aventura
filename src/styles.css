@@ -33,6 +33,7 @@ button {
     #f3f8f6;
 }
 
+/* Existing adventure styles — add itinerary-color-aware variants */
 .mission-panel {
   width: min(1180px, 100%);
   margin: 0 auto;
@@ -322,6 +323,232 @@ h2 {
   color: #0b4f57;
 }
 
+/* === LOBBY === */
+.lobby-shell {
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.lobby-card {
+  width: min(560px, 100%);
+  padding: 32px 28px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 24px 64px rgba(20, 45, 42, 0.12);
+}
+
+.lobby-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.lobby-eyebrow {
+  display: block;
+  color: #0e8277;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  margin-bottom: 10px;
+}
+
+.lobby-header h1 {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  line-height: 1;
+  margin: 0 0 8px;
+  color: #122323;
+}
+
+.lobby-header p {
+  color: #4d6463;
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.lobby-form {
+  display: grid;
+  gap: 16px;
+}
+
+.lobby-form > label {
+  font-weight: 800;
+  font-size: 1rem;
+  color: #122323;
+}
+
+.lobby-form input {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 16px;
+  border: 2px solid #bdd4cf;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  outline: none;
+}
+
+.lobby-form input:focus {
+  border-color: #0e8277;
+  box-shadow: 0 0 0 3px rgba(14, 130, 119, 0.18);
+}
+
+.itinerary-label {
+  margin: 4px 0 0;
+  font-weight: 800;
+  color: #122323;
+}
+
+.itinerary-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.itinerary-card {
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  gap: 6px;
+  padding: 20px 16px;
+  border: 2px solid #d4e3df;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #213837;
+  text-align: center;
+  transition: border-color 150ms, box-shadow 150ms, background 150ms;
+}
+
+.itinerary-card:hover {
+  border-color: var(--it-color, #0e8277);
+  box-shadow: 0 4px 16px rgba(14, 130, 119, 0.12);
+}
+
+.itinerary-card.selected {
+  border-color: var(--it-color, #0e8277);
+  background: color-mix(in srgb, var(--it-color, #0e8277) 8%, #ffffff);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--it-color, #0e8277) 20%, transparent);
+}
+
+.it-icon {
+  font-size: 2.4rem;
+  line-height: 1;
+}
+
+.itinerary-card strong {
+  font-size: 1rem;
+}
+
+.itinerary-card small {
+  color: #607574;
+  font-size: 0.8rem;
+  line-height: 1.25;
+}
+
+.it-duration {
+  margin-top: 4px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--it-color, #0e8277);
+}
+
+.lobby-error {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: #fdf0f0;
+  border-left: 4px solid #d95f45;
+  color: #7a2020;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.start-button {
+  width: 100%;
+  min-height: 52px;
+  border: 0;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0e8277, #2e9f89);
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: opacity 150ms;
+}
+
+.start-button:hover {
+  opacity: 0.9;
+}
+
+/* === FINAL === */
+.final-shell {
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.final-card {
+  width: min(520px, 100%);
+  padding: 36px 28px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 24px 64px rgba(20, 45, 42, 0.12);
+  text-align: center;
+  display: grid;
+  gap: 16px;
+}
+
+.final-badge {
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.final-card h1 {
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  line-height: 1.1;
+  margin: 0;
+  color: #122323;
+}
+
+.final-card p {
+  color: #4d6463;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.final-insig {
+  padding: 20px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--it-color, #7a4fd1) 10%, #ffffff);
+  border: 2px solid var(--it-color, #7a4fd1);
+}
+
+.final-insig strong {
+  display: block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  color: var(--it-color, #7a4fd1);
+  margin-bottom: 4px;
+}
+
+.final-insig span {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #122323;
+}
+
+.final-tagline {
+  font-weight: 700;
+  color: #122323 !important;
+  font-style: italic;
+}
+
+@media (max-width: 620px) {
+  .itinerary-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === RESPONSIVE ADVENTURE === */
 @media (max-width: 860px) {
   .app-shell {
     padding: 16px;
