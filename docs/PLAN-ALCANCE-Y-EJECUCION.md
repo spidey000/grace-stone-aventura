@@ -291,19 +291,57 @@ Por responder:
 - ¿Quieres imprimir pasaporte físico?
 - ¿Idioma solo español o también valenciano/inglés?
 
-## 9. Próximo bloque de trabajo recomendado
+## 9. Hoja de ruta completa
 
-> Actualizado: 2026-05-13
+> Actualizado: 2026-05-13 tras revisión de experiencia infantil
 
-1. ~~Cerrar alcance MVP~~ — hecho, ver sección 4.
-2. ~~Crear `datos-oceanografic.md`~~ — hecho, información verificada y estructurada con todo list por zona.
-3. ~~Crear `datos-museu.md`~~ — hecho, información verificada con todo list de estaciones y actividades.
-4. Definir estaciones del Museu (rutas, animales, exposiciones, retos) — hecho en datos-museu.md.
-5. Crear `src/data/stations.js` con estructura de dos itinerarios.
-6. Implementar lobby con input de nombre + selector de itinerario.
-7. Implementar motor de audio secuencial con fallback TTS.
-8. Implementar pantallas de aventura y final.
-9. Escribir guiones de Grace para las estaciones.
-10. Grabar/generar MP3s de segmentos fijos.
-11. Validar in situ zonas y horarios antes de la visita.
+Basado en la revisión de usabilidad para niño de 7 años, se prioriza reducir fricción, aumentar acción física y personalizar la aventura.
+
+### P0 — Antes de probar con la familia (prioridad máxima)
+
+| # | Tarea | Detalle |
+|---|-------|---------|
+| P0-1 | **Modos de duración en lobby** | Añadir short (45-60min, 4-5 estaciones), normal (90-120min, 8 estaciones), completo (todas). Selector en lobby junto a nombre e itinerario. |
+| P0-2 | **Retos observacionales sin teclado** | Reescribir todos los retos para que sean: confirmar, elegir, contar, observar, imitar, votar en familia. Eliminar input de texto del flujo infantil. |
+| P0-3 | **Eliminar placeholders** | Quitar todo texto provisional como "Luego cambiaremos esto por un dato real del cartel". Los retos deben funcionar con observación real. |
+| P0-4 | **Botón "Necesito pista"** | Cada estación tiene un botón de ayuda que da una pista adicional sin penalización. |
+| P0-5 | **Botón "Saltar estación"** | Si una zona está llena, cerrada o el animal no se ve, la familia puede saltar sin perder la historia. |
+| P0-6 | **Modo adulto plegado** | Panel colapsable con: saltar a cualquier estación, reiniciar, cambiar modo/ruta, desbloquear final. No visible para el niño por defecto. |
+| P0-7 | **Final celebrable** | Insignia con nombre del niño, botón "Foto familiar", frase final de Grace, opción de compartir. |
+| P0-8 | **Museu como mini-aventura** | 3 retos protagonistas: Sentidos / Agua-Animales / Construcción-Cooperación. El Museu no debe ser "una estación más" sino un clímax de ciencia. |
+
+### P1 — Para que sea memorable
+
+| # | Tarea | Detalle |
+|---|-------|---------|
+| P1-1 | **Estructura MP3 real** | Definir carpetas `public/audio/{itinerario}/{stationId}/part-0.mp3` + `part-1.mp3`. Plan de grabación de voz Grace. |
+| P1-2 | **Efectos sonoros** | Cristal desbloqueado, burbujas, hielo, laboratorio, eco misterioso (1-2 segundos cada uno). |
+| P1-3 | **Pasaporte físico imprimible** | PDF con 8-10 cristales para colorear o pegar stickers. El niño "posee" la aventura fuera del móvil. |
+| P1-4 | **Audios de fondo suaves** | Música ambiental por bioma (océano, hielo, ciencia) para cada estación. |
+
+### P2 — Después del primer test real
+
+| # | Tarea | Detalle |
+|---|-------|---------|
+| P2-1 | **Script de validación** | Comprobar que cada estación tiene: id, title, area, story, challenge, reward, audioSrc, modes. |
+| P2-2 | **Mapa simple con puntos** | Imagen del plano con botones numerados 00-10. No necesita Leaflet. |
+| P2-3 | **QR opcionales** | Modo extra: escanear QR desbloquea audio secreto. No bloquea el avance. |
+| P2-4 | **Tests mínimos** | Carga sin progreso, guardado, finalización, cada tipo de reto, modo offline. |
+
+### Próximo bloque inmediato (P0 en orden)
+
+1. ~~Cerrar alcance MVP~~ — hecho
+2. ~~Crear datos-oceanografic.md + datos-museu.md~~ — hecho
+3. ~~Estructura de dos itinerarios~~ — hecho
+4. ~~Lobby con nombre + selector~~ — hecho
+5. **P0-1: Modos de duración en lobby** ← AHORA
+6. **P0-2 + P0-3: Retos observacionales + eliminar placeholders**
+7. **P0-4 + P0-5: Botones pista y saltar**
+8. **P0-6: Modo adulto plegado**
+9. **P0-7: Final celebrable**
+10. **P0-8: Museu como mini-aventura**
+11. P1-1: Estructura MP3
+12. P1-3: Pasaporte físico
+13. P2-1: Script de validación
+14. Validar in situ zonas y horarios antes de la visita
 

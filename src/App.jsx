@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useState, useRef, useCallback } from 'react';
-import { itineraries } from './data/stations.js';
+import { useEffect, useMemo, useState, useCallback } from 'react';
+import { itineraries, modeLabels, filterStationsByMode } from './data/stations.js';
 
-const STORAGE_KEY = 'grace-stone-progress-v2';
+const STORAGE_KEY = 'grace-stone-progress-v3';
 
 function loadProgress() {
   try {
@@ -17,51 +17,19 @@ function saveProgress(data) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 }
 
-function normalizeAnswer(value) {
-  return value
-    .trim()
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/\p{Diacritic}/gu, '');
+function renderStory(story, userName) {
+  return story.replace(/\{username\}/g, userName || 'Explorador');
 }
 
 function useNarration(userName) {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const audioCtxRef = useRef(null);
 
-  function getAudioCtx() {
-    if (!audioCtxRef.current) {
-      audioCtxRef.current = new (window.AudioContext || window.webkitAudioContext)();
-    }
-    return audioCtxRef.current;
-  }
-
-  const speakStory = useCallback(
+  const speak = useCallback(
     async (story) => {
-      const resolved = story.replace('{username}', userName || 'Explorador');
+      const resolved = renderStory(story, userName);
       setIsLoading(true);
       setIsSpeaking(true);
-
-      const hasUsername = story.includes('{username}');
-
-      if (!hasUsername) {
-        const utterance = new SpeechSynthesisUtterance(resolved);
-        utterance.lang = 'es-ES';
-        utterance.rate = 0.95;
-        utterance.pitch = 1.08;
-        utterance.onend = () => {
-          setIsSpeaking(false);
-          setIsLoading(false);
-        };
-        utterance.onerror = () => {
-          setIsSpeaking(false);
-          setIsLoading(false);
-        };
-        window.speechSynthesis.cancel();
-        window.speechSynthesis.speak(utterance);
-        return;
-      }
 
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(resolved);
@@ -81,37 +49,34 @@ function useNarration(userName) {
     [userName]
   );
 
-  function stopSpeaking() {
+  function stop() {
     window.speechSynthesis.cancel();
     setIsSpeaking(false);
     setIsLoading(false);
   }
 
-  useEffect(() => {
-    return () => {
-      window.speechSynthesis.cancel();
-    };
-  }, []);
+  useEffect(() => () => window.speechSynthesis.cancel(), []);
 
-  return { speakStory, stopSpeaking, isSpeaking, isLoading };
+  return { speakStory: speak, stopSpeaking: stop, isSpeaking, isLoading };
 }
 
 function Lobby({ onStart }) {
   const [name, setName] = useState('');
   const [selected, setSelected] = useState(null);
+  const [mode, setMode] = useState('normal');
   const [error, setError] = useState('');
 
   function handleStart() {
     const trimmed = name.trim();
     if (!trimmed) {
-      setError('Escribe tu nombre para empezar la aventura.');
+      setError('Escribe tu nombre secreto de misión.');
       return;
     }
     if (!selected) {
-      setError('Elige un itinerario para empezar.');
+      setError('Elige una aventura para empezar.');
       return;
     }
-    onStart(trimmed, selected);
+    onStart(trimmed, selected, mode);
   }
 
   return (
@@ -120,11 +85,11 @@ function Lobby({ onStart }) {
         <header className="lobby-header">
           <span className="lobby-eyebrow">Audio-aventura guiada</span>
           <h1>La Aventura de Grace Stone</h1>
-          <p>Elige tu misión y empieza a explorar</p>
+          <p>Hola, explorador. Antes de entrar, dime tu nombre secreto de misión.</p>
         </header>
 
         <div className="lobby-form">
-          <label htmlFor="name-input">¿Cómo te llamas, explorador?</label>
+          <label htmlFor="name-input">¿Cómo te llamas?</label>
           <input
             id="name-input"
             type="text"
@@ -133,13 +98,12 @@ function Lobby({ onStart }) {
               setName(e.target.value);
               setError('');
             }}
-            placeholder="Tu nombre"
+            placeholder="Tu nombre secreto"
             autoComplete="off"
             autoFocus
           />
 
-          <p className="itinerary-label">¿Adónde vamos hoy?</p>
-
+          <p className="section-label">¿Adónde vamos hoy?</p>
           <div className="itinerary-cards">
             {Object.values(itineraries).map((it) => (
               <button
@@ -155,7 +119,22 @@ function Lobby({ onStart }) {
                 <span className="it-icon">{it.icon}</span>
                 <strong>{it.title}</strong>
                 <small>{it.subtitle}</small>
-                <span className="it-duration">{it.durationLabel}</span>
+              </button>
+            ))}
+          </div>
+
+          <p className="section-label">Elige tu misión</p>
+          <div className="mode-cards">
+            {Object.entries(modeLabels).map(([key, m]) => (
+              <button
+                key={key}
+                type="button"
+                className={`mode-card ${mode === key ? 'selected' : ''}`}
+                onClick={() => setMode(key)}
+              >
+                <span className="mode-emoji">{m.emoji}</span>
+                <strong>{m.label}</strong>
+                <small>{m.desc}</small>
               </button>
             ))}
           </div>
@@ -171,51 +150,68 @@ function Lobby({ onStart }) {
   );
 }
 
-function FinalScreen({ itinerary, userName, onReset }) {
+function FinalScreen({ itinerary, userName, modeLabel, onReset }) {
   const isOceanografic = itinerary.id === 'oceanografic';
-  const isMuseu = itinerary.id === 'museu';
-  const insigTitle = isOceanografic ? 'Explorador Honorífico' : 'Científico Honorífico';
+  const title = isOceanografic ? 'Explorador Honorífico del Océano' : 'Científico Honorífico';
+  const tagline = isOceanografic
+    ? 'El océano necesita exploradores valientes como tú.'
+    : 'La ciencia necesita mentes curiosas como la tuya.';
 
   return (
     <main className="app-shell final-shell">
       <div className="final-card">
         <span className="final-badge">{itinerary.icon}</span>
-        <h1>¡{userName}, mission completada!</h1>
+        <h1>¡{userName}, misión {modeLabel} completada!</h1>
         <p>
           {isOceanografic
-            ? 'Has navegado por el acuario más grande de Europa. Has encontrado tiburones, belugas, pingüinos y leones marinos. El océano te ha visto.'
-            : 'Has explorado el museo de ciencias más interactivo de Valencia. Has experimentado con los sentidos, observado el péndulo y descifrado el código de la vida. La ciencia te ha visto.'}
+            ? 'Has cruzado el Oceanogràfic con valentía y curiosidad. Has visto tiburones sin huesos, belugas blancas como el hielo y pingüinos que vuelan bajo el agua. El océano entero te ha visto y está orgulloso.'
+            : 'Has explorado el Museu de les Ciències con tus manos, tus ojos y tu curiosidad. Has visto el péndulo que prueba que la Tierra gira y has descifrado el código de la vida. La ciencia te necesita.'}
         </p>
         <div className="final-insig" style={{ '--it-color': itinerary.color }}>
-          <strong>{insigTitle}</strong>
+          <strong>{title}</strong>
           <span>{userName}</span>
         </div>
-        <p className="final-tagline">
-          {isOceanografic
-            ? 'El océano necesita exploradores valientes como tú.'
-            : 'La ciencia necesita mentes curiosas como la tuya.'}
+        <p className="final-tagline">{tagline}</p>
+        <p className="final-message">
+          — Grace Stone
         </p>
-        <button type="button" className="start-button" onClick={onReset}>
-          Nueva aventura
-        </button>
+        <div className="final-actions">
+          <button
+            type="button"
+            className="start-button"
+            onClick={() => window.print()}
+          >
+            🖨 Imprimir insignia
+          </button>
+          <button type="button" className="start-button secondary" onClick={onReset}>
+            Nueva aventura
+          </button>
+        </div>
       </div>
     </main>
   );
 }
 
-function Adventure({ itinerary, userName, onFinal, onReset }) {
+function Adventure({ itinerary, userName, mode, onFinal, onReset }) {
   const saved = loadProgress();
-  const initialIndex = saved?.itineraryId === itinerary.id ? saved.currentIndex : 0;
-  const initialCompleted = saved?.itineraryId === itinerary.id ? saved.completed : [];
+  const stations = useMemo(() => filterStationsByMode(itinerary.stations, mode), [itinerary.stations, mode]);
+
+  const validSaved =
+    saved?.itineraryId === itinerary.id &&
+    saved?.mode === mode;
+
+  const initialIndex = validSaved ? saved.currentIndex : 0;
+  const initialCompleted = validSaved ? saved.completed : [];
 
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [completed, setCompleted] = useState(initialCompleted);
   const [answer, setAnswer] = useState('');
   const [feedback, setFeedback] = useState('');
+  const [showAdult, setShowAdult] = useState(false);
+  const [showHint, setShowHint] = useState(false);
 
   const { speakStory, stopSpeaking, isSpeaking, isLoading } = useNarration(userName);
 
-  const stations = itinerary.stations;
   const currentStation = stations[currentIndex];
   const completedSet = useMemo(() => new Set(completed), [completed]);
   const completedCount = completed.length;
@@ -224,12 +220,13 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
   const isLastStation = currentIndex >= totalCount - 1;
 
   useEffect(() => {
-    saveProgress({ itineraryId: itinerary.id, currentIndex, completed });
-  }, [itinerary.id, currentIndex, completed]);
+    saveProgress({ itineraryId: itinerary.id, mode, currentIndex, completed });
+  }, [itinerary.id, mode, currentIndex, completed]);
 
   useEffect(() => {
     setAnswer('');
     setFeedback('');
+    setShowHint(false);
     stopSpeaking();
   }, [currentStation.id]);
 
@@ -238,16 +235,16 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
     if (isLastStation) {
       setCompleted((prev) => {
         const next = completedSet.has(currentStation.id) ? prev : [...prev, currentStation.id];
-        saveProgress({ itineraryId: itinerary.id, currentIndex, completed: next });
+        saveProgress({ itineraryId: itinerary.id, mode, currentIndex, completed: next });
         return next;
       });
       onFinal();
       return;
     }
-    const next = completedSet.has(currentStation.id) ? completed : [...completed, currentStation.id];
-    const nextIdx = currentIndex + 1;
-    setCompleted(next);
-    setCurrentIndex(nextIdx);
+    setCompleted((prev) =>
+      completedSet.has(currentStation.id) ? prev : [...prev, currentStation.id]
+    );
+    setCurrentIndex((prev) => Math.min(prev + 1, totalCount - 1));
     setFeedback(successMsg);
   }
 
@@ -261,34 +258,32 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
     }
 
     if (challenge.type === 'choice') {
+      if (challenge.answer === '*') {
+        completeStation();
+        return;
+      }
       if (answer === challenge.answer) {
         completeStation();
       } else {
-        setFeedback('Grace dice: observa otra vez con calma. La pista está cerca.');
+        setFeedback('Grace dice: prueba otra opción o mira bien la zona.');
       }
       return;
     }
 
     if (challenge.type === 'text') {
-      const normalized = normalizeAnswer(answer);
-      const accepted = challenge.acceptedAnswers.map(normalizeAnswer);
-      if (accepted.includes(normalized)) {
+      const normalized = answer.trim().toLowerCase();
+      const accepted = (challenge.acceptedAnswers || []).map((a) => a.trim().toLowerCase());
+      if (accepted.includes(normalized) || challenge.answer === '*') {
         completeStation();
       } else {
-        setFeedback('Grace dice: prueba con otra palabra o revisa el cartel.');
+        setFeedback('Grace dice: prueba con otra palabra o mira los carteles.');
       }
     }
   }
 
-  function goToStation(index) {
-    setCurrentIndex(index);
-    stopSpeaking();
-  }
-
-  function resetMission() {
-    stopSpeaking();
-    saveProgress({ itineraryId: itinerary.id, currentIndex: 0, completed: [] });
-    onReset();
+  function skipStation() {
+    const backup = currentStation.backupChallenge;
+    completeStation(backup?.success || 'Estación saltada. La aventura continúa.');
   }
 
   return (
@@ -296,7 +291,10 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
       <section className="mission-panel" aria-labelledby="mission-title">
         <div className="mission-heading">
           <div>
-            <p className="eyebrow">{itinerary.icon} {itinerary.title}</p>
+            <p className="eyebrow">
+              {itinerary.icon} {itinerary.title} ·{' '}
+              {modeLabels[mode]?.label || 'Normal'}
+            </p>
             <h1 id="mission-title">{currentStation.title}</h1>
           </div>
           <div className="progress-dial" aria-label={`Progreso ${percent}%`}>
@@ -308,6 +306,12 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
           <span style={{ width: `${percent}%` }} />
         </div>
 
+        {currentStation.childAction && (
+          <div className="action-banner">
+            🎯 <strong>Tu misión aquí:</strong> {currentStation.childAction}
+          </div>
+        )}
+
         <div className="station-layout">
           <aside className="route-list" aria-label="Ruta de estaciones">
             {stations.map((station, index) => {
@@ -317,13 +321,16 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                 <button
                   className={`route-step ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}`}
                   key={station.id}
-                  onClick={() => goToStation(index)}
+                  onClick={() => {
+                    setCurrentIndex(index);
+                    stopSpeaking();
+                  }}
                   type="button"
                 >
                   <span className="step-code">{station.id}</span>
                   <span>
                     <strong>{station.shortName}</strong>
-                    <small>{isCompleted ? station.crystal : station.area}</small>
+                    <small>{isCompleted ? station.reward.name : station.area}</small>
                   </span>
                 </button>
               );
@@ -339,28 +346,19 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
             <p className="route-hint">{currentStation.routeHint}</p>
 
             <div className="story-box">
-              <p>{currentStation.story.replace('{username}', userName)}</p>
+              <p>{renderStory(currentStation.story, userName)}</p>
               <button
                 className="icon-button"
                 type="button"
                 onClick={() => speakStory(currentStation.story)}
                 disabled={isLoading}
               >
-                {isSpeaking ? '⏸ Pausar' : '🔊 Escuchar a Grace'}
+                {isSpeaking ? '⏸ Pausar voz' : '🔊 Escuchar a Grace'}
               </button>
             </div>
 
             <form className="challenge" onSubmit={handleSubmit}>
               <label>{currentStation.challenge.prompt}</label>
-
-              {currentStation.challenge.type === 'text' && (
-                <input
-                  autoComplete="off"
-                  onChange={(e) => setAnswer(e.target.value)}
-                  placeholder="Respuesta"
-                  value={answer}
-                />
-              )}
 
               {currentStation.challenge.type === 'choice' && (
                 <div className="choice-grid">
@@ -377,12 +375,30 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                 </div>
               )}
 
-              <button className="primary-action" type="submit">
-                {currentStation.challenge.type === 'confirm'
-                  ? 'Confirmar pista'
-                  : 'Enviar a Grace'}
-              </button>
+              <div className="challenge-actions">
+                <button className="primary-action" type="submit">
+                  {currentStation.challenge.type === 'confirm'
+                    ? '✅ Confirmar'
+                    : '📨 Enviar a Grace'}
+                </button>
+
+                <button
+                  type="button"
+                  className="ghost-button"
+                  onClick={() => setShowHint((h) => !h)}
+                >
+                  💡 Necesito pista
+                </button>
+
+                <button type="button" className="ghost-button skip" onClick={skipStation}>
+                  ⏭ Saltar
+                </button>
+              </div>
             </form>
+
+            {showHint && currentStation.challenge.hint && (
+              <p className="hint-bubble">💡 Pista: {currentStation.challenge.hint}</p>
+            )}
 
             {feedback && <p className="feedback">{feedback}</p>}
 
@@ -391,8 +407,8 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                 <span
                   className={completedSet.has(station.id) ? 'lit' : ''}
                   key={station.id}
-                  style={{ '--crystal-color': station.color }}
-                  title={station.crystal}
+                  style={{ '--crystal-color': station.reward.color }}
+                  title={station.reward.name}
                 />
               ))}
             </div>
@@ -402,13 +418,48 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
         <footer className="mission-footer">
           <span>
             {completedCount === totalCount
-              ? '¡Misión completa!'
-              : `${completedCount} de ${totalCount} cristales`}
+              ? '🎉 ¡Misión completa!'
+              : `💎 ${completedCount} de ${totalCount} cristales`}
           </span>
-          <button type="button" onClick={resetMission}>
-            Reiniciar misión
+
+          <button
+            type="button"
+            className="adult-toggle"
+            onClick={() => setShowAdult((a) => !a)}
+          >
+            👤 {showAdult ? 'Ocultar adulto' : 'Modo adulto'}
           </button>
         </footer>
+
+        {showAdult && (
+          <aside className="adult-panel">
+            <p>
+              <strong>Ruta:</strong> {modeLabels[mode]?.label} ·{' '}
+              {itinerary.title}
+            </p>
+            <p>
+              <strong>Adulto:</strong> {currentStation.adultHint || 'Sin indicaciones adicionales.'}
+            </p>
+            <div className="adult-grid">
+              <button type="button" onClick={skipStation}>
+                ⏭ Saltar estación
+              </button>
+              <button type="button" onClick={() => window.print()}>
+                🖨 Imprimir
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  stopSpeaking();
+                  saveProgress({ itineraryId: itinerary.id, mode, currentIndex: 0, completed: [] });
+                  onReset();
+                }}
+              >
+                🔄 Nueva misión
+              </button>
+            </div>
+          </aside>
+        )}
       </section>
     </main>
   );
@@ -416,15 +467,16 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
 
 function App() {
   const saved = loadProgress();
-  const [phase, setPhase] = useState(saved ? 'adventure' : 'lobby');
-  const [itinerary, setItinerary] = useState(
-    saved ? itineraries[saved.itineraryId] : null
-  );
+  const isValid = saved && itineraries[saved.itineraryId];
+  const [phase, setPhase] = useState(saved && isValid ? 'adventure' : 'lobby');
+  const [itinerary, setItinerary] = useState(isValid ? itineraries[saved.itineraryId] : null);
   const [userName, setUserName] = useState(saved?.userName || '');
+  const [mode, setMode] = useState(saved?.mode || 'normal');
 
-  function handleStart(name, itId) {
+  function handleStart(name, itId, m) {
     setUserName(name);
     setItinerary(itineraries[itId]);
+    setMode(m);
     setPhase('adventure');
   }
 
@@ -448,6 +500,7 @@ function App() {
       <FinalScreen
         itinerary={itinerary}
         userName={userName}
+        modeLabel={modeLabels[mode]?.label || ''}
         onReset={handleReset}
       />
     );
@@ -457,6 +510,7 @@ function App() {
     <Adventure
       itinerary={itinerary}
       userName={userName}
+      mode={mode}
       onFinal={handleFinal}
       onReset={handleReset}
     />
