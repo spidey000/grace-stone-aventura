@@ -1,0 +1,371 @@
+:root {
+  color: #122323;
+  background: #f3f8f6;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 24px;
+  background:
+    linear-gradient(180deg, rgba(14, 130, 119, 0.14), rgba(243, 248, 246, 0) 320px),
+    #f3f8f6;
+}
+
+.mission-panel {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.mission-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 18px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #0e8277;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 760px;
+  margin-bottom: 8px;
+  font-size: clamp(2rem, 4vw, 3.75rem);
+  line-height: 1;
+}
+
+.mission-heading p:last-child {
+  max-width: 680px;
+  margin-bottom: 0;
+  color: #4d6463;
+  font-size: 1.04rem;
+}
+
+.progress-dial {
+  display: grid;
+  flex: 0 0 auto;
+  width: 88px;
+  height: 88px;
+  place-items: center;
+  border: 10px solid #0e8277;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #0b4f57;
+  font-weight: 900;
+}
+
+.progress-track {
+  height: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #d8e8e4;
+}
+
+.progress-track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #0e8277, #f2b84b, #d95f45);
+  transition: width 220ms ease;
+}
+
+.station-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.route-list {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.route-step {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  min-height: 68px;
+  padding: 10px;
+  border: 1px solid #d4e3df;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #213837;
+  text-align: left;
+}
+
+.route-step.active {
+  border-color: #0e8277;
+  box-shadow: 0 0 0 3px rgba(14, 130, 119, 0.16);
+}
+
+.route-step.completed .step-code {
+  background: #0e8277;
+  color: #ffffff;
+}
+
+.route-step strong,
+.route-step small {
+  display: block;
+}
+
+.route-step small {
+  margin-top: 3px;
+  color: #607574;
+  font-size: 0.78rem;
+  line-height: 1.25;
+}
+
+.step-code {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 50%;
+  background: #e7f1ee;
+  color: #0b4f57;
+  font-weight: 900;
+}
+
+.station-card {
+  min-height: 620px;
+  padding: 24px;
+  border: 1px solid #d4e3df;
+  border-top: 8px solid var(--station-color);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 18px 50px rgba(20, 45, 42, 0.08);
+}
+
+.station-topline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  color: #607574;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+h2 {
+  margin: 14px 0 8px;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.05;
+}
+
+.route-hint {
+  margin-bottom: 18px;
+  color: #607574;
+}
+
+.story-box {
+  display: grid;
+  gap: 16px;
+  padding: 18px;
+  border-radius: 8px;
+  background: #f1f7f5;
+}
+
+.story-box p {
+  margin: 0;
+  color: #243c3b;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.icon-button,
+.primary-action,
+.mission-footer button,
+.choice-grid button {
+  min-height: 46px;
+  border: 0;
+  border-radius: 8px;
+  font-weight: 800;
+}
+
+.icon-button {
+  justify-self: start;
+  padding: 0 16px;
+  background: #0b4f57;
+  color: #ffffff;
+}
+
+.challenge {
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.challenge label {
+  color: #203837;
+  font-size: 1.08rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.challenge input {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 14px;
+  border: 2px solid #bdd4cf;
+  border-radius: 8px;
+  outline: none;
+}
+
+.challenge input:focus {
+  border-color: #0e8277;
+  box-shadow: 0 0 0 3px rgba(14, 130, 119, 0.18);
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.choice-grid button {
+  padding: 10px 12px;
+  border: 2px solid #bdd4cf;
+  background: #ffffff;
+  color: #243c3b;
+}
+
+.choice-grid button.selected {
+  border-color: #0e8277;
+  background: #dff4ef;
+}
+
+.primary-action {
+  padding: 0 18px;
+  background: var(--station-color);
+  color: #ffffff;
+}
+
+.feedback {
+  margin: 18px 0 0;
+  padding: 14px 16px;
+  border-left: 5px solid var(--station-color);
+  border-radius: 8px;
+  background: #fbf7e8;
+  color: #4a3b13;
+  font-weight: 800;
+}
+
+.crystal-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.crystal-strip span {
+  width: 22px;
+  height: 30px;
+  border: 2px solid #cbded9;
+  clip-path: polygon(50% 0, 100% 32%, 82% 100%, 18% 100%, 0 32%);
+  background: #edf3f1;
+}
+
+.crystal-strip span.lit {
+  border-color: #243c3b;
+  background: var(--crystal-color);
+}
+
+.mission-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 18px;
+  color: #4d6463;
+  font-weight: 800;
+}
+
+.mission-footer button {
+  padding: 0 14px;
+  background: #ffffff;
+  color: #0b4f57;
+}
+
+@media (max-width: 860px) {
+  .app-shell {
+    padding: 16px;
+  }
+
+  .mission-heading {
+    align-items: flex-start;
+  }
+
+  .progress-dial {
+    width: 72px;
+    height: 72px;
+    border-width: 8px;
+  }
+
+  .station-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .route-list {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(220px, 1fr);
+    overflow-x: auto;
+    padding: 4px 4px 10px;
+  }
+
+  .station-card {
+    min-height: auto;
+    padding: 18px;
+  }
+}
+
+@media (max-width: 620px) {
+  .mission-heading {
+    display: grid;
+  }
+
+  .choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mission-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+

@@ -1,0 +1,18 @@
+{
+  "name": "La Aventura de Exploradora Grace Stone",
+  "short_name": "Grace Stone",
+  "description": "Audio-aventura familiar en la Ciutat de les Arts i les Ciències.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7fbf8",
+  "theme_color": "#0e8277",
+  "icons": [
+    {
+      "src": "/grace-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
+
