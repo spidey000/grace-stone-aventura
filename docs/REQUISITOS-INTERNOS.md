@@ -121,7 +121,6 @@ Ejemplos:
 
 - Reproducción de audios grabados o generados.
 - Howler.js si se necesita mezcla avanzada de audio y efectos.
-- Leaflet.js si se integra plano como imagen overlay con marcadores.
 - Firebase solo si hace falta sincronización entre dispositivos.
 - Multilingüe español/inglés si se amplía.
 

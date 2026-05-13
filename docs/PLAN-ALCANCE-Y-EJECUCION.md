@@ -50,11 +50,8 @@ El MVP es la version minima que ya serviria para hacer la visita.
 
 ### No incluido en el MVP
 
- - GPS obligatorio.
- - Camara obligatoria.
-- Firebase o cuentas de usuario.
-- Panel de administracion.
-- Mapa interactivo avanzado.
+- GPS obligatorio.
+- Camara obligatoria.
 - Generacion dinamica de audio en runtime.
 - Analiticas.
 - Pagos o publicacion publica en tiendas.
@@ -171,21 +168,6 @@ Validacion:
 - Los audios se reproducen en movil.
 - Si falla audio, queda texto visible.
 
-### Version 4: Mapa y refinamiento
-
-Objetivo: hacer la experiencia mas magica sin hacerla fragil.
-
-Entregables:
-
- - Plano visual.
- - Marcadores de ruta.
- - Codigos impresos.
- - Modo adulto para saltar estacion.
-
-Validacion:
- 
-- El mapa ayuda, no distrae.
-
 ## 5. Estructura de datos
 
 La estructura cambia de lista plana de estaciones a dos itinerarios independientes:
@@ -263,7 +245,6 @@ Tipos preferidos:
 | Progreso | LocalStorage | Suficiente para una experiencia familiar |
 | Audio | MP3 reales con nombre dinámico | Texto antes/después = MP3 pregrabado; nombre = TTS runtime |
 | GPS | No en MVP | En interiores puede frustrar |
-| Mapa | Primero imagen/plano, luego interactivo | Menos riesgo inicial |
 | Datos | `src/data/stations.js` | Facil de editar |
 | Deploy | Vercel | Encaja con Vite y previews |
 
@@ -318,8 +299,7 @@ Basado en la revisión de usabilidad para niño de 7 años, se prioriza reducir 
 | # | Tarea | Detalle |
 |---|-------|---------|
 | P2-1 | **Script de validación** | Comprobar que cada estación tiene: id, title, area, story, challenge, reward, audioSrc, modes. |
-| P2-2 | **Mapa simple con puntos** | Imagen del plano con botones numerados 00-10. No necesita Leaflet. |
-| P2-3 | **Tests mínimos** | Carga sin progreso, guardado, finalización, cada tipo de reto, modo offline. |
+| P2-2 | **Tests mínimos** | Carga sin progreso, guardado, finalización, cada tipo de reto, modo offline. |
 
 ### Próximo bloque inmediato (P0 en orden)
 

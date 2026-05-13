@@ -31,7 +31,7 @@ Construir una PWA sencilla, fiable y desplegable en Vercel que permita ejecutar 
 - App web instalable o accesible desde navegador móvil.
 - Estado guardado localmente.
 - Contenido editable mediante datos estructurados.
-- Preparada para audio real, mapas y futuras mejoras.
+- Preparada para audio real y futuras mejoras.
 - Deploy simple en Vercel con build estático.
 
 ## 3. Audiencia
@@ -113,13 +113,6 @@ El MVP debe permitir hacer la aventura completa con confirmaciones manuales y re
 - Control de volumen.
 - Reanudar audio donde se quedó.
 - Posible uso de Howler.js si hace falta control fino de reproducción.
-
-### Mapa visual
-
-- Plano del Oceanogràfic como imagen en `public/maps/`.
-- Marcadores de estaciones.
-- En el futuro, Leaflet con imagen overlay.
-- Modo simple inicial: imagen del plano con puntos numerados.
 
 ### Personalización
 
@@ -269,13 +262,7 @@ Ya iniciada.
 4. Cambiar la app para preferir audio real y usar Web Speech API solo como fallback.
 5. Añadir efectos de sonido con volumen bajo.
 
-### Fase 4: Mapa
-
-1. Incorporar plano del Oceanogràfic como imagen.
-2. Marcar estaciones.
-3. Probar que no se bloquea el avance si una pegatina no se puede escanear.
-
-### Fase 5: Ensayo
+### Fase 4: Ensayo
 
 1. Probar en móvil real.
 2. Probar en modo avión tras abrir la app.
@@ -433,7 +420,6 @@ Fuentes revisadas o identificadas el 2026-05-13. Las fuentes oficiales deben com
 ### Librerías candidatas para fases futuras
 
 - Howler.js, audio web avanzado: https://howlerjs.com/
-- Leaflet, mapas e imagen overlay: https://leafletjs.com/
 
 ### Herramientas no-code o low-code de referencia
 

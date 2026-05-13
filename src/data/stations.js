@@ -269,6 +269,10 @@ export const itineraries = {
           success: 'Misión completada. Eres Explorador Honorífico del Océano.',
           hint: 'Este es el final. Toca el botón para recibir tu título.',
         },
+        backupChallenge: {
+          type: 'confirm',
+          prompt: 'Toca para cerrar la misión. Has completado la aventura.',
+        },
       },
     ],
   },
@@ -301,6 +305,10 @@ export const itineraries = {
           prompt: '¿Estás listo para tocar, sentir y experimentar? Toca cuando quieras empezar.',
           success: 'Misión activada. Primer cristal de ciencia recuperado.',
           hint: 'Mira a tu alrededor. Todo lo que ves está hecho para que lo uses.',
+        },
+        backupChallenge: {
+          type: 'confirm',
+          prompt: 'Si prefieres empezar directo, confirma aquí. La ciencia te espera.',
         },
       },
       {
@@ -530,6 +538,10 @@ export const itineraries = {
           prompt: 'Toca para recibir tu insignia de Científico Honorífico.',
           success: 'Misión completada. Eres Científico Honorífico.',
           hint: 'Este es el final de la aventura. Toca para celebrarlo.',
+        },
+        backupChallenge: {
+          type: 'confirm',
+          prompt: 'Toca para cerrar la misión. Has completado la aventura científica.',
         },
       },
     ],

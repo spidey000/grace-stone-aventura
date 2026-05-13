@@ -74,9 +74,8 @@ docs/
   datos-museu.md               Investigación verificada por zona del Museu.
 public/
   audio/                       Audios finales por estación (pendiente de grabar).
-  maps/                        Planos del Oceanogràfic, Museo y Ciutat.
-  manifest.webmanifest         Configuración PWA.
-  sw.js                        Service worker básico.
+  manifest.webmanifest     Configuración PWA.
+  sw.js                    Service worker básico.
 src/
   data/stations.js             Datos con estructura de dos itinerarios, modos, pistas, backups.
   App.jsx                      Lobby, Adventure y FinalScreen con todas las features.
@@ -114,8 +113,6 @@ Vercel detecta Vite automáticamente:
 
 ### P2 — Después del primer test real
 - Script de validación de datos de estaciones
-- Mapa simple con puntos numerados en imagen del plano
-- Tests mínimos de flujo completo
 - Tests mínimos de flujo completo
 
 El punto de entrada documental del proyecto es `docs/DOCUMENTO-MAESTRO.md`.
