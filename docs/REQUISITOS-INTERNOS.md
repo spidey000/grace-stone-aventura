@@ -81,7 +81,6 @@ La app debe funcionar como PWA o web móvil. Debe poder abrirse en Android e iOS
 
 La primera versión debe soportar confirmación manual. El diseño debe permitir añadir después:
 
-- QR impresos o pegatinas discretas.
 - Códigos numéricos o palabras vistas en carteles.
 - Botón "Estoy aquí".
 - Foto opcional como gesto de enviar prueba a Grace.
@@ -149,7 +148,6 @@ La app usa un archivo editable de estaciones:
 
 - Pasaporte de Explorador con casillas para sellos o pegatinas.
 - Cristales impresos o pegatinas.
-- QR por estación si se decide usar esa mecánica.
 - Auriculares cómodos.
 - Batería externa.
 
@@ -189,6 +187,5 @@ El primer MVP debe incluir:
 - Horarios reales y shows disponibles.
 - Exposiciones activas del Museo en la fecha de visita.
 - Preguntas basadas en carteles reales.
-- Si se usarán QR, respuestas manuales o ambos.
 - Idiomas finales.
 

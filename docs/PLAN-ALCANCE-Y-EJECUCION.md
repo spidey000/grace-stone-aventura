@@ -50,9 +50,8 @@ El MVP es la version minima que ya serviria para hacer la visita.
 
 ### No incluido en el MVP
 
-- GPS obligatorio.
-- QR obligatorio.
-- Camara obligatoria.
+ - GPS obligatorio.
+ - Camara obligatoria.
 - Firebase o cuentas de usuario.
 - Panel de administracion.
 - Mapa interactivo avanzado.
@@ -71,7 +70,6 @@ Estas features pueden llegar despues, pero no son necesarias para que la primera
 | Itinerarios | Dos separados | Oceanogràfic (~90 min) y Museu (~60 min), elegidos al inicio |
 | Nombre del niño | Input al inicio | Se introduce antes de empezar, se usa para personalizar audio |
 | Audio | MP3 reales con nombre dinámico | Texto antes y después del nombre = MP3 pregrabado; nombre = TTS en runtime; concatenación secuencial |
-| QR | No en V1 | Opcional para versión posterior |
 | Oceanogràfic + Museu | Itinerarios separados | No se combinan en una misma sesión |
 
 ### Sistema de audio con nombre personalizado
@@ -173,21 +171,19 @@ Validacion:
 - Los audios se reproducen en movil.
 - Si falla audio, queda texto visible.
 
-### Version 4: Mapa, QR y refinamiento
+### Version 4: Mapa y refinamiento
 
 Objetivo: hacer la experiencia mas magica sin hacerla fragil.
 
 Entregables:
 
-- Plano visual.
-- Marcadores de ruta.
-- QR opcionales.
-- Codigos impresos.
-- Modo adulto para saltar estacion.
+ - Plano visual.
+ - Marcadores de ruta.
+ - Codigos impresos.
+ - Modo adulto para saltar estacion.
 
 Validacion:
-
-- Ningun QR o permiso bloquea la aventura.
+ 
 - El mapa ayuda, no distrae.
 
 ## 5. Estructura de datos
@@ -267,7 +263,6 @@ Tipos preferidos:
 | Progreso | LocalStorage | Suficiente para una experiencia familiar |
 | Audio | MP3 reales con nombre dinámico | Texto antes/después = MP3 pregrabado; nombre = TTS runtime |
 | GPS | No en MVP | En interiores puede frustrar |
-| QR | No en V1 | Opcional para versión posterior |
 | Mapa | Primero imagen/plano, luego interactivo | Menos riesgo inicial |
 | Datos | `src/data/stations.js` | Facil de editar |
 | Deploy | Vercel | Encaja con Vite y previews |
@@ -282,7 +277,6 @@ Preguntas pendientes antes de escribir guiones finales:
 - ~~Duración~~ — Oceanogràfic ~90 min, Museu ~60 min.
 - ~~Ruta~~ — Dos itinerarios separados, elegidos al inicio.
 - ~~Audio~~ — MP3 reales pregrabados + TTS para nombre dinámico.
-- ~~QR~~ — No en V1.
 
 Por responder:
 
@@ -325,8 +319,7 @@ Basado en la revisión de usabilidad para niño de 7 años, se prioriza reducir 
 |---|-------|---------|
 | P2-1 | **Script de validación** | Comprobar que cada estación tiene: id, title, area, story, challenge, reward, audioSrc, modes. |
 | P2-2 | **Mapa simple con puntos** | Imagen del plano con botones numerados 00-10. No necesita Leaflet. |
-| P2-3 | **QR opcionales** | Modo extra: escanear QR desbloquea audio secreto. No bloquea el avance. |
-| P2-4 | **Tests mínimos** | Carga sin progreso, guardado, finalización, cada tipo de reto, modo offline. |
+| P2-3 | **Tests mínimos** | Carga sin progreso, guardado, finalización, cada tipo de reto, modo offline. |
 
 ### Próximo bloque inmediato (P0 en orden)
 

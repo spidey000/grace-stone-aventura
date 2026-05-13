@@ -31,7 +31,7 @@ Construir una PWA sencilla, fiable y desplegable en Vercel que permita ejecutar 
 - App web instalable o accesible desde navegador móvil.
 - Estado guardado localmente.
 - Contenido editable mediante datos estructurados.
-- Preparada para audio real, mapas, QR y futuras mejoras.
+- Preparada para audio real, mapas y futuras mejoras.
 - Deploy simple en Vercel con build estático.
 
 ## 3. Audiencia
@@ -63,7 +63,7 @@ Adulto acompañante. Necesita controlar ritmo, reiniciar misión, ajustar estaci
 
 ## 5. Producto MVP
 
-El MVP debe permitir hacer la aventura completa con confirmaciones manuales y retos sencillos, sin depender de QR, GPS ni cámara.
+El MVP debe permitir hacer la aventura completa con confirmaciones manuales y retos sencillos, sin depender de GPS ni cámara.
 
 ### Features MVP
 
@@ -113,13 +113,6 @@ El MVP debe permitir hacer la aventura completa con confirmaciones manuales y re
 - Control de volumen.
 - Reanudar audio donde se quedó.
 - Posible uso de Howler.js si hace falta control fino de reproducción.
-
-### QR y códigos
-
-- QR por estación para desbloqueo.
-- Códigos impresos en pasaporte físico.
-- Respuestas tomadas de carteles reales.
-- Modo adulto para saltar un reto si el cartel no está disponible.
 
 ### Mapa visual
 
@@ -276,13 +269,11 @@ Ya iniciada.
 4. Cambiar la app para preferir audio real y usar Web Speech API solo como fallback.
 5. Añadir efectos de sonido con volumen bajo.
 
-### Fase 4: Mapa y QR
+### Fase 4: Mapa
 
 1. Incorporar plano del Oceanogràfic como imagen.
 2. Marcar estaciones.
-3. Generar QR o códigos por estación.
-4. Añadir validación por QR opcional.
-5. Probar que no se bloquea el avance si una pegatina no se puede escanear.
+3. Probar que no se bloquea el avance si una pegatina no se puede escanear.
 
 ### Fase 5: Ensayo
 
@@ -443,8 +434,6 @@ Fuentes revisadas o identificadas el 2026-05-13. Las fuentes oficiales deben com
 
 - Howler.js, audio web avanzado: https://howlerjs.com/
 - Leaflet, mapas e imagen overlay: https://leafletjs.com/
-- html5-qrcode, lectura QR en navegador: https://github.com/mebjas/html5-qrcode
-- qrcode, generación de QR: https://github.com/soldair/node-qrcode
 
 ### Herramientas no-code o low-code de referencia
 

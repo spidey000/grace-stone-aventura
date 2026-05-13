@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=800">
+<title>Pasaporte de la Aventura — Grace Stone</title>
+<style>
+  :root {
+    --green: #0e8277;
+    --gold: #f2b84b;
+    --ocean: #123f63;
+    --sand: #f3f8f6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #fff;
+    color: #122323;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* === PORTADA === */
+  .cover {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 30px;
+    background: linear-gradient(135deg, var(--green), #2e9f89, var(--ocean));
+    color: #fff;
+    text-align: center;
+  }
+  .cover h1 {
+    font-size: 3rem;
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+  .cover .sub {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+  }
+  .cover .name-line {
+    font-size: 1.6rem;
+    border-bottom: 2px solid rgba(255,255,255,0.5);
+    padding-bottom: 6px;
+    margin-bottom: 24px;
+    min-width: 200px;
+  }
+  .cover .badge-area {
+    margin-top: 20px;
+    padding: 20px;
+    border: 2px dashed rgba(255,255,255,0.4);
+    border-radius: 16px;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+
+  /* === CRISTALES (2x5 grid) === */
+  .crystals-page {
+    padding: 40px 30px;
+    page-break-before: always;
+  }
+  .crystals-page h2 {
+    font-size: 1.8rem;
+    margin-bottom: 24px;
+    color: var(--green);
+  }
+  .crystal-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .crystal-slot {
+    border: 2px solid #d4e3df;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .crystal-shape {
+    width: 60px;
+    height: 80px;
+    clip-path: polygon(50% 0, 100% 35%, 82% 100%, 18% 100%, 0 35%);
+    background: #edf3f1;
+    border: 2px solid #cbded9;
+    transition: none;
+  }
+  .crystal-name {
+    font-weight: 700;
+    font-size: 0.78rem;
+    color: #4d6463;
+    line-height: 1.2;
+  }
+  .crystal-area {
+    font-size: 0.7rem;
+    color: #8aa7a4;
+  }
+  .sticker-space {
+    margin-top: auto;
+    width: 100%;
+    height: 30px;
+    border: 1px dashed #cbded9;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    color: #b0c9c5;
+  }
+
+  /* === ACTIVIDADES === */
+  .activities-page {
+    padding: 40px 30px;
+    page-break-before: always;
+  }
+  .activities-page h2 {
+    font-size: 1.8rem;
+    margin-bottom: 24px;
+    color: var(--green);
+  }
+  .activity-list {
+    display: grid;
+    gap: 16px;
+  }
+  .activity-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 14px 16px;
+    border: 1px solid #d4e3df;
+    border-radius: 10px;
+  }
+  .checkbox {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--green);
+    border-radius: 6px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .activity-text {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  .activity-text strong {
+    color: var(--green);
+  }
+
+  /* === CONTRAPORTADA === */
+  .back-cover {
+    page-break-before: always;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 30px;
+    background: var(--sand);
+    text-align: center;
+  }
+  .back-cover .insig-placeholder {
+    width: 180px;
+    height: 180px;
+    border: 2px dashed #bdd4cf;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    color: #8aa7a4;
+  }
+  .back-cover h3 {
+    font-size: 1.4rem;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+  .back-cover p {
+    color: #607574;
+    max-width: 400px;
+    line-height: 1.5;
+  }
+
+  @media print {
+    .cover, .back-cover { min-height: 100vh; }
+    .cover { break-after: page; }
+    .crystals-page { break-before: page; }
+    .activities-page { break-before: page; }
+    .back-cover { break-before: page; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<section class="cover">
+  <h1>🐠 Grace Stone</h1>
+  <p class="sub">Audio-aventura en la Ciutat de les Arts i les Ciències</p>
+  <p style="margin-bottom:12px;font-size:1.1rem;opacity:0.8;">Este pasaporte pertenece a:</p>
+  <p class="name-line">________________________</p>
+  <p style="font-size:0.85rem;opacity:0.7;">Fecha: ____ / ____ / __________</p>
+  <div class="badge-area">
+    <span>Aquí irá tu</span>
+    <span style="font-weight:800;font-size:1.4rem;">INSIGNIA</span>
+    <span>al completar la misión</span>
+  </div>
+</section>
+
+<!-- CRISTALES -->
+<section class="crystals-page">
+  <h2>💎 Cristales de la Aventura</h2>
+  <p style="margin-bottom:20px;color:#607574;">Colorea o pega un sticker en cada cristal cuando lo consigas.</p>
+
+  <div class="crystal-grid">
+    <div class="crystal-slot">
+      <div class="crystal-shape" style="background:#edf3f1;"></div>
+      <span class="crystal-name">Cristal de la Entrada</span>
+      <span class="crystal-area">Acceso</span>
+      <div class="sticker-space">sticker</div>
+    </div>
+    <div class="crystal-slot">
+      <div class="crystal-shape" style="background:#edf3f1;"></div>
+      <span class="crystal-name">Cristal Mediterráneo</span>
+      <span class="crystal-area">Mediterráneo</span>
+      <div class="sticker-space">sticker</div>
+    </div>
+    <div class="crystal-slot">
+      <div class="crystal-shape" style="background:#edf3f1;"></div>
+      <span class="crystal-name">Cristal Tropical</span>
+      <span class="crystal-area">Tropicales</span>
+      <div class="sticker-space">sticker</div>
+    </div>
+    <div class="crystal-slot">
+      <div class="crystal-shape" style="background:#edf3f1;"></div>
+      <span class="crystal-name">Cristal de Islas</span>
+      <span class="crystal-area">Leones marinos</span>
+      <div class="sticker-space">sticker</div>
+    </div>
+    <div class="crystal-slot">
+      <div class="crystal-shape" style="background:#edf3f1;"></div>
+      <span class="crystal-name">Cristal del Salto Azul</span>
+      <span class="crystal-area">Delfinario</span>
+      <div class="sticker-space">sticker</div>
+    </div>
+    <div class="crystal-slot">
+      <div class="crystal-shape" style="background:#edf3f1;"></div>
+      <span class="crystal-name">Cristal Antártico</span>
+      <span class="crystal-area">Pingüinos</span>
+      <div class="sticker-space">sticker</div>
+    </div>
+    <div class="crystal-slot">
+      <div class="crystal-shape" style="background:#edf3f1;"></div>
+      <span class="crystal-name">Cristal Ártico</span>
+      <span class="crystal-area">Belugas</span>
+      <div class="sticker-space">sticker</div>
+    </div>
+    <div class="crystal-slot">
+      <div class="crystal-shape" style="background:#edf3f1;"></div>
+      <span class="crystal-name">Cristal de Escamas</span>
+      <span class="crystal-area">Cocodrilos</span>
+      <div class="sticker-space">sticker</div>
+    </div>
+    <div class="crystal-slot">
+      <div class="crystal-shape" style="background:#edf3f1;"></div>
+      <span class="crystal-name">Cristal Profundidades</span>
+      <span class="crystal-area">Tiburones</span>
+      <div class="sticker-space">sticker</div>
+    </div>
+    <div class="crystal-slot">
+      <div class="crystal-shape" style="background:#edf3f1;"></div>
+      <span class="crystal-name">Cristal de la Ciencia</span>
+      <span class="crystal-area">Museu</span>
+      <div class="sticker-space">sticker</div>
+    </div>
+  </div>
+
+  <p style="color:#8aa7a4;font-size:0.8rem;font-style:italic;">
+    En la app, los cristales se iluminan al completar cada estación.
+  </p>
+</section>
+
+<!-- ACTIVIDADES -->
+<section class="activities-page">
+  <h2>🎯 Misiones en la visita</h2>
+  <div class="activity-list">
+    <div class="activity-item">
+      <div class="checkbox"></div>
+      <div class="activity-text"><strong>Señal del océano:</strong> Encuentra el tiburón martillo en la entrada.</div>
+    </div>
+    <div class="activity-item">
+      <div class="checkbox"></div>
+      <div class="activity-text"><strong>Guardianes del mar:</strong> Busca una tortuga o un pulpo en el Mediterráneo.</div>
+    </div>
+    <div class="activity-item">
+      <div class="checkbox"></div>
+      <div class="activity-text"><strong>Arcoíris marino:</strong> Elige tu pez de color favorito en Tropicales.</div>
+    </div>
+    <div class="activity-item">
+      <div class="checkbox"></div>
+      <div class="activity-text"><strong>Rugido del león:</strong> Imita el rugido del león marino durante 3 segundos.</div>
+    </div>
+    <div class="activity-item">
+      <div class="checkbox"></div>
+      <div class="activity-text"><strong>El salto azul:</strong> Mira a los delfines y cuenta un salto.</div>
+    </div>
+    <div class="activity-item">
+      <div class="checkbox"></div>
+      <div class="activity-text"><strong>Torpedo de hielo:</strong> Observa cómo nadan los pingüinos bajo el agua.</div>
+    </div>
+    <div class="activity-item">
+      <div class="checkbox"></div>
+      <div class="activity-text"><strong>Canario del mar:</strong> Pon la mano en el cristal del tanque de belugas.</div>
+    </div>
+    <div class="activity-item">
+      <div class="checkbox"></div>
+      <div class="activity-text"><strong>Armadura antigua:</strong> Cuenta hasta 5 mirando al cocodrilo sin moverte.</div>
+    </div>
+    <div class="activity-item">
+      <div class="checkbox"></div>
+      <div class="activity-text"><strong>Guardianes del océano:</strong> Pasa por el túnel de tiburones y señala uno.</div>
+    </div>
+    <div class="activity-item">
+      <div class="checkbox"></div>
+      <div class="activity-text"><strong>Científico Honorífico:</strong> Explica a tu familia qué ha sido lo más divertido.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTRAPORTADA -->
+<section class="back-cover">
+  <div class="insig-placeholder">
+    <span style="font-size:3rem;">🐠</span>
+    <span style="margin-top:8px;">INSIGNIA</span>
+    <span style="font-size:0.7rem;">Explorador Honorífico</span>
+  </div>
+  <h3>¡Felicidades, explorador!</h3>
+  <p>Has completado la aventura de Grace Stone. El océano, los animales y la ciencia están conectados, y tú has demostrado ser un explorador valiente y curioso.</p>
+  <p style="margin-top:20px;font-style:italic;color:#0e8277;font-weight:700;">— Grace Stone</p>
+</section>
+
+</body>
+</html>

@@ -115,7 +115,7 @@ Vercel detecta Vite automáticamente:
 ### P2 — Después del primer test real
 - Script de validación de datos de estaciones
 - Mapa simple con puntos numerados en imagen del plano
-- QR opcionales para audio secreto
+- Tests mínimos de flujo completo
 - Tests mínimos de flujo completo
 
 El punto de entrada documental del proyecto es `docs/DOCUMENTO-MAESTRO.md`.
