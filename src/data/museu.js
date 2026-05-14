@@ -12,7 +12,7 @@ export const museuStations = [
     adultHint: 'Revisa si hay actividades de ciencia en directo antes de empezar.',
     childAction: 'Mira el edificio desde dentro y señala algo que parezca de otro planeta.',
     story:
-      '{username}, estamos en el laboratorio gigante de la ciencia. Aquí la regla es tocar, sentir, pensar y probar. Grace necesita un ayudante curioso que quiera descubrir cómo funciona el mundo.',
+      '{username}, estamos en el laboratorio gigante de la ciencia. Aquí la regla es tocar, sentir, pensar y probar. Yo, el Dr. Bravestone, necesito un ayudante curioso y valiente que quiera descubrir cómo funciona el mundo. ¿Estás listo para la misión? Vamos a explorar cada rincón de este lugar, porque juntos podemos descifrar los secretos mejor guardados de la ciencia. ¡Prepárate para la aventura!',
     reward: { name: 'Cristal de la Calle Menor', sound: crystalSound, color: '#d95f45' },
     duration: '2 min',
     color: '#d95f45',
@@ -41,7 +41,7 @@ export const museuStations = [
     adultHint: 'Actividad dependiente de horario o aforo. Si no encaja, saltar sin romper ruta.',
     childAction: 'Busca una demostración, cartel o señal de experimento.',
     story:
-      'La ciencia a veces parece magia: cambia colores, hace frío, crea humo o mueve objetos. Pero Grace sabe el secreto: no es magia, es observar lo que pasa.',
+      '{username}, la ciencia a veces parece magia: cambia colores, hace frío, crea humo o mueve objetos. Pero el Dr. Bravestone te va a contar el secreto: no es magia, es observar lo que pasa. Cada fenómeno tiene una explicación, y hoy tú y yo vamos a descubrirla juntos. ¡Mira conmigo y prepárate para alucinar!',
     reward: { name: 'Cristal de la Reacción', sound: crystalSound, color: '#2b7fd3' },
     duration: '3-10 min',
     color: '#2b7fd3',
@@ -62,7 +62,7 @@ export const museuStations = [
       type: 'steps',
       guardian: {
         name: 'El Experimento',
-        intro: 'El Experimento ha estallado en 3 fragmentos de ciencia. Solo un ayudante curioso que observe con atención podrá reconstruir la diapositiva.',
+        intro: '¡Alerta, {username}! El Experimento ha estallado en 3 fragmentos de ciencia y necesito a un ayudante con mirada de águila para reconstruirlos. ¿Crees que puedes con el desafío? ¡Demuéstrame que tienes lo que hay que tener!',
       },
       steps: [
         {
@@ -84,7 +84,7 @@ export const museuStations = [
           hint: 'Mira los carteles cerca de las taquillas.',
         },
       ],
-      finalSuccess: '¡Diapositiva reconstruida! El Experimento revela su chispa para tu linterna.',
+      finalSuccess: '¡Diapositiva reconstruida, compañero! El Experimento revela su chispa y la linterna se ilumina gracias a ti. ¡Eres un científico nato!',
       keyObject: {
         id: 'diapo-experimento',
         name: 'Diapositiva: Ciencia en Vivo',
@@ -103,8 +103,8 @@ export const museuStations = [
     routeHint: "Sube a la primera planta y entra en L'Espai dels Xiquets si está disponible.",
     adultHint: 'Espacio infantil recomendado para 4-8 años; puede depender de aforo.',
     childAction: 'Toca, mira, huele o escucha algo nuevo.',
-    story:
-      'Aquí tus sentidos son herramientas de explorador. Los ojos, las manos, la nariz y los oídos pueden descubrir cosas que un libro no cuenta.',
+      story:
+        '{username}, aquí tus sentidos son las herramientas más poderosas de un explorador. Los ojos, las manos, la nariz y los oídos pueden descubrir cosas que ningún libro te contaría. El Dr. Bravestone ha recorrido el mundo usando sus sentidos, y hoy tú vas a hacer lo mismo. ¡Vamos a despertar cada uno de ellos y a ver el mundo como nunca antes lo has visto! ¿Preparado?',
     reward: { name: 'Cristal de los Sentidos', sound: crystalSound, color: '#e07b39' },
     duration: '6-8 min',
     color: '#e07b39',
@@ -127,7 +127,7 @@ export const museuStations = [
       type: 'chain',
       guardian: {
         name: 'Los Sentidos',
-        intro: 'Los Sentidos se han dispersado en 3 fragmentos. Solo un explorador que use la vista, el tacto y el oído podrá reunirlos.',
+        intro: '¡Los Sentidos se han dispersado en 3 fragmentos por todo el laboratorio! Solo un verdadero explorador que se atreva a usar la vista, el tacto y el oído podrá reunirlos. ¿Aceptas el reto, {username}?',
       },
       steps: [
         {
@@ -149,7 +149,7 @@ export const museuStations = [
           hint: 'Usamos ojos, manos, oídos y nariz.',
         },
       ],
-      finalSuccess: '¡Diapositiva reconstruida! Los Sentidos se reflejan en tu linterna mágica.',
+      finalSuccess: '¡Diapositiva reconstruida, equipo! Los Sentidos se reflejan en tu linterna mágica. Gracias a tu valentía para explorar, la luz de la ciencia brilla más fuerte. ¡Eres imparable!',
       keyObject: {
         id: 'diapo-sentidos',
         name: 'Diapositiva: Los Sentidos',
@@ -169,7 +169,7 @@ export const museuStations = [
     adultHint: 'Si hay cola para colorear o escanear, usar el reto de observación.',
     childAction: 'Busca algo que conecte con agua, animales o naturaleza.',
     story:
-      'En este bosque la ciencia juega con animales, agua y movimiento. Algunos dibujos cobran vida y algunas pistas recuerdan al océano que acabamos de proteger.',
+      '{username}, bienvenido al bosque animado, un lugar donde la ciencia juega con animales, agua y movimiento. Algunos dibujos cobran vida ante tus ojos, y cada rincón guarda una pista que nos conecta con la naturaleza. El Dr. Bravestone ha explorado junglas de verdad, pero este bosque es especial: aquí tú puedes crear vida con tus propias manos. ¿Vamos a descubrir juntos qué secretos esconde?',
     reward: { name: 'Cristal del Bosque', sound: crystalSound, color: '#4c9e3a' },
     duration: '8-10 min',
     color: '#4c9e3a',
@@ -192,7 +192,7 @@ export const museuStations = [
       type: 'steps',
       guardian: {
         name: 'El Bosque Animado',
-        intro: 'El Bosque Animado ha dispersado su diapositiva en 3 colores. Solo un artista que mire con atención podrá reconstruirla.',
+        intro: '¡El Bosque Animado ha escondido su diapositiva en 3 colores diferentes! Solo un artista con ojos de explorador y mucha atención podrá encontrarlos y reconstruirla. ¡Necesito tu talento, {username}!',
       },
       steps: [
         {
@@ -214,7 +214,7 @@ export const museuStations = [
           hint: 'Tu dibujo cobra vida en una pantalla grande.',
         },
       ],
-      finalSuccess: '¡Diapositiva reconstruida! El Bosque Animado cobra vida en tu linterna.',
+      finalSuccess: '¡Diapositiva reconstruida, genio! El Bosque Animado cobra vida en tu linterna y late con la energía de la naturaleza. ¡Has demostrado ser un verdadero amigo de la ciencia y de la aventura!',
       keyObject: {
         id: 'diapo-bosque',
         name: 'Diapositiva: Bosque Animado',
@@ -234,7 +234,7 @@ export const museuStations = [
     adultHint: 'Si la zona está ocupada, hacer una microtarea familiar fuera: decidir juntos qué construirían.',
     childAction: 'Construye algo o decide con la familia qué construirías.',
     story:
-      'Los científicos no trabajan solos. En equipo pueden construir puentes, laboratorios, cohetes y casas. Cooperar también es una forma de descubrir.',
+      '{username}, escucha bien: los científicos más grandes del mundo nunca trabajan solos. En equipo construimos puentes, laboratorios, cohetes y hasta ciudades enteras. El Dr. Bravestone siempre viaja con su equipo, porque juntos somos más fuertes. Hoy, tú y tu familia vais a ser mi equipo de construcción. ¿Estáis listos para construir algo increíble? ¡La cooperación es el verdadero superpoder!',
     reward: { name: 'Cristal de Cooperación', sound: crystalSound, color: '#8b6bb5' },
     duration: '5-7 min',
     color: '#8b6bb5',
@@ -255,7 +255,7 @@ export const museuStations = [
       type: 'chain',
       guardian: {
         name: 'El Equipo',
-        intro: 'El Equipo ha separado su diapositiva en 3 piezas. Solo quienes trabajen juntos podrán unirlas de nuevo.',
+        intro: '¡El Guardián del Equipo ha separado la diapositiva en 3 piezas y las ha esparcido por la zona! Solo quienes trabajen codo con codo podrán unirlas de nuevo. ¿Demostramos que juntos somos imparables, {username}?',
       },
       steps: [
         {
@@ -277,7 +277,7 @@ export const museuStations = [
           hint: 'Puede ser cualquier cosa que imaginéis.',
         },
       ],
-      finalSuccess: '¡Diapositiva reconstruida! El Equipo demuestra que juntos somos más fuertes.',
+      finalSuccess: '¡Diapositiva reconstruida, equipo de ensueño! Hemos demostrado que juntos somos más fuertes, más rápidos y más inteligentes. ¡La cooperación ha vencido! Eres un miembro oficial del equipo Bravestone.',
       keyObject: {
         id: 'diapo-construccion',
         name: 'Diapositiva: Construcción',
@@ -297,7 +297,7 @@ export const museuStations = [
     adultHint: 'Hito visual fiable. No exige esperar mucho.',
     childAction: 'Mira hacia arriba y observa cómo se balancea.',
     story:
-      'Este péndulo nos recuerda algo enorme: la Tierra se mueve aunque nosotros no lo notemos. La ciencia sirve para ver lo invisible.',
+      '{username}, mira hacia arriba. Ese péndulo que ves no solo se balancea: está demostrando algo alucinante. La Tierra se está moviendo bajo tus pies, ahora mismo, mientras lo observas. El Dr. Bravestone ha visto muchas maravillas en sus expediciones, pero este péndulo es especial: nos enseña a ver lo invisible. La ciencia nos da superpoderes, y hoy tú los estás descubriendo. ¿No es increíble?',
     reward: { name: 'Cristal del Giro', sound: crystalSound, color: '#6b7280' },
     duration: '4-6 min',
     color: '#6b7280',
@@ -320,7 +320,7 @@ export const museuStations = [
       type: 'chain',
       guardian: {
         name: 'Foucault',
-        intro: 'El péndulo de Foucault se balancea sin descanso. Rompió su diapositiva en 3 oscilaciones. Solo quien mire hacia arriba podrá seguir su ritmo.',
+        intro: '¡El péndulo de Foucault no deja de balancearse! Rompió su diapositiva en 3 oscilaciones y las esparció por la gravedad. Solo un explorador que se atreva a mirar hacia arriba podrá seguir su ritmo. ¿Tienes valor para alzar la vista, {username}?',
       },
       steps: [
         {
@@ -342,7 +342,7 @@ export const museuStations = [
           hint: 'Lleva el nombre del científico que lo inventó.',
         },
       ],
-      finalSuccess: '¡Diapositiva reconstruida! Foucault revela el giro de la Tierra en tu linterna.',
+      finalSuccess: '¡Diapositiva reconstruida, campeón! Foucault revela el giro de la Tierra en tu linterna. ¡Has capturado el movimiento del planeta! Ni Indiana Jones podría haberlo hecho mejor. ¡Eres un auténtico explorador!',
       keyObject: {
         id: 'diapo-pendulo',
         name: 'Diapositiva: Péndulo',
@@ -362,7 +362,7 @@ export const museuStations = [
     adultHint: 'Usar como puente visual hacia cromosomas, sin profundizar demasiado.',
     childAction: 'Busca una forma de escalera retorcida.',
     story:
-      'El ADN es como una escalera retorcida con instrucciones secretas. No se ve a simple vista dentro del cuerpo, pero aquí puedes imaginar su forma gigante.',
+      '{username}, el ADN es como una escalera retorcida que guarda las instrucciones secretas de la vida. No puedes verlo a simple vista dentro de tu cuerpo, pero aquí, en el museo, podemos imaginar su forma gigante. El Dr. Bravestone ha visto criaturas increíbles en todo el mundo, y todas comparten este mismo secreto. Ven, acércate y mira conmigo. ¿Estás listo para descubrir el código de la vida?',
     reward: { name: 'Cristal del ADN', sound: crystalSound, color: '#0f9f8f' },
     duration: '3-5 min',
     color: '#0f9f8f',
@@ -376,14 +376,14 @@ export const museuStations = [
     },
     backupChallenge: {
       type: 'confirm',
-      prompt: 'Si no la encuentras, confirma y Grace guardará la pista para el Bosque de Cromosomas.',
+      prompt: 'Si no la encuentras, confirma y Bravestone guardará la pista para el Bosque de Cromosomas.',
       success: 'Pista de ADN guardada.',
     },
     riddle: {
       type: 'chain',
       guardian: {
         name: 'El ADN',
-        intro: 'El ADN, la escalera de la vida, ha desenrollado su diapositiva en 3 peldaños. Solo un explorador que busque la forma oculta podrá reconstruirla.',
+        intro: '¡El ADN, la escalera de la vida, ha desenrollado su diapositiva en 3 peldaños y los ha escondido entre las hélices! Solo un explorador con ojo de águila que busque la forma oculta podrá reconstruirla. ¿Crees que puedes con el código, {username}?',
       },
       steps: [
         {
@@ -405,7 +405,7 @@ export const museuStations = [
           hint: 'Mira los carteles de la exposición. Es un número pequeño.',
         },
       ],
-      finalSuccess: '¡Diapositiva reconstruida! El ADN revela su escalera de la vida en tu linterna.',
+      finalSuccess: '¡Diapositiva reconstruida, genio de la genética! El ADN revela su escalera de la vida en tu linterna. Has descifrado el código secreto que compartimos todos los seres vivos. ¡La ciencia corre por tus venas!',
       keyObject: {
         id: 'diapo-adn',
         name: 'Diapositiva: ADN',
@@ -425,7 +425,7 @@ export const museuStations = [
     adultHint: 'Depende de sesiones, reserva o aforo. Debe poder saltarse.',
     childAction: 'Busca una señal de teatro, experimento o demostración.',
     story:
-      'Cuando la ciencia sube a un escenario, una pregunta se convierte en una sorpresa. Si hoy hay sesión, Grace escuchará contigo. Si no, seguimos adelante.',
+      '{username}, cuando la ciencia sube a un escenario, una simple pregunta se convierte en una sorpresa espectacular. El Dr. Bravestone ha visto muchos espectáculos, pero ninguno tan emocionante como la ciencia en vivo. Si hoy hay sesión, vamos a disfrutarla juntos. Si no, no pasa nada: seguimos adelante con nuestra misión. ¿Listo para ver qué sorpresas nos esperan?',
     reward: { name: 'Cristal del Escenario', sound: crystalSound, color: '#b55488' },
     duration: '3-15 min',
     color: '#b55488',
@@ -446,7 +446,7 @@ export const museuStations = [
       type: 'chain',
       guardian: {
         name: 'El Teatro Científico',
-        intro: 'El Teatro Científico ha roto su diapositiva en 3 actos. Solo un espectador atento podrá seguir la función y reconstruirla.',
+        intro: '¡El Teatro Científico ha partido su diapositiva en 3 actos y los ha repartido por el escenario! Solo un espectador con mirada de halcón podrá seguir la función y reconstruir el misterio. ¿Te atreves a ocupar tu butaca, {username}? ¡La función está a punto de empezar!',
       },
       steps: [
         {
@@ -468,7 +468,7 @@ export const museuStations = [
           hint: 'La magia se esconde, la ciencia se explica.',
         },
       ],
-      finalSuccess: '¡Diapositiva reconstruida! El Teatro Científico ilumina tu linterna con su saber.',
+      finalSuccess: '¡Diapositiva reconstruida, estrella de la ciencia! El Teatro Científico ilumina tu linterna con todo su saber. Has sido el mejor espectador que podríamos pedir. ¡Bravo, {username}! ¡Aplausos para ti!',
       keyObject: {
         id: 'diapo-teatro',
         name: 'Diapositiva: Teatro',
@@ -488,7 +488,7 @@ export const museuStations = [
     adultHint: 'Fuente oficial: primera planta, exposición temporal hasta 15/01/2027.',
     childAction: 'Busca algo que cambie: espejo, sombra, luz o forma.',
     story:
-      'Todo cambia: la naturaleza, la luz, las sombras y nosotros mismos. Metamorfosis significa transformación. Grace cree que cambiar también puede ser una aventura.',
+      '{username}, todo cambia: la naturaleza, la luz, las sombras y nosotros mismos. Metamorfosis significa transformación, y el Dr. Bravestone sabe mejor que nadie que los cambios más grandes traen las aventuras más emocionantes. Las orugas se convierten en mariposas, las semillas en árboles, y tú te estás convirtiendo en un científico. Vamos a explorar esta exposición y descubrir juntos el poder del cambio. ¿Preparado para transformarte?',
     reward: { name: 'Cristal de la Transformación', sound: crystalSound, color: '#c084fc' },
     duration: '8-10 min',
     color: '#c084fc',
@@ -511,7 +511,7 @@ export const museuStations = [
       type: 'chain',
       guardian: {
         name: 'Metamorfosis',
-        intro: 'Metamorfosis, la exposición del cambio, ha transformado su diapositiva en 3 formas diferentes. Solo quien se mueva y observe podrá capturarlas.',
+        intro: '¡Metamorfosis, la exposición del cambio, ha transformado su diapositiva en 3 formas diferentes y las ha esparcido por toda la sala! Solo un explorador que se mueva y observe con atención podrá capturarlas. ¿Tienes lo que hay que tener para atrapar el cambio, {username}?',
       },
       steps: [
         {
@@ -533,7 +533,7 @@ export const museuStations = [
           hint: 'Este cambio tiene el mismo nombre que la exposición.',
         },
       ],
-      finalSuccess: '¡Diapositiva reconstruida! Metamorfosis se transforma en luz para tu linterna.',
+      finalSuccess: '¡Diapositiva reconstruida, maestro de la transformación! Metamorfosis se transforma en luz para tu linterna. Has demostrado que el cambio no da miedo: es una aventura. ¡Eres tan increíble como una mariposa surgiendo de su capullo!',
       keyObject: {
         id: 'diapo-metamorfosis',
         name: 'Diapositiva: Metamorfosis',
@@ -553,7 +553,7 @@ export const museuStations = [
     adultHint: 'Momento de foto familiar con la insignia de científico.',
     childAction: 'Explicar a la familia qué ha sido lo más divertido.',
     story:
-      '{username}, has recorrido el museo entero y has recuperado las 8 diapositivas de la ciencia. Cada guardián confió en ti. Ahora la Linterna Mágica te espera para revelar su mensaje secreto.',
+      '{username}, has recorrido el museo entero como un verdadero explorador y has recuperado las 8 diapositivas de la ciencia. Cada guardián confió en ti, y no se equivocaron. El Dr. Bravestone está orgulloso de tenerte en su equipo. Ahora, la Linterna Mágica te espera para revelar su mensaje secreto. Prepárate, porque este es el momento que estábamos esperando. ¿Estás listo para el gran final? ¡Vamos juntos a encender la luz de la ciencia!',
     reward: { name: 'Insignia de Científico Honorífico', sound: crystalSound, color: '#7a4fd1' },
     duration: '2-3 min',
     color: '#7a4fd1',

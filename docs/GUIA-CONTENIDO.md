@@ -2,12 +2,12 @@
 
 ## Fórmula de cada estación
 
-1. Grace saluda y conecta con el capítulo anterior.
-2. Describe el lugar con una imagen mental clara.
-3. Da una misión concreta.
+1. Bravestone saluda, conecta con el capítulo anterior y enciende la emoción.
+2. Describe el lugar como si fuera un territorio por explorar.
+3. Da una misión concreta que invite a la acción ("Mira conmigo...", "Busquemos juntos...").
 4. El niño observa, cuenta, busca o experimenta.
 5. Introduce una respuesta o confirma la prueba.
-6. Grace entrega un cristal y abre la pista siguiente.
+6. Bravestone entrega un cristal y revela la siguiente pista.
 
 ## Duración recomendada
 
@@ -16,9 +16,9 @@
 - Transición Oceanogràfic-Museo: 1 minuto.
 - Final: 2-3 minutos.
 
-## Tono de Grace
+## Tono de Bravestone
 
-Grace habla con energía, pero no grita. Es protectora y científica. Usa palabras como:
+Bravestone habla con energía, carisma y un toque de grandeza aventurera. Es protector, científico y siempre incluye al niño como su compañero. Usa palabras como:
 
 - equipo
 - misión
@@ -28,7 +28,11 @@ Grace habla con energía, pero no grita. Es protectora y científica. Usa palabr
 - océano
 - laboratorio
 - secreto
-- equilibrio
+- tesoro
+- descubrimiento
+- valor
+- aventura
+- juntos
 
 Evitar:
 
@@ -41,14 +45,13 @@ Evitar:
 ## Plantilla de guion
 
 ```txt
-[Nombre], soy Grace Stone. Mi brújula científica acaba de vibrar.
+¡{username}, cambio! Aquí el Dr. Smolder Bravestone.
 
-Estamos en [lugar]. Mira a tu alrededor y busca [animal, cartel o experimento].
+Acabo de detectar [señal/misterio/pista] aquí en [lugar]. Mira a tu alrededor y busca [animal, cartel o experimento].
 
-El eco-misterio ha dejado aquí una pista. Para liberar el [nombre del cristal],
-necesito que descubras [pregunta].
+Hay un [nombre del cristal] esperando a ser descubierto. Para liberarlo, necesito que uses tus ojos y tu valentía para [pregunta/desafío].
 
-Cuando lo tengas, toca la respuesta en tu móvil. Yo vigilaré el mapa.
+Cuando lo tengas, toca la respuesta. Yo estaré aquí, vigilando tu progreso. ¡Vamos allá!
 ```
 
 ## Nombres de cristales

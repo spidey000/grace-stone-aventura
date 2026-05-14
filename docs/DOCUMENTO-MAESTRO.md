@@ -1,15 +1,15 @@
 # Documento maestro del proyecto
 
-**Proyecto:** La Aventura de Exploradora Grace Stone en la Ciutat de les Arts i les Ciències  
+**Proyecto:** La Aventura de Dr. Smolder Bravestone en la Ciutat de les Arts i les Ciències  
 **Ubicación del repositorio:** `/home/gg0099/proyectos/familia/grace-stone-aventura`  
 **Fecha de esta versión:** 2026-05-13  
 **Estado:** base inicial de producto, contenido y arquitectura.
 
 ## 1. Visión
 
-Crear una experiencia móvil inmersiva para una visita familiar al Oceanogràfic y al Museu de les Ciències de Valencia. El niño se convierte en ayudante de Grace Stone, una exploradora científica que le guía por auriculares con una narración continua, retos sencillos y una colección de cristales.
+Crear una experiencia móvil inmersiva para una visita familiar al Oceanogràfic y al Museu de les Ciències de Valencia. El niño se convierte en compañero del Dr. Smolder Bravestone, un intrépido arqueólogo-explorador que le guía por auriculares con una narración continua, retos sencillos y una colección de cristales.
 
-La app no debe sentirse como un formulario ni como una lista fría de tareas. Debe sentirse como una misión narrada: Grace acompaña, observa, anima, desbloquea capítulos y transforma el paseo en una aventura de ciencia, océano y descubrimiento.
+La app no debe sentirse como un formulario ni como una lista fría de tareas. Debe sentirse como una misión narrada: Bravestone acompaña, observa, anima, desbloquea capítulos y transforma el paseo en una aventura de ciencia, océano y descubrimiento.
 
 ## 2. Objetivos
 
@@ -54,10 +54,10 @@ Adulto acompañante. Necesita controlar ritmo, reiniciar misión, ajustar estaci
 
 ## 4. Principios de diseño
 
-- **La historia manda:** cada feature debe reforzar la misión de Grace.
+- **La historia manda:** cada feature debe reforzar la misión de Bravestone.
 - **Offline primero:** todo lo importante debe estar cargado antes de entrar.
 - **Pocos pasos:** cada estación debe resolverse en 1 o 2 interacciones.
-- **Sin castigo por error:** si falla una respuesta, Grace invita a observar otra vez.
+- **Sin castigo por error:** si falla una respuesta, Bravestone invita a observar otra vez.
 - **Adulto como copiloto:** no se oculta la interfaz de control, pero no debe dominar la experiencia.
 - **Contenido reemplazable:** preguntas provisionales se sustituyen por datos reales tras validar carteles o planos.
 
@@ -73,7 +73,7 @@ El MVP debe permitir hacer la aventura completa con confirmaciones manuales y re
    - Navegación manual entre estaciones para el adulto.
    - Ruta basada en Oceanogràfic y Museu.
 
-2. **Narración de Grace**
+2. **Narración de Bravestone**
    - Texto narrativo por estación.
    - Botón para escuchar mediante Web Speech API.
    - Preparado para sustituir por audios MP3.
@@ -123,7 +123,7 @@ El MVP debe permitir hacer la aventura completa con confirmaciones manuales y re
 
 ### Cámara
 
-- Foto opcional como "enviar prueba a Grace".
+- Foto opcional como "enviar prueba a Bravestone".
 - Debe ser opcional para evitar permisos y fricción.
 - No guardar fotos remotamente en MVP.
 
@@ -143,7 +143,7 @@ El MVP debe permitir hacer la aventura completa con confirmaciones manuales y re
 
 ### 00. Inicio
 
-Grace detecta el eco-misterio y activa la misión. El niño recibe el primer cristal al confirmar que está listo.
+Bravestone detecta el eco-misterio y activa la misión. El niño recibe el primer cristal al confirmar que está listo.
 
 ### 01. Mediterráneo / Humedales
 
@@ -183,7 +183,7 @@ Reto de experimento interactivo. Tema: las manos también hacen ciencia.
 
 ### 10. Final
 
-Grace reúne los cristales, explica que océano, animales y ciencia están conectados, y nombra al niño Explorador Honorífico.
+Bravestone reúne los cristales, explica que océano, animales y ciencia están conectados, y nombra al niño Explorador Honorífico.
 
 ## 8. Arquitectura
 
@@ -230,7 +230,7 @@ Campos clave:
 - `routeHint`: instrucción geográfica.
 - `crystal`: recompensa.
 - `duration`: duración orientativa.
-- `story`: texto de Grace.
+- `story`: texto de Bravestone.
 - `challenge`: tipo de reto y respuesta.
 
 ## 9. Cómo hacerlo

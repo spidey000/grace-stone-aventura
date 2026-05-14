@@ -16,11 +16,11 @@ La prioridad ahora no es tener muchas features. La prioridad es tener una aventu
 
 ## 2. Resultado final deseado
 
-Una app web movil que se abre antes de la visita, se queda preparada para funcionar con mala cobertura y guia al niño por una historia de Grace Stone.
+Una app web movil que se abre antes de la visita, se queda preparada para funcionar con mala cobertura y guia al niño por una historia del Dr. Smolder Bravestone.
 
 El adulto puede acompañar y resolver bloqueos, pero la sensacion para el niño debe ser:
 
-- Grace me habla.
+- Bravestone me habla.
 - Estoy en una mision.
 - Encuentro pistas reales.
 - Gano cristales.
@@ -282,14 +282,14 @@ Basado en la revisión de usabilidad para niño de 7 años, se prioriza reducir 
 | P0-4 | **Botón "Necesito pista"** | Cada estación tiene un botón de ayuda que da una pista adicional sin penalización. |
 | P0-5 | **Botón "Saltar estación"** | Si una zona está llena, cerrada o el animal no se ve, la familia puede saltar sin perder la historia. |
 | P0-6 | **Modo adulto plegado** | Panel colapsable con: saltar a cualquier estación, reiniciar, cambiar modo/ruta, desbloquear final. No visible para el niño por defecto. |
-| P0-7 | **Final celebrable** | Insignia con nombre del niño, botón "Foto familiar", frase final de Grace, opción de compartir. |
+| P0-7 | **Final celebrable** | Insignia con nombre del niño, botón "Foto familiar", frase final de Bravestone, opción de compartir. |
 | P0-8 | **Museu como mini-aventura** | 3 retos protagonistas: Sentidos / Agua-Animales / Construcción-Cooperación. El Museu no debe ser "una estación más" sino un clímax de ciencia. |
 
 ### P1 — Para que sea memorable
 
 | # | Tarea | Detalle |
 |---|-------|---------|
-| P1-1 | **Estructura MP3 real** | Definir carpetas `public/audio/{itinerario}/{stationId}/part-0.mp3` + `part-1.mp3`. Plan de grabación de voz Grace. |
+| P1-1 | **Estructura MP3 real** | Definir carpetas `public/audio/{itinerario}/{stationId}/part-0.mp3` + `part-1.mp3`. Plan de grabación de voz Bravestone. |
 | P1-2 | **Efectos sonoros** | Cristal desbloqueado, burbujas, hielo, laboratorio, eco misterioso (1-2 segundos cada uno). |
 | P1-3 | **Pasaporte físico imprimible** | PDF con 8-10 cristales para colorear o pegar stickers. El niño "posee" la aventura fuera del móvil. |
 | P1-4 | **Audios de fondo suaves** | Música ambiental por bioma (océano, hielo, ciencia) para cada estación. |

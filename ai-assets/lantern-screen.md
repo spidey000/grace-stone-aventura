@@ -48,7 +48,7 @@ Aparece en la estación final (id 09) del itinerario Museu. El jugador debe inse
 - **Feedback visual:**
   - Correcto: la diapositiva se ilumina en la ranura + aparece en la pantalla
   - Incorrecto: la diapositiva rebota y vuelve al banco
-- **Completado:** cuando las 8 están insertadas, la pantalla se ilumina mostrando a Grace Stone dando la mano al niño con el texto "Tú también eres científico"
+- **Completado:** cuando las 8 están insertadas, la pantalla se ilumina mostrando al Dr. Smolder Bravestone con la mano en el hombro del niño y el texto "Tú también eres científico"
 
 ## Elementos visuales específicos
 
@@ -59,13 +59,13 @@ Aparece en la estación final (id 09) del itinerario Museu. El jugador debe inse
 | Ranuras | 8 slots verticales numerados, estilo soporte de diapositivas |
 | Diapositivas | Marco blanco con icono centrado, semi-transparencia |
 | Luz del proyector | Haz de luz (animado) desde la linterna a la pantalla |
-| Mensaje final | Grace + niño + frase ¡animación de revelado! |
+| Mensaje final | Bravestone + niño + frase ¡animación de revelado! |
 
 ## Archivos de imagen
 
 - `assets/images/lantern-body.png` — cuerpo del proyector/linterna
 - `assets/images/lantern-screen-frame.png` — marco de la pantalla
-- `assets/images/grace-message.png` — imagen final: Grace + niño + texto
+- `assets/images/bravestone-message.png` — imagen final: Bravestone + niño + texto
 
 ## Sonido
 

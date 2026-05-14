@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Cristal Jumanji de Bravestone">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#f8d86a" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#1a0a2e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="crystalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="50%" stop-color="#f8d86a"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="innerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="#1a0a2e"/>
+  <rect width="512" height="512" rx="96" fill="url(#glow)"/>
+  <path d="M256 64 384 176 340 430H172L128 176Z" fill="url(#crystalGrad)" opacity="0.9"/>
+  <path d="M256 64v366M128 176h256M172 430l84-262 84 262" fill="none" stroke="#fbbf24" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+  <circle cx="256" cy="176" r="40" fill="url(#innerGrad)" stroke="#d97706" stroke-width="14"/>
+  <circle cx="256" cy="176" r="18" fill="#fff" opacity="0.5"/>
+  <path d="M172 430l84-80 84 80" fill="none" stroke="#7c3aed" stroke-width="8" stroke-linecap="round" opacity="0.6"/>
+  <path d="M168 120 L192 100 L216 120" fill="none" stroke="#fbbf24" stroke-width="6" stroke-linecap="round" opacity="0.4"/>
+  <path d="M296 100 L320 120 L344 100" fill="none" stroke="#fbbf24" stroke-width="6" stroke-linecap="round" opacity="0.4"/>
+</svg>
+

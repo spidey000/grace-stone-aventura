@@ -28,7 +28,7 @@ Es el componente central durante el juego. Se muestra cuando el jugador llega a 
 │  ┌ Paso 3 [🔒] Fragmento 3/3 ──bloqueado─┐  │
 │  └─────────────────────────────────────────┘  │
 │                                              │
-│  [📨 Enviar a Grace]     [⏭ Saltar]          │
+│  [📨 Enviar a Bravestone]     [⏭ Saltar]          │
 │                                              │
 │  feedback text (verde si acierto,            │
 │  amarillo si pista)                          │

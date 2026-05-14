@@ -1,4 +1,4 @@
-# La Aventura de Exploradora Grace Stone
+# La Aventura de Dr. Smolder Bravestone
 
 Audio-aventura móvil para una visita familiar al Oceanogràfic y al Museu de les Ciències de Valencia.
 
@@ -10,10 +10,10 @@ Audio-aventura móvil para una visita familiar al Oceanogràfic y al Museu de le
 
 ## Filosofía
 
-- El niño es el **protagonista**. Grace Stone guía la visita por auriculares.
+- El niño es el **protagonista**. Dr. Smolder Bravestone guía la visita por auriculares.
 - **Offline-first:** todo lo importante debe cargarse antes de entrar.
 - **Pocos pasos:** cada estación se resuelve en 1-2 interacciones.
-- **Sin castigo por error:** Grace siempre invita a observar otra vez.
+- **Sin castigo por error:** Bravestone siempre invita a observar otra vez.
 - **El móvil aparece poco:** escuchar, guardar, mirar, hacer algo con la familia, tocar un botón.
 - **El adulto es copiloto:** modo adulto plegado para saltar, ver pistas o reiniciar.
 
@@ -53,12 +53,12 @@ Audio-aventura móvil para una visita familiar al Oceanogràfic y al Museu de le
 ## Experiencia de usuario
 
 1. **Lobby:** "Hola, explorador. ¿Cómo te llamas?" → Elige destino y duración.
-2. **Cada estación:** Grace narra → Aparece una acción física ("Busca un animal con rayas") → El niño observa con la familia → Toca confirmar o elegir.
+2. **Cada estación:** Bravestone narra → Aparece una acción física ("Busca un animal con rayas") → El niño observa con la familia → Toca confirmar o elegir.
 3. **Pista:** Si no sabe, toca "Necesito pista".
 4. **Saltar:** Si la zona está llena, toca "Saltar". La historia sigue.
 5. **Progreso:** Cristales se iluminan al completar.
 6. **Adulto:** Menú plegado en el pie con opciones de control.
-7. **Final:** Insignia con nombre, mensaje de Grace, botón imprimir.
+7. **Final:** Insignia con nombre, mensaje de Bravestone, botón imprimir.
 
 ---
 
@@ -107,7 +107,7 @@ Vercel detecta Vite automáticamente:
 ## Próximos pasos (hoja de ruta completa en PLAN-ALCANCE-Y-EJECUCION.md)
 
 ### P1 — Para que sea memorable
-- Grabar audios MP3 reales de Grace por estación
+- Grabar audios MP3 reales de Bravestone por estación
 - Efectos sonoros (cristal, burbujas, hielo, laboratorio)
 - Pasaporte físico imprimible con cristales para colorear
 

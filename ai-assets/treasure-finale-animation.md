@@ -36,7 +36,7 @@ t=0s       t=1s       t=2s       t=3s       t=4s
 ## Fase 4: Tesoro revelado (2.5–3.5s)
 - El mapa completo / la pantalla de la linterna se muestra con glow
 - Oceanogràfic: El Ojo del Océano se abre lentamente en el centro del mapa
-- Museu: Grace y el niño aparecen en la pantalla de la linterna
+- Museu: Bravestone y el niño aparecen en la pantalla de la linterna
 - Texto del mensaje aparece letra por letra (efecto máquina de escribir)
 - Duración: 1000ms
 

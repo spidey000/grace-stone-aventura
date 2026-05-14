@@ -12,7 +12,7 @@ export const oceanograficStations = [
     adultHint: 'Si hay cola o ruido, escucha el audio antes de entrar y confirma ya dentro.',
     childAction: 'Mira alrededor y busca la primera señal de vida marina.',
     story:
-      '{username}, soy Grace Stone. Mi brújula científica acaba de encenderse aquí en Valencia. Algo está haciendo eco bajo el océano y necesito un ayudante valiente. Cuando estés listo, toca el botón y la misión empieza.',
+      '{username}, ¡cambio y fuera! Aquí el Dr. Smolder Bravestone. Mi brújula de explorador —la misma que me guió por las junglas de Borneo y las cumbres del Himalaya— acaba de encenderse aquí en Valencia. Algo está haciendo eco bajo el océano, una señal que no debería estar ahí. Necesito un explorador o exploradora valiente a mi lado. ¿Estás listo para la misión? Cuando toques ese botón, nuestra aventura comienza. ¡Vamos juntos!',
     reward: { name: 'Cristal de la Entrada', sound: crystalSound, color: '#0e8277' },
     duration: '2 min',
     color: '#0e8277',
@@ -44,7 +44,7 @@ export const oceanograficStations = [
     adultHint: 'Sirve cualquier pez, pulpo, planta o tortuga visible; no dependas de una especie concreta.',
     childAction: 'Busca un animal o planta del mar cercano.',
     story:
-      'El Mediterráneo parece un mar cualquiera, pero guarda tesoros: peces que se esconden, pulpos que cambian de color y plantas marinas como la posidonia. Los buenos exploradores miran despacio.',
+      '{username}, mira este mar. El Mediterráneo parece tranquilo y corriente, pero no te dejes engañar: bajo esta superficie se esconden tesoros increíbles. Peces que se camuflan entre las rocas, pulpos que cambian de color en un abrir y cerrar de ojos, y plantas marinas como la posidonia, que llevan milenios creando bosques submarinos. Los grandes exploradores saben que el secreto está en mirar despacio, en observar cada detalle. ¿Ves algo moverse? Prepárate, porque juntos vamos a descubrir lo que el Mediterráneo guarda.',
     reward: { name: 'Cristal Mediterráneo', sound: crystalSound, color: '#2e9f89' },
     duration: '5-8 min',
     color: '#2e9f89',
@@ -70,7 +70,7 @@ export const oceanograficStations = [
       type: 'chain',
       guardian: {
         name: 'Pulpo Mediterráneo',
-        intro: 'El pulpo del Mediterráneo ha escondido su pieza del mapa en 3 fragmentos. Solo un explorador que observe bien podrá reconstruirla.',
+        intro: '¡Alerta, explorador! El Pulpo Mediterráneo, el maestro del camuflaje, ha dispersado su pieza del mapa en 3 fragmentos por todo el tanque. Este guardián no se rinde fácilmente. Solo un explorador con ojos de lince y paciencia de verdadero aventurero podrá reconstruirla. ¿Aceptas el desafío, {username}?',
       },
       steps: [
         {
@@ -92,7 +92,7 @@ export const oceanograficStations = [
           hint: 'Tiene 8 brazos y es muy inteligente.',
         },
       ],
-      finalSuccess: '¡Has reconstruido la Pieza del Mapa Mediterráneo! El pulpo la entrega a quien lo conoce de verdad.',
+      finalSuccess: '¡Misión cumplida, {username}! Has reconstruido la Pieza del Mapa Mediterráneo. El Pulpo, impresionado por tu astucia, te entrega el fragmento. Un guardián menos, un paso más cerca del tesoro. ¡Sigue así, explorador!',
       keyObject: {
         id: 'mapa-mediterraneo',
         name: 'Pieza del Mapa — Mediterráneo',
@@ -112,7 +112,7 @@ export const oceanograficStations = [
     adultHint: 'Si el aviario está cerrado o saturado, usa el reto alternativo y sigue hacia tortugas.',
     childAction: 'Busca un ave, una tortuga o un animal que viva entre agua y tierra.',
     story:
-      'Los humedales son fronteras mágicas: no son solo agua ni solo tierra. Aquí viven aves, tortugas y animales que necesitan los dos mundos para sobrevivir.',
+      '{username}, bienvenido a los humedales. Mira a tu alrededor: esto no es solo agua ni solo tierra — es un mundo fronterizo, un lugar mágico donde dos reinos se encuentran. Aquí viven aves que caminan sobre el agua con sus patas largas, tortugas que se asolean en las rocas y criaturas que necesitan ambos mundos para sobrevivir. En mis expediciones por los pantanos de Florida y los deltas del Nilo, aprendí que los humedales guardan los secretos mejor que cualquier jungla. Vamos a explorarlos juntos, paso a paso. ¿Qué ves? ¿Agua? ¿Tierra? ¿O las dos cosas?',
     reward: { name: 'Cristal de los Humedales', sound: crystalSound, color: '#5aa86b' },
     duration: '5-8 min',
     color: '#5aa86b',
@@ -135,7 +135,7 @@ export const oceanograficStations = [
       type: 'chain',
       guardian: {
         name: 'Garza de los Humedales',
-        intro: 'La garza guardiana vigila desde la orilla. Rompió su pieza del mapa en 3 fragmentos para proteger el secreto de los humedales.',
+        intro: '¡Silencio, explorador! La Garza Guardiana vigila desde la orilla. Con su mirada aguda y su pico afilado, ha roto su pieza del mapa en 3 fragmentos para proteger el secreto de los humedales. Solo un explorador que demuestre respeto por ambos mundos —el agua y la tierra— podrá ganarse su confianza. ¿Crees tener lo que hace falta, {username}?',
       },
       steps: [
         {
@@ -157,7 +157,7 @@ export const oceanograficStations = [
           hint: 'Busca un ave alta y delgada cerca del agua.',
         },
       ],
-      finalSuccess: '¡Pieza del Mapa de los Humedales reconstruida! La garza la entrega a quien respeta ambos mundos.',
+      finalSuccess: '¡Increíble, {username}! Has reconstruido la Pieza del Mapa de los Humedales. La Garza inclina su cabeza en señal de respeto y te entrega el fragmento. Cada vez estamos más cerca del corazón del océano. ¡No aflojes ahora!',
       keyObject: {
         id: 'mapa-humedales',
         name: 'Pieza del Mapa — Humedales',
@@ -177,7 +177,7 @@ export const oceanograficStations = [
     adultHint: 'La pregunta es observacional; no hace falta leer carteles largos.',
     childAction: 'Observa una tortuga o busca una señal de conservación.',
     story:
-      'Las tortugas parecen lentas, pero llevan millones de años viajando por el planeta. Su caparazón es una casa y una armadura. Protegerlas también protege el mar.',
+      '{username}, acércate despacio. Mira a esas tortugas. Parecen lentas, ¿verdad? Pero llevan viajando por el planeta mucho más tiempo que cualquier ser humano. Son como los dinosaurios que sobrevivieron. Su caparazón no es solo una casa: es una armadura, un escudo, un archivo de millones de años de historia. En mis viajes por las islas Galápagos, las tortugas me enseñaron que la paciencia es la mejor herramienta de un explorador. ¿Te fijas en cómo se mueven? Vamos a observarlas juntos y descubrir qué secretos esconden bajo ese caparazón.',
     reward: { name: 'Cristal de Caparazón', sound: crystalSound, color: '#8aa64b' },
     duration: '4-7 min',
     color: '#8aa64b',
@@ -203,7 +203,7 @@ export const oceanograficStations = [
       type: 'chain',
       guardian: {
         name: 'Tortuga Boba',
-        intro: 'La Tortuga Boba, la viajera más antigua del Mediterráneo, ha roto su pieza del mapa en 3 fragmentos. Solo quienes la observen con calma podrán unirlos.',
+        intro: 'La Tortuga Boba, la viajera más antigua del Mediterráneo, ha roto su pieza del mapa en 3 fragmentos y los ha escondido bajo su caparazón. Esta guardiana no se deja engañar por exploradores impacientes. Solo quien se detenga, observe con calma y respete su ritmo milenario podrá unir los fragmentos. ¿Estás listo para moverte a su velocidad, {username}?',
       },
       steps: [
         {
@@ -225,7 +225,7 @@ export const oceanograficStations = [
           hint: 'Es su armadura natural.',
         },
       ],
-      finalSuccess: '¡Pieza del Mapa de las Tortugas reconstruida! La Tortuga Boba la entrega a quien entiende su caparazón.',
+      finalSuccess: '¡Lo lograste, {username}! La Tortuga Boba reconoce tu paciencia y te entrega la Pieza del Mapa de las Tortugas. Su caparazón guardaba el secreto, y tú lo mereces. ¡Sigue adelante, explorador!',
       keyObject: {
         id: 'mapa-tortugas',
         name: 'Pieza del Mapa — Tortugas',
@@ -245,7 +245,7 @@ export const oceanograficStations = [
     adultHint: 'Si las focas no están visibles, el reto alternativo evita bloquear la ruta.',
     childAction: 'Busca un animal que salga a respirar aire.',
     story:
-      'En las aguas templadas los animales se adaptan al frío, a las corrientes y a las rocas. Algunos, como las focas, viven entre el agua y el aire.',
+      '{username}, estamos entrando en aguas templadas. Aquí el frío y la corriente crean un desafío constante, y solo los animales más resistentes prosperan. Mira a las focas: son mamíferos, como nosotros, que decidieron conquistar el océano sin renunciar al aire. Viven entre dos mundos, saltando de las rocas al agua con una agilidad que cualquier explorador envidiaría. En mis expediciones al Ártico, vi focas que nadaban bajo el hielo durante horas sin perderse. ¿Sabes cómo lo hacen? Vamos a descubrirlo juntos. Busca una foca y dime: ¿está en el agua o fuera?',
     reward: { name: 'Cristal Templado', sound: crystalSound, color: '#4f94a3' },
     duration: '5-8 min',
     color: '#4f94a3',
@@ -268,7 +268,7 @@ export const oceanograficStations = [
       type: 'chain',
       guardian: {
         name: 'Foca de Aguas Frías',
-        intro: 'La foca guardiana nada entre dos mundos. Rompió su pieza del mapa para que solo los exploradores pacientes la encuentren.',
+        intro: '¡Atención, equipo! La Foca de Aguas Frías nada entre dos mundos con una destreza impresionante. Ha roto su pieza del mapa en 3 fragmentos y los ha escondido entre las rocas y las corrientes. Solo los exploradores más pacientes, aquellos que sepan observar tanto el agua como la tierra, podrán encontrarlos. ¿Aceptas el reto, {username}?',
       },
       steps: [
         {
@@ -290,7 +290,7 @@ export const oceanograficStations = [
           hint: 'Busca un animal con cuerpo alargado y bigotes.',
         },
       ],
-      finalSuccess: '¡Pieza del Mapa Templado reconstruida! La foca confía en ti, explorador.',
+      finalSuccess: '¡Excelente trabajo, {username}! Has reconstruido la Pieza del Mapa Templado. La foca te mira con confianza — te has ganado su respeto. Y el siguiente guardián nos espera. ¡Vamos allá!',
       keyObject: {
         id: 'mapa-templados',
         name: 'Pieza del Mapa — Templados',
@@ -310,7 +310,7 @@ export const oceanograficStations = [
     adultHint: 'Estación fiable: funciona aunque haya gente porque los colores se ven desde lejos.',
     childAction: 'Señala el pez más colorido que veas.',
     story:
-      'El agua tropical está llena de señales de color. Un pez naranja, uno azul o uno amarillo pueden contar una historia sobre arrecifes, escondites y trabajo en equipo.',
+      '{username}, mira esto: parece que un arcoíris explotó bajo el agua. Los peces tropicales son los artistas del océano. Cada color cuenta una historia: el naranja advierte, el azul seduce, el amarillo se esconde entre los corales. En las expediciones que hice por la Gran Barrera de Coral, aprendí que los colores no son solo belleza: son lenguaje, supervivencia, territorio. Y hoy, tú y yo vamos a descifrar ese lenguaje. ¿Cuál es el color más brillante que ves? Señálalo, porque ese pez tiene algo que decirnos.',
     reward: { name: 'Cristal Tropical', sound: crystalSound, color: '#f2b84b' },
     duration: '6-10 min',
     color: '#f2b84b',
@@ -333,7 +333,7 @@ export const oceanograficStations = [
       type: 'steps',
       guardian: {
         name: 'Peces de Colores',
-        intro: 'Los peces de colores han mezclado su pieza del mapa con los destellos del arrecife. Solo quien mire con atención podrá separar los fragmentos.',
+        intro: 'Los Peces de Colores han mezclado su pieza del mapa con los destellos del arrecife. Cientos de destellos, cientos de colores, y solo un fragmento verdadero. Solo un explorador con mirada entrenada —alguien que sepa distinguir un destello de una señal— podrá separar los fragmentos y reconstruir la pieza. ¿Tienes lo que hay que tener, {username}?',
       },
       steps: [
         {
@@ -355,7 +355,7 @@ export const oceanograficStations = [
           hint: 'Piensa en lo que hay en un arrecife de coral.',
         },
       ],
-      finalSuccess: '¡Pieza del Mapa Tropical reconstruida! Los colores del arrecife ahora son tuyos.',
+      finalSuccess: '¡Espectacular, {username}! Has reconstruido la Pieza del Mapa Tropical. Los colores del arrecife ahora brillan para ti. Cada fragmento recuperado nos acerca al Ojo del Océano. ¡No pares!',
       keyObject: {
         id: 'mapa-tropicales',
         name: 'Pieza del Mapa — Tropicales',
@@ -375,7 +375,7 @@ export const oceanograficStations = [
     adultHint: 'Evita esperar un show. Basta con verlos moverse, descansar o salir a respirar.',
     childAction: 'Imita durante tres segundos cómo se mueve o suena un león marino.',
     story:
-      'Los leones marinos son mamíferos del océano. Respiran aire, usan sus aletas y se comunican con sonidos poderosos. En equipo, una colonia puede llenar una isla de vida.',
+      '{username}, ¿oyes ese rugido? Los leones marinos son los dueños de las islas. Mira cómo se mueven: en el agua son torpedos, en tierra son acróbatas. Son mamíferos como nosotros, pero adaptados a un mundo líquido. En mis viajes por las costas de la Patagonia, vi colonias enteras llenar una isla de vida y sonido. Trabajan en equipo, se protegen entre ellos, y cuando rugen, todo el océano los escucha. Hoy tú y yo somos equipo también. ¿Vamos a observar qué están haciendo?',
     reward: { name: 'Cristal de las Islas', sound: crystalSound, color: '#7dbe57' },
     duration: '5-8 min',
     color: '#7dbe57',
@@ -398,7 +398,7 @@ export const oceanograficStations = [
       type: 'chain',
       guardian: {
         name: 'León Marino',
-        intro: 'El león Marino ruge desde las rocas. Ha roto su pieza del mapa en 3 fragmentos para que solo un explorador valiente pueda reunirlos.',
+        intro: '¡Escucha ese rugido! El León Marino, rey de las rocas, ha roto su pieza del mapa en 3 fragmentos y los ha escondido entre las olas. No se los dará a cualquiera: solo un explorador valiente, que no tema al rugido ni al agua, podrá reunirlos. ¿Eres ese explorador, {username}?',
       },
       steps: [
         {
@@ -420,7 +420,7 @@ export const oceanograficStations = [
           hint: 'Respiran aire y tienen pelo. Como nosotros.',
         },
       ],
-      finalSuccess: '¡Pieza del Mapa de las Islas reconstruida! El león marino ruge en señal de respeto.',
+      finalSuccess: '¡Ruge conmigo, {username}! Has reconstruido la Pieza del Mapa de las Islas. El León Marino reconoce tu valentía y te entrega el fragmento entre rugidos de respeto. ¡Qué equipo somos!',
       keyObject: {
         id: 'mapa-islas',
         name: 'Pieza del Mapa — Islas',
@@ -440,7 +440,7 @@ export const oceanograficStations = [
     adultHint: 'Si la zona está cerrada o no se distinguen las tortugas, usa salto seguro.',
     childAction: 'Busca una tortuga grande y observa si se mueve rápido o despacio.',
     story:
-      'Algunas islas guardan gigantes tranquilos. Las tortugas gigantes enseñan una lección importante: no toda aventura necesita correr. A veces explorar es mirar con paciencia.',
+      '{username}, detente un momento. Frente a nosotros hay un gigante tranquilo. Las tortugas gigantes de Aldabra son los animales más longevos del planeta — pueden vivir más de cien años. En las islas Seychelles, donde estas tortugas vagan libres, aprendí que la verdadera aventura no siempre es velocidad: a veces es saber esperar, observar, respirar. Su caparazón guarda historias de siglos. Vamos a sentarnos un momento y observar. ¿Se mueve rápido o despacio? Fíjate bien.',
     reward: { name: 'Cristal de las Islas Oceánicas', sound: crystalSound, color: '#9c8f4f' },
     duration: '4-7 min',
     color: '#9c8f4f',
@@ -459,14 +459,14 @@ export const oceanograficStations = [
     },
     backupChallenge: {
       type: 'confirm',
-      prompt: 'Si esta zona no está disponible, confirma y Grace guardará la pista como opcional.',
+      prompt: 'Si esta zona no está disponible, confirma y Bravestone guardará la pista como opcional.',
       success: 'Estación opcional saltada sin perder la historia.',
     },
     riddle: {
       type: 'chain',
       guardian: {
         name: 'Tortuga Gigante de Aldabra',
-        intro: 'La Tortuga Gigante de Aldabra es la más paciente del océano. Rompió su pieza en 3 fragmentos y esperará a que demuestres tu calma.',
+        intro: 'La Tortuga Gigante de Aldabra es la más paciente del océano. Ha vivido más que cualquier explorador y ha visto imperios subir y caer. Rompió su pieza del mapa en 3 fragmentos y esperará —tranquila, sin prisa— a que demuestres tu calma. En el mundo de la aventura, la paciencia es un superpoder. ¿Tienes ese poder, {username}?',
       },
       steps: [
         {
@@ -488,7 +488,7 @@ export const oceanograficStations = [
           hint: 'Busca un cartel que diga su nombre.',
         },
       ],
-      finalSuccess: '¡Pieza del Mapa de las Islas Oceánicas reconstruida! La paciencia tiene su recompensa.',
+      finalSuccess: '¡Maravilloso, {username}! La Tortuga Gigante asiente lentamente y te entrega la Pieza del Mapa de las Islas Oceánicas. La paciencia siempre tiene recompensa, y esta es tuya. ¡Sigue así, explorador paciente!',
       keyObject: {
         id: 'mapa-islas-oceanicas',
         name: 'Pieza del Mapa — Islas Oceánicas',
@@ -508,7 +508,7 @@ export const oceanograficStations = [
     adultHint: 'No depende de ver el Cine 4D. Es una estación opcional de descanso.',
     childAction: 'Busca una imagen, color o sonido que parezca de arrecife.',
     story:
-      'El Mar Rojo es famoso por sus arrecifes y colores. Grace marca esta parada como una pausa de explorador: respirar, mirar y preparar la siguiente pista.',
+      '{username}, bienvenido al Mar Rojo — uno de los mares más famosos del mundo por sus arrecifes. Fíjate en los colores: el rojo de los corales, el azul profundo del agua, el naranja de los peces payaso. Este es un lugar para detenerse, respirar y prepararse. En todas las grandes expediciones hay pausas, momentos para recargar energías y observar el mapa. Esta es nuestra pausa. ¿Qué colores ves alrededor? Tómate tu tiempo, explorador, porque el viaje continúa.',
     reward: { name: 'Cristal del Arrecife', sound: crystalSound, color: '#d65a4a' },
     duration: '3-10 min',
     color: '#d65a4a',
@@ -529,7 +529,7 @@ export const oceanograficStations = [
       type: 'chain',
       guardian: {
         name: 'Coral Rojo',
-        intro: 'El Coral Rojo guarda el fragmento más colorido del mapa. Lo rompió en 3 para que solo quienes aprecien sus colores puedan unirlo.',
+        intro: 'El Coral Rojo guarda el fragmento más colorido de todo el mapa. Lo rompió en 3 pedazos y los mezcló con los destellos del arrecife. Solo quienes sepan apreciar la belleza de los colores —los verdaderos artistas de la exploración— podrán unir los fragmentos. ¿Tienes buen ojo para el color, {username}?',
       },
       steps: [
         {
@@ -551,7 +551,7 @@ export const oceanograficStations = [
           hint: 'A veces el nombre viene de algo que vive en él.',
         },
       ],
-      finalSuccess: '¡Pieza del Mapa del Arrecife reconstruida! El Coral Rojo revela sus colores.',
+      finalSuccess: '¡Qué colores, {username}! Has reconstruido la Pieza del Mapa del Arrecife. El Coral Rojo revela sus tonos más brillantes solo para ti. Vamos, que la aventura nos espera.',
       keyObject: {
         id: 'mapa-arrecife',
         name: 'Pieza del Mapa — Arrecife',
@@ -571,7 +571,7 @@ export const oceanograficStations = [
     adultHint: 'Si coincide un show, perfecto. Si no, basta con observar el tanque o saltar con backup.',
     childAction: 'Observa un movimiento de delfín o imagina cómo usaría el sonido bajo el agua.',
     story:
-      'Los delfines se comunican con sonidos, clics y movimientos. Usan el sonido como un mapa invisible. No necesitamos un espectáculo: solo mirar como científicos.',
+      '{username}, los delfines están aquí. Mira cómo se deslizan: son los acróbatas del océano. Pero lo que realmente los hace especiales no es cómo saltan, sino cómo se comunican. Usan clics, silbidos y ecos para crear un mapa invisible del mundo bajo el agua. En mis expediciones, he visto delfines guiar a barcos perdidos y protegerse entre ellos con una inteligencia que pocos animales igualan. Hoy vamos a aprender su lenguaje. ¿Sabes cómo se llama el sistema de sonido que usan para ver bajo el agua? Vamos a descubrirlo juntos.',
     reward: { name: 'Cristal del Salto Azul', sound: crystalSound, color: '#2b7fd3' },
     duration: '5-15 min',
     color: '#2b7fd3',
@@ -598,7 +598,7 @@ export const oceanograficStations = [
       type: 'chain',
       guardian: {
         name: 'Delfín Mular',
-        intro: 'El Delfín Mular, el más inteligente del océano, ha escondido su pieza del mapa en 3 clics secretos. Solo quien entienda su lenguaje podrá descifrarlos.',
+        intro: '¡Escucha! ¿Oyes esos clics? El Delfín Mular, el más inteligente del océano, ha escondido su pieza del mapa en 3 clics secretos. Solo quien entienda su lenguaje —quien pueda descifrar los ecos y los silbidos— podrá encontrarlos. Este no es un desafío para cualquiera, {username}. Necesito a un explorador con la mente afilada y los oídos bien abiertos. ¿Estás listo?',
       },
       steps: [
         {
@@ -620,7 +620,7 @@ export const oceanograficStations = [
           hint: 'Empieza por "eco" y significa localizar con sonido.',
         },
       ],
-      finalSuccess: '¡Pieza del Mapa de los Delfines reconstruida! El delfín te saluda con un clic de aprobación.',
+      finalSuccess: '¡Increíble, {username}! Has descifrado el lenguaje del Delfín Mular. La Pieza del Mapa de los Delfines es tuya. Y el delfín te saluda con un clic de aprobación — eres parte de la manada ahora.',
       keyObject: {
         id: 'mapa-delfines',
         name: 'Pieza del Mapa — Delfines',
@@ -640,7 +640,7 @@ export const oceanograficStations = [
     adultHint: 'Es una estación breve. No debe causar rodeos.',
     childAction: 'Busca un color rosa o una pata larga.',
     story:
-      'Los flamencos parecen pintados, pero su color viene de lo que comen. A veces la ciencia está escondida en algo tan simple como un color.',
+      '{username}, mira a esas elegantes aves rosadas. Los flamencos parecen sacados de un sueño, pero su color tiene una explicación científica: comen gambitas y algas que contienen pigmentos, y esos pigmentos tiñen sus plumas de rosa. En los humedales de África, vi flamencos cubrir el horizonte como una nube rosada. La ciencia está escondida hasta en el detalle más bonito. ¿Sabes sobre cuántas patas suelen descansar? Observa bien y me cuentas.',
     reward: { name: 'Cristal Rosa', sound: crystalSound, color: '#e98ca8' },
     duration: '2-4 min',
     color: '#e98ca8',
@@ -661,7 +661,7 @@ export const oceanograficStations = [
       type: 'steps',
       guardian: {
         name: 'Flamenco Rosa',
-        intro: 'El Flamenco Rosa es el más elegante del humedal. Rompió su pieza del mapa en 3 fragmentos de color. Solo quien aprecie los detalles podrá verlos.',
+        intro: 'El Flamenco Rosa es el guardián más elegante del humedal. Rompió su pieza del mapa en 3 fragmentos de color y los escondió entre sus plumas. Solo quien aprecie los detalles más sutiles —un tono de rosa, la curva de un cuello, la posición de una pata— podrá encontrarlos. ¿Eres observador, {username}? Demuéstralo.',
       },
       steps: [
         {
@@ -683,7 +683,7 @@ export const oceanograficStations = [
           hint: 'Su color viene de pequeños crustáceos que comen.',
         },
       ],
-      finalSuccess: '¡Pieza del Mapa de los Flamencos reconstruida! El rosa del flamenco ahora brilla para ti.',
+      finalSuccess: '¡Precioso trabajo, {username}! El Flamenco Rosa extiende sus alas y te entrega la Pieza del Mapa de los Flamencos. El rosa ahora brilla para ti. ¡Sigue así!',
       keyObject: {
         id: 'mapa-flamencos',
         name: 'Pieza del Mapa — Flamencos',
@@ -703,7 +703,7 @@ export const oceanograficStations = [
     adultHint: 'Reto muy estable: basta con observar movimiento o color.',
     childAction: 'Mira cómo se mueven en el agua y fuera de ella.',
     story:
-      'Los pingüinos son aves que no vuelan por el cielo, pero vuelan bajo el agua. Sus cuerpos están hechos para deslizarse, girar y sobrevivir en el frío.',
+      '{username}, ¡bienvenido al Antártico! Estos pingüinos son de los exploradores más increíbles del planeta. No vuelan por el aire, pero mira cómo vuelan bajo el agua: sus alas se convierten en aletas y se disparan como torpedos. Sus cuerpos están diseñados para el frío extremo, para deslizarse sobre el hielo y para bucear a profundidades que ningún ser humano podría alcanzar sin equipo. En mis expediciones polares, los pingüinos me enseñaron que la verdadera fuerza está en adaptarse al entorno. ¿Ves cómo se mueven? Vamos a observarlos dentro y fuera del agua.',
     reward: { name: 'Cristal Antártico', sound: crystalSound, color: '#8fd3ff' },
     duration: '5-8 min',
     color: '#8fd3ff',
@@ -730,7 +730,7 @@ export const oceanograficStations = [
       type: 'chain',
       guardian: {
         name: 'Pingüino Juanito',
-        intro: 'El Pingüino Juanito, el más veloz bajo el agua, ha roto su pieza del mapa en 3 fragmentos de hielo. Solo un explorador que lo vea nadar podrá fundirlos.',
+        intro: '¡Prepárate para el frío! El Pingüino Juanito, el más veloz bajo el agua, ha roto su pieza del mapa en 3 fragmentos de hielo. Están escondidos en las corrientes más frías del tanque. Solo un explorador que lo vea nadar y entienda su mundo helado podrá fundirlos y recuperar la pieza. ¿Tienes el valor para sumergirte en esta aventura, {username}?',
       },
       steps: [
         {
@@ -752,7 +752,7 @@ export const oceanograficStations = [
           hint: 'Aunque no vuelan, tienen plumas como los pájaros.',
         },
       ],
-      finalSuccess: '¡Pieza del Mapa Antártico reconstruida! El pingüino te saluda desde el hielo.',
+      finalSuccess: '¡Fantástico, {username}! El Pingüino Juanito te saluda desde el hielo y te entrega la Pieza del Mapa Antártico. Un hábitat más conquistado. El tesoro final se acerca. ¡No te detengas!',
       keyObject: {
         id: 'mapa-antartico',
         name: 'Pieza del Mapa — Antártico',
@@ -772,7 +772,7 @@ export const oceanograficStations = [
     adultHint: 'Usa preguntas observacionales. No depender de identificar a cada beluga por nombre.',
     childAction: 'Saluda a una beluga y observa su color.',
     story:
-      'Las belugas son mamíferos marinos blancos como el hielo. Pueden hacer muchos sonidos y por eso a veces las llaman canarios del mar. Grace baja la voz: esta pista es importante.',
+      '{username}, baja la voz... estamos en territorio ártico. Mira esas belugas: blancas como el hielo, silenciosas como la nieve. Son los canarios del mar, porque cantan y silban bajo el agua creando una sinfonía invisible. Kylu, la cría que nació aquí, es la prueba de que la vida florece hasta en los lugares más fríos. En mis viajes al Ártico canadiense, las belugas me rodeaban cantando, guiándome a través de aguas que ningún mapa registra. Hoy, tú y yo vamos a escuchar su canción. ¿Estás listo para descubrir el secreto de las ballenas blancas?',
     reward: { name: 'Cristal Ártico', sound: crystalSound, color: '#bfefff' },
     duration: '6-10 min',
     color: '#bfefff',
@@ -800,7 +800,7 @@ export const oceanograficStations = [
       type: 'chain',
       guardian: {
         name: 'Kylu',
-        intro: 'Kylu, la cría de beluga que nació aquí, es la guardiana más joven del océano. Rompió su pieza del mapa en 3 cantos submarinos. Solo quien la escuche podrá reunirlos.',
+        intro: 'Kylu, la cría de beluga que nació aquí en el Oceanogràfic, es la guardiana más joven de todo el océano. Pero no te dejes engañar por su juventud: ha roto su pieza del mapa en 3 cantos submarinos, y solo quien sepa escuchar con atención —quien pueda oír más allá del silencio— podrá reunirlos. ¿Tienes buen oído, explorador? ¿Puedes escuchar el canto de la beluga?',
       },
       steps: [
         {
@@ -822,7 +822,7 @@ export const oceanograficStations = [
           hint: 'Como un pájaro que canta, pero en el agua.',
         },
       ],
-      finalSuccess: '¡Pieza del Mapa de las Belugas reconstruida! Kylu canta feliz al entregarte su secreto.',
+      finalSuccess: '¡Lo lograste, {username}! Kylu canta feliz al entregarte la Pieza del Mapa de las Belugas. Su canto submarino ahora es tuyo. Casi hemos completado el mapa. ¡Vamos por las últimas piezas!',
       keyObject: {
         id: 'mapa-belugas',
         name: 'Pieza del Mapa — Beluga',
@@ -842,7 +842,7 @@ export const oceanograficStations = [
     adultHint: 'Suelen estar quietos. Eso también sirve para el reto.',
     childAction: 'Cuenta hasta cinco mirando al cocodrilo sin moverte.',
     story:
-      'Los cocodrilos llevan muchísimo tiempo en la Tierra. Sus escamas parecen armadura y su paciencia es parte de su poder. A veces el mejor cazador es el que espera.',
+      '{username}, míralo bien. Ese cocodrilo es un fósil viviente. Sus ancestros caminaron junto a los dinosaurios, y él sigue aquí, casi sin cambios, después de millones de años. Sus escamas son como placas de armadura, su mandíbula es una trampa mortal, y su paciencia... su paciencia es legendaria. En las expediciones por el Nilo, aprendí que el cocodrilo es el maestro de la espera: puede quedarse inmóvil durante horas, días, hasta que llega el momento perfecto. Hoy, tú y yo vamos a demostrarle que también sabemos esperar. ¿Cuánto tiempo puedes quedarte quieto mirándolo?',
     reward: { name: 'Cristal de Escamas Antiguas', sound: crystalSound, color: '#647b36' },
     duration: '4-7 min',
     color: '#647b36',
@@ -868,7 +868,7 @@ export const oceanograficStations = [
       type: 'chain',
       guardian: {
         name: 'Cocodrilo Hociquifino',
-        intro: 'El Cocodrilo Hociquifino vive aquí desde antes de que existiera el acuario. Rompió su pieza del mapa en 3 escamas antiguas. Demuestra paciencia y te las dará.',
+        intro: 'El Cocodrilo Hociquifino vive aquí desde antes de que existiera el acuario. Es el guardián más antiguo de todos. Rompió su pieza del mapa en 3 escamas antiguas y las escondió en el lodo del tiempo. No se las dará a un explorador impaciente. Solo quien demuestre la misma calma milenaria que él —quien pueda esperar sin moverse— recibirá el fragmento. ¿Tienes esa paciencia, {username}?',
       },
       steps: [
         {
@@ -890,7 +890,7 @@ export const oceanograficStations = [
           hint: 'Son mucho más antiguos que los humanos.',
         },
       ],
-      finalSuccess: '¡Pieza del Mapa del Cocodrilario reconstruida! El cocodrilo asiente con paciencia.',
+      finalSuccess: '¡Asombroso, {username}! El Cocodrilo Hociquifino asiente lentamente —un gesto de respeto milenario— y te entrega la Pieza del Mapa del Cocodrilario. Tu paciencia te ha hecho más fuerte. ¡Solo nos quedan dos piezas!',
       keyObject: {
         id: 'mapa-cocodrilos',
         name: 'Pieza del Mapa — Cocodrilo',
@@ -910,7 +910,7 @@ export const oceanograficStations = [
     adultHint: 'Buen cierre por impacto visual. Si está saturado, mirar desde la entrada también sirve.',
     childAction: 'Pasa por el túnel y señala un tiburón o una raya.',
     story:
-      'Los tiburones son guardianes del equilibrio. No son monstruos: son peces antiguos, poderosos y necesarios. Si ellos desaparecen, muchas piezas del océano se mueven.',
+      '{username}, estamos en el túnel de los tiburones. Mira hacia arriba: esos son los guardianes del equilibrio del océano. Llevan más de 400 millones de años en la Tierra —mucho antes que los dinosaurios. No tienen huesos, sino cartílago, como tus orejas. No son monstruos: son máquinas de supervivencia perfectas, peces antiguos que mantienen el océano en armonía. En mis buceos por la Gran Barrera de Coral, los tiburones siempre aparecían cuando el arrecife estaba sano. Su presencia es una señal de que todo está en orden. Vamos a observarlos con respeto y aprender de los dueños de las profundidades.',
     reward: { name: 'Cristal de las Profundidades', sound: crystalSound, color: '#123f63' },
     duration: '8-12 min',
     color: '#123f63',
@@ -937,7 +937,7 @@ export const oceanograficStations = [
       type: 'chain',
       guardian: {
         name: 'Tiburón Toro',
-        intro: 'El Tiburón Toro, guardián de las profundidades, ha roto la última pieza del mapa en 3 fragmentos de cartílago. Demuestra tu valor y la reconstruirás.',
+        intro: 'El Tiburón Toro, guardián de las profundidades, ha roto la penúltima pieza del mapa en 3 fragmentos de cartílago. Es el guardián más poderoso de todos, y no entregará su pieza a cualquiera. Solo un explorador que demuestre verdadero valor —alguien que entienda que el tiburón no es un monstruo, sino un aliado— podrá reconstruirla. Este es un desafío de altura, {username}. ¿Estás preparado para enfrentar las profundidades?',
       },
       steps: [
         {
@@ -959,7 +959,7 @@ export const oceanograficStations = [
           hint: 'Empieza por "cartí" y no es hueso.',
         },
       ],
-      finalSuccess: '¡Pieza del Mapa de las Profundidades reconstruida! El tiburón reconoce tu valentía.',
+      finalSuccess: '¡Misión cumplida, {username}! Has reconstruido la Pieza del Mapa de las Profundidades. El Tiburón Toro reconoce tu valentía y te entrega el fragmento. ¡Todas las piezas están listas! Ha llegado el momento de revelar el Mapa del Arrecife.',
       keyObject: {
         id: 'mapa-tiburones',
         name: 'Pieza del Mapa — Tiburones',
@@ -979,7 +979,7 @@ export const oceanograficStations = [
     adultHint: 'Momento de foto familiar con la insignia.',
     childAction: 'Cuéntale a la familia cuál ha sido tu animal favorito.',
     story:
-      '{username}, has recorrido el océano entero y has recuperado las 14 piezas del Mapa del Arrecife. Cada guardián confió en ti. Ahora, el mapa te espera para revelar su secreto final.',
+      '{username}, has recorrido el océano entero a mi lado —el Dr. Smolder Bravestone— y juntos hemos enfrentado cada desafío. Hemos conocido pulpos camuflados, garzas vigilantes, tortugas milenarias, focas escurridizas, peces de colores, leones marinos rugientes, tortugas gigantes, corales rojos, delfines parlantes, flamencos elegantes, pingüinos veloces, belugas cantarinas, cocodrilos pacientes y tiburones poderosos. ¡Y has recuperado las 14 piezas del Mapa del Arrecife! Cada guardián confió en ti, cada desafío te hizo más fuerte. Ahora el mapa te espera para revelar su secreto final. Coloca las piezas, {username}, y descubre el Ojo del Océano. ¡Esta es tu victoria!',
     reward: { name: 'Insignia de Explorador Honorífico', sound: crystalSound, color: '#7a4fd1' },
     duration: '2-3 min',
     color: '#7a4fd1',

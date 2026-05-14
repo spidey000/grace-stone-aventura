@@ -286,7 +286,7 @@ Basado en la información collected, el itinerary del Museu para niños de 7 añ
 - [ ] Validar horarios de L'Espai dels Xiquets y si requiere reserva
 - [ ] Confirmar si Metamorfosis sigue activo o hay otra exposición sustituta
 - [ ] Consultar horarios de Magia Química y otras actividades de planta baja
-- [ ] Escribir guiones de Grace para las estaciones del museu
+- [ ] Escribir guiones de Bravestone para las estaciones del museu
 - [ ] Definir el audio: segmentos MP3 por estación
 - [ ] Grabar o generar los MP3s de los segmentos fijos
 - [ ] Crear retos específicos para cada zona del museu

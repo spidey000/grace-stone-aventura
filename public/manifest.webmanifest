@@ -1,6 +1,6 @@
 {
-  "name": "La Aventura de Exploradora Grace Stone",
-  "short_name": "Grace Stone",
+  "name": "La Aventura de Dr. Smolder Bravestone",
+  "short_name": "Dr. Bravestone",
   "description": "Audio-aventura familiar en la Ciutat de les Arts i les Ciències.",
   "start_url": "/",
   "display": "standalone",
@@ -8,7 +8,7 @@
   "theme_color": "#0e8277",
   "icons": [
     {
-      "src": "/grace-icon.svg",
+      "src": "/bravestone-icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"

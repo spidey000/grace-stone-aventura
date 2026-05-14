@@ -43,7 +43,7 @@ public/audio/
 
 | Estación | part-0 | part-1 |
 |----------|--------|--------|
-| 00 Inicio | Hola,  | , soy Grace Stone. Mi brújula científica acaba de encenderse aquí en Valencia. Algo está haciendo eco bajo el océano y necesito un ayudante valiente. Mira a tu alrededor: hay un tiburón con cabeza de pala. Cuando estés listo, toca el botón y la misión empieza. |
+| 00 Inicio | ¡Atención,  | ! Aquí el Dr. Smolder Bravestone. Mi brújula —la misma que me guió por las junglas de Borneo— acaba de dispararse aquí en Valencia. Algo está haciendo eco bajo el océano. ¿Escuchas? Hay un misterio esperando, y lo vamos a resolver juntos. Mira a tu alrededor: ¿ves algo con forma de tiburón y cabeza de pala? Cuando estés listo, toca el botón y la misión comienza. |
 | 01 Mediterráneo | (sin nombre) | El Mediterráneo parece un mar cualquiera, pero guarda tesoros: pulpos que cambian de color, tortugas que respiran aire como tú, y una planta llamada posidonia que no es un alga. Los buenos exploradores miran con calma. |
 | 02 Tropical | (sin nombre) | El agua tropical está llena de colores: peces payaso con sus rayas blancas, cirujanos azules con espina escondida, y el napoleón que puede pesar 200 kilos. Cada color es un mensaje. ¿Cuál te gusta más? |
 | 03 Islas | (sin nombre) | Los leones marinos tienen melena como los leones de verdad y rugen para comunicarse. Son mamíferos: respiran aire, tienen pelo y las crías toman leche. ¿Te atreves a rugir como ellos? |
@@ -52,13 +52,13 @@ public/audio/
 | 06 Belugas | (sin nombre) | Las belugas son blancas como el hielo para camuflarse. Pueden girar la cabeza en todas direcciones porque no tienen aleta dorsal. Les llaman canarios del mar porque hacen muchos sonidos. Aquí viven Kylu, nacida aquí mismo, y Plombir y Miranda, rescatadas de la guerra de Ucrania. |
 | 07 Cocodrilos | (sin nombre) | Los cocodrilos llevan en la Tierra más de 200 millones de años: vieron llegar y marcharse a los dinosaurios. Tienen escamas duras como armadura y pueden estar quietos mucho tiempo esperando. Son cazadores pacientes. |
 | 08 Tiburones | (sin nombre) | Los tiburones no tienen huesos: su cuerpo es de cartílago, como tus orejas. Hay muchos tipos aquí: el martillo con ojos en los extremos de la cabeza, el nodriza que succiona la comida, el toro que traga aire para flotar. Son los guardianes del océano. |
-| 09 Final | (sin nombre) | Los cristales juntos muestran la respuesta: el océano, los animales y la ciencia están conectados. Tú has sido valiente, curioso y paciente. Grace Stone te nombra Explorador Honorífico del Océano. Enseña tu insignia con orgullo. |
+| 09 Final | (sin nombre) | Los cristales juntos muestran la respuesta: el océano, los animales y la ciencia están conectados, y tú has sido el eslabón que faltaba. Valiente, curioso y paciente. El Dr. Smolder Bravestone te nombra Explorador Honorífico del Océano. Lleva esa insignia con orgullo. |
 
 ### Museu
 
 | Estación | part-0 | part-1 |
 |----------|--------|--------|
-| 00 Inicio | (sin nombre) | ¡Bienvenido, ! Estamos en el laboratorio gigante de la ciencia. Aquí la regla es: prohibido no tocar, prohibido no sentir. Todo está hecho para que experimentes con las manos. Grace necesita un ayudante curioso que quiera descubrir cómo funciona el mundo. |
+| 00 Inicio | (sin nombre) | ¡Bienvenido al laboratorio gigante,! Prepárate porque aquí la ciencia cobra vida. La regla es: tocar, sentir, experimentar. El Dr. Bravestone necesita un ayudante curioso, alguien que no tenga miedo de preguntar "¿y qué pasa si...?". Ese alguien eres tú. |
 | 01 Sentidos | (sin nombre) | Aquí los sentidos son tus herramientas de científico. Hay espejos que te deforman, objetos que tienes que adivinar con los ojos cerrados y olores que reconocer. Los científicos usan todos sus sentidos para hacer descubrimientos. |
 | 02 Bosque | (sin nombre) | En el bosque animado, tus dibujos cobran vida. Eliges un animal, lo coloreas, lo escaneas y aparece en la pantalla gigante. También hay animales de verdad: peces, tortugas y otros seres que viven en el agua y en la tierra. |
 | 03 Construir | (sin nombre) | Los científicos no trabajan solos. En equipo pueden construir cosas increíblemente grandes. Aquí tienes ladrillos, grúas y carros para construir una casa con tu familia. Puedes construir, desmontar y volver a empezar. |
@@ -67,11 +67,11 @@ public/audio/
 | 06 Metamorfosis | (sin nombre) | Todo cambia: las orugas se convierten en mariposas, los renacuajos en ranas, y tú cada día eres un poco más grande. Esta exposición te enseña que los cambios, aunque a veces den miedo, son parte de la vida. Y pueden ser mágicos. |
 | 07 Cromosomas | (sin nombre) | Dentro de cada célula de tu cuerpo hay 23 pares de cromosomas. Son como un libro de instrucciones que dice cómo eres. El color de tus ojos, la forma de tu sonrisa y miles de cosas más están escritas ahí. |
 | 08 Científicos | (sin nombre) | Tres científicos españoles cambiaron el mundo: Santiago Ramón y Cajal descubrió cómo funciona el cerebro, Severo Ochoa descifró cómo funcionan las células, y Jean Dausset entendió los genes. Gracias a ellos sabemos más de nosotros mismos. |
-| 09 Final | (sin nombre) | ¡Lo has conseguido, ! Los cristales juntos muestran la respuesta: la curiosidad, las preguntas y el trabajo en equipo pueden cambiar el mundo. Grace Stone te nombra Científico Honorífico por tu valentía y tus ganas de aprender. |
+| 09 Final | (sin nombre) | ¡Lo has conseguido! Los cristales brillan y la respuesta está clara: la curiosidad, las preguntas y el trabajo en equipo pueden cambiar el mundo. Y tú lo has demostrado. El Dr. Smolder Bravestone te nombra Científico Honorífico por tu valentía y tus ganas de aprender. |
 
 ## Herramientas recomendadas
 
-### Grabación de voz (Grace)
+### Grabación de voz (Bravestone)
 - **Audacity** (gratuito): https://www.audacityteam.org/
 - **ElevenLabs** (TTS premium): https://elevenlabs.io/ — voz realista para español
 - **Google Cloud TTS**: https://cloud.google.com/text-to-speech

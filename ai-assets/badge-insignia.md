@@ -39,7 +39,7 @@ Para impresión se recomienda un SVG de alta calidad:
 │  │  Explorador Honorífico     │ │
 │  │  del Océano                │ │
 │  │                            │ │
-│  │  ──── Grace Stone ────     │ │
+│  │  ──── Dr. Bravestone ────     │ │
 │  └────────────────────────────┘ │
 │                                │
 │  Fecha: ___ de ____ de 2026    │
@@ -58,6 +58,6 @@ Para impresión se recomienda un SVG de alta calidad:
 - **Borde:** ornamentado estilo pergamino
 - **Icono central:** 80px, con glow
 - **Texto:** "Explorador Honorífico del Océano" / "Científico Honorífico"
-- **Línea Grace Stone:** cursiva
+- **Línea Dr. Bravestone:** cursiva
 - **Fecha:** línea inferior para la fecha de la visita
 - **Nombre:** espacio en blanco para escribir a mano (si se imprime)

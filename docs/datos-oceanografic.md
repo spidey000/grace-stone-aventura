@@ -445,7 +445,7 @@ El Oceanogràfic es el acuario más grande de Europa (~45.000 ejemplares de ~500
 - [ ] Descargar y guardar el plano PDF en `public/maps/oceanografic-plano.pdf`
 - [ ] Consultar horarios de shows de delfines y actividades en https://www.oceanografic.org/planifica-tu-visita/hoy-en-el-acuario/
 - [ ] Validar in situ qué zonas están siempre accesibles y en qué estado
-- [ ] Escribir guiones de Grace para las 10 estaciones
+- [ ] Escribir guiones de Bravestone para las 10 estaciones
 - [ ] Definir el audio: segmentos MP3 por estación (part-0 + part-1)
 - [ ] Grabar o generar los MP3s de los segmentos fijos
 - [ ] Crear retos específicos para cada zona con las respuestas correctas

@@ -1,5 +1,5 @@
-const CACHE_NAME = 'grace-stone-aventura-v1';
-const APP_SHELL = ['/', '/manifest.webmanifest', '/grace-icon.svg'];
+const CACHE_NAME = 'bravestone-aventura-v1';
+const APP_SHELL = ['/', '/manifest.webmanifest', '/bravestone-icon.svg'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(

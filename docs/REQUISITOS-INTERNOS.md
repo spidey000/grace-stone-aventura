@@ -2,19 +2,19 @@
 
 ## Proyecto
 
-**Nombre:** La Aventura de Exploradora Grace Stone en la Ciutat de les Arts i les Ciències
+**Nombre:** La Aventura de Dr. Smolder Bravestone en la Ciutat de les Arts i les Ciències
 
 **Tipo:** experiencia inmersiva de audio-aventura guiada por móvil, con mecánicas ligeras de escape room, búsqueda del tesoro y progreso por estaciones.
 
 **Público principal:** niño de 7 años acompañado por un adulto.
 
-**Objetivo emocional:** que el niño se sienta protagonista de una misión científica real, no solo visitante. Grace Stone debe hablarle como ayudante de confianza, celebrar logros y mantener el ritmo de aventura.
+**Objetivo emocional:** que el niño se sienta protagonista de una misión científica real, no solo visitante. El Dr. Smolder Bravestone debe hablarle como a un compañero de confianza, celebrar logros y mantener el ritmo de aventura.
 
 ## Concepto narrativo
 
-Grace Stone es una exploradora científica valiente, curiosa y protectora del océano. Ha detectado un eco-misterio que amenaza el equilibrio de los océanos y la ciencia. Para resolverlo necesita que el niño recupere entre 5 y 7 Cristales de Saber, también llamados Fragmentos del Océano Sabio.
+El Dr. Smolder Bravestone es un legendario arqueólogo-explorador que ha viajado por todo el mundo descubriendo secretos ocultos. Ahora ha detectado un eco-misterio que amenaza el equilibrio de los océanos y la ciencia. Para resolverlo necesita que el niño recupere los Cristales del Saber, también llamados Fragmentos del Océano Sabio.
 
-Cada cristal desbloquea un capítulo de la historia. Al final, Grace y el niño resuelven el misterio, salvan el equilibrio del planeta y Grace le nombra Explorador Honorífico.
+Cada cristal desbloquea un capítulo de la historia. Al final, Bravestone y el niño resuelven el misterio, salvan el equilibrio del planeta y Bravestone le nombra Explorador Honorífico.
 
 ## Tono y edad
 
@@ -32,7 +32,7 @@ El recorrido debe evitar retrocesos. La ruta base sigue un flujo norte-sur o nat
 
 ### Zona 00: Inicio / Entrada Ciutat u Oceanogràfic
 
-- Bienvenida de Grace.
+- Bienvenida de Bravestone.
 - Explicación de la misión.
 - Primer enigma muy sencillo.
 - Referencia posible: tiburón martillo o tortugas.
@@ -53,7 +53,7 @@ Ruta circular basada en el plano oficial y sus zonas numeradas:
 
 ### Transición al Museo de las Ciencias
 
-Grace acompaña el cambio de escenario: del mundo oceánico al laboratorio gigante de la ciencia.
+Bravestone acompaña el cambio de escenario: del mundo oceánico al laboratorio gigante de la ciencia.
 
 ### Museo de las Ciencias
 
@@ -83,7 +83,7 @@ La primera versión debe soportar confirmación manual. El diseño debe permitir
 
 - Códigos numéricos o palabras vistas en carteles.
 - Botón "Estoy aquí".
-- Foto opcional como gesto de enviar prueba a Grace.
+- Foto opcional como gesto de enviar prueba a Bravestone.
 - Geofencing ligero solo si no introduce frustración en interiores.
 
 ### Retos
@@ -171,7 +171,7 @@ El primer MVP debe incluir:
 - Proyecto web desplegable en Vercel.
 - Pantalla principal usable en móvil.
 - Lista de 8-10 estaciones.
-- Narración de Grace por estación.
+- Narración de Bravestone por estación.
 - Botón de lectura en voz alta.
 - Reto por estación.
 - Desbloqueo de cristales.

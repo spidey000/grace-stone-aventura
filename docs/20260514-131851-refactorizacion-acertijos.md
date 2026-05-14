@@ -11,7 +11,7 @@ Transformar la aventura actual en una **búsqueda del tesoro narrativa** donde c
 
 ### 2.1 Concepto general
 
-Cada sala del acuario/museo tiene un **Guardián** (el animal o concepto principal). Cuando llegas, Grace explica:
+Cada sala del acuario/museo tiene un **Guardián** (el animal o concepto principal). Cuando llegas, Bravestone explica:
 
 > "El guardián de esta sala ha roto su pieza en 3 fragmentos para protegerla. Solo alguien que realmente observe podrá reconstruirla."
 
@@ -25,7 +25,7 @@ Cada acertijo resuelto revela un fragmento. Con 3 fragmentos se reconstruye el *
 ### 2.3 Tesoro final
 
 - **Oceanogràfic:** Un tablero con 14 huecos donde encajan las piezas del mapa. Al colocar todas, se revela el **Ojo del Océano**.
-- **Museu:** Un proyector con 8 ranuras donde se insertan las diapositivas. Al proyectar todas, se forma la imagen: **Grace dando la mano al niño**.
+- **Museu:** Un proyector con 8 ranuras donde se insertan las diapositivas. Al proyectar todas, se forma la imagen: **Bravestone con la mano en el hombro del niño**.
 
 ## 3. Modelo de datos final
 
@@ -119,7 +119,7 @@ El campo `challenge` existente se conserva como fallback. Si una estación no ti
 │ 🧩 Sala 12 — Belugas                       │
 │                                            │
 │ "Kylu escondió su pieza del mapa           │
-│  en 3 fragmentos..." — Grace               │
+│  en 3 fragmentos..." — Bravestone               │
 │                                            │
 │ [■░░]  Fragmento 1/3                       │
 │                                            │
@@ -205,8 +205,8 @@ Museu — diapositivas:
 LOBBY → ADVENTURE → TREASURE → FINAL
 
 CADA SALA:
-  1. Grace: historia de la sala (story actual)
-  2. Grace: "El guardián [nombre] ha roto su premio en 3 fragmentos"
+  1. Bravestone: historia de la sala (story actual)
+  2. Bravestone: "El guardián [nombre] ha roto su premio en 3 fragmentos"
   3. Aparece RiddleCard con fragmento 1/3 activo
   4. Niño responde → fragmento se ilumina [■░░] → 2/3 disponible
   5. Fragmento 2 → [■■░] → 3/3 disponible  
@@ -214,7 +214,7 @@ CADA SALA:
   7. Animación: pieza se añade al inventario
 
 TESORO (estación final):
-  1. Grace: "Tienes todas las piezas. Es hora del gran tesoro."
+  1. Bravestone: "Tienes todas las piezas. Es hora del gran tesoro."
   2. Si Oceanogràfic → Mapa con 14 huecos + piezas para arrastrar
   3. Si Museu → Linterna con 8 ranuras + diapositivas para insertar
   4. Al completar → animación + insignia + mensaje secreto
