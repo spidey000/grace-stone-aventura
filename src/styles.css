@@ -791,3 +791,216 @@ h2 {
   }
 }
 
+.guardian-banner {
+  background: linear-gradient(135deg, var(--station-color), color-mix(in srgb, var(--station-color) 70%, #fff));
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: #fff;
+}
+
+.guardian-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.guardian-intro {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.treasure-banner {
+  background: linear-gradient(135deg, #7a4fd1, #b55488);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.treasure-banner h2 {
+  margin: 8px 0 0;
+  font-size: 1.3rem;
+  color: #fff;
+}
+
+.riddle-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.riddle-step {
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 14px;
+  transition: all 0.2s;
+}
+
+.riddle-step.active {
+  border-color: var(--station-color, #0e8277);
+  background: #f0fdf4;
+}
+
+.riddle-step.done {
+  border-color: #86efac;
+  background: #f0fdf4;
+  opacity: 0.8;
+}
+
+.riddle-step:not(.active):not(.done) {
+  opacity: 0.5;
+  background: #f9fafb;
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.step-icon {
+  font-size: 18px;
+}
+
+.step-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.riddle-step.active .step-label {
+  color: var(--station-color, #0e8277);
+}
+
+.step-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  color: #1f2937;
+}
+
+.adult-help-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #fef3c7;
+  border: 2px dashed #f59e0b;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #92400e;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.adult-help-button:hover {
+  background: #fde68a;
+}
+
+.objects-collection {
+  background: #f9fafb;
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.objects-collection p {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+
+.objects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.object-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+}
+
+.object-chip.collected {
+  background: #d1fae5;
+  border-color: #86efac;
+}
+
+.object-chip.missing {
+  opacity: 0.5;
+}
+
+.missing-objects-note {
+  text-align: center;
+  padding: 16px;
+  background: #fef3c7;
+  border-radius: 10px;
+  color: #92400e;
+  font-size: 0.95rem;
+}
+
+.inventory-strip {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  padding: 8px 0;
+  margin-top: 8px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.inv-item {
+  font-size: 20px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f3f4f6;
+  color: #d1d5db;
+  transition: all 0.3s;
+}
+
+.inv-item.collected {
+  background: #d1fae5;
+  color: inherit;
+  animation: pop-in 0.3s ease;
+}
+
+@keyframes pop-in {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+.final-objects {
+  margin: 16px 0;
+  padding: 14px;
+  background: #f9fafb;
+  border-radius: 10px;
+}
+
+.final-objects .objects-grid {
+  gap: 8px;
+}
+
+.final-objects .object-chip {
+  font-size: 0.9rem;
+  padding: 6px 14px;
+}
+

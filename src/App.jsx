@@ -150,7 +150,7 @@ function Lobby({ onStart }) {
   );
 }
 
-function FinalScreen({ itinerary, userName, modeLabel, onReset }) {
+function FinalScreen({ itinerary, userName, modeLabel, collectedObjects, onReset }) {
   const isOceanografic = itinerary.id === 'oceanografic';
   const title = isOceanografic ? 'Explorador Honorífico del Océano' : 'Científico Honorífico';
   const tagline = isOceanografic
@@ -167,6 +167,29 @@ function FinalScreen({ itinerary, userName, modeLabel, onReset }) {
             ? 'Has cruzado el Oceanogràfic con valentía y curiosidad. Has visto tiburones sin huesos, belugas blancas como el hielo y pingüinos que vuelan bajo el agua. El océano entero te ha visto y está orgulloso.'
             : 'Has explorado el Museu de les Ciències con tus manos, tus ojos y tu curiosidad. Has visto el péndulo que prueba que la Tierra gira y has descifrado el código de la vida. La ciencia te necesita.'}
         </p>
+
+        {collectedObjects.length > 0 && (
+          <div className="final-objects">
+            <p><strong>Objetos recolectados:</strong></p>
+            <div className="objects-grid">
+              {itinerary.stations
+                .filter((s) => s.riddle?.keyObject)
+                .map((s) => {
+                  const has = collectedObjects.includes(s.riddle.keyObject.id);
+                  return (
+                    <span
+                      key={s.id}
+                      className={`object-chip ${has ? 'collected' : 'missing'}`}
+                      title={s.riddle.keyObject.name}
+                    >
+                      {has ? s.riddle.keyObject.icon : '❓'} {has && s.riddle.keyObject.name}
+                    </span>
+                  );
+                })}
+            </div>
+          </div>
+        )}
+
         <div className="final-insig" style={{ '--it-color': itinerary.color }}>
           <strong>{title}</strong>
           <span>{userName}</span>
@@ -205,6 +228,9 @@ function Adventure({ itinerary, userName, mode, onFinal, onReset }) {
 
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [completed, setCompleted] = useState(initialCompleted);
+  const [collectedObjects, setCollectedObjects] = useState(validSaved ? saved.collectedObjects || [] : []);
+  const [riddleStep, setRiddleStep] = useState(validSaved ? saved.riddleStep || {} : {});
+  const [riddleFails, setRiddleFails] = useState(validSaved ? saved.riddleFails || {} : {});
   const [answer, setAnswer] = useState('');
   const [feedback, setFeedback] = useState('');
   const [showAdult, setShowAdult] = useState(false);
@@ -220,8 +246,8 @@ function Adventure({ itinerary, userName, mode, onFinal, onReset }) {
   const isLastStation = currentIndex >= totalCount - 1;
 
   useEffect(() => {
-    saveProgress({ itineraryId: itinerary.id, mode, currentIndex, completed });
-  }, [itinerary.id, mode, currentIndex, completed]);
+    saveProgress({ itineraryId: itinerary.id, mode, currentIndex, completed, collectedObjects, riddleStep, riddleFails });
+  }, [itinerary.id, mode, currentIndex, completed, collectedObjects, riddleStep, riddleFails]);
 
   useEffect(() => {
     setAnswer('');
@@ -230,15 +256,16 @@ function Adventure({ itinerary, userName, mode, onFinal, onReset }) {
     stopSpeaking();
   }, [currentStation.id]);
 
-  function completeStation(message) {
+  function completeStation(message, finalObjects) {
     const successMsg = message || currentStation.challenge.success;
     if (isLastStation) {
+      const objects = finalObjects || collectedObjects;
       setCompleted((prev) => {
         const next = completedSet.has(currentStation.id) ? prev : [...prev, currentStation.id];
-        saveProgress({ itineraryId: itinerary.id, mode, currentIndex, completed: next });
+        saveProgress({ itineraryId: itinerary.id, mode, currentIndex, completed: next, collectedObjects: objects, riddleStep, riddleFails });
         return next;
       });
-      onFinal();
+      onFinal(objects);
       return;
     }
     setCompleted((prev) =>
@@ -286,6 +313,69 @@ function Adventure({ itinerary, userName, mode, onFinal, onReset }) {
     completeStation(backup?.success || 'Estación saltada. La aventura continúa.');
   }
 
+  function getCurrentStep() {
+    return riddleStep[currentStation.id] || 0;
+  }
+
+  function getStepFails() {
+    const key = `${currentStation.id}_${getCurrentStep()}`;
+    return riddleFails[key] || 0;
+  }
+
+  function handleRiddleAnswer(event) {
+    event.preventDefault();
+    const riddle = currentStation.riddle;
+    if (!riddle) return;
+
+    const stepIdx = getCurrentStep();
+    const step = riddle.steps[stepIdx];
+    if (!step) return;
+
+    if (step.answer === '*') {
+      advanceRiddleStep(riddle, stepIdx);
+      return;
+    }
+    if (answer === step.answer) {
+      advanceRiddleStep(riddle, stepIdx);
+    } else {
+      const key = `${currentStation.id}_${stepIdx}`;
+      const fails = (riddleFails[key] || 0) + 1;
+      setRiddleFails((prev) => ({ ...prev, [key]: fails }));
+      setFeedback(step.hint);
+    }
+  }
+
+  function advanceRiddleStep(riddle, stepIdx) {
+    if (stepIdx >= 2) {
+      const newObjects = collectedObjects.includes(riddle.keyObject.id)
+        ? collectedObjects
+        : [...collectedObjects, riddle.keyObject.id];
+      setCollectedObjects(newObjects);
+      completeStation(riddle.finalSuccess, newObjects);
+    } else {
+      setRiddleStep((prev) => ({ ...prev, [currentStation.id]: stepIdx + 1 }));
+      setFeedback('¡Fragmento recuperado!');
+      setAnswer('');
+      setShowHint(false);
+    }
+  }
+
+  function handleAdultHelp() {
+    const riddle = currentStation.riddle;
+    if (!riddle) return;
+    const stepIdx = getCurrentStep();
+    advanceRiddleStep(riddle, stepIdx);
+  }
+
+  function hasAllTreasureObjects() {
+    if (!currentStation.treasure) return false;
+    return currentStation.treasure.requiredObjects.every((id) => collectedObjects.includes(id));
+  }
+
+  function isComplete() {
+    return completedSet.has(currentStation.id);
+  }
+
   return (
     <main className="app-shell">
       <section className="mission-panel" aria-labelledby="mission-title">
@@ -305,12 +395,6 @@ function Adventure({ itinerary, userName, mode, onFinal, onReset }) {
         <div className="progress-track" aria-hidden="true">
           <span style={{ width: `${percent}%` }} />
         </div>
-
-        {currentStation.childAction && (
-          <div className="action-banner">
-            🎯 <strong>Tu misión aquí:</strong> {currentStation.childAction}
-          </div>
-        )}
 
         <div className="station-layout">
           <aside className="route-list" aria-label="Ruta de estaciones">
@@ -357,50 +441,161 @@ function Adventure({ itinerary, userName, mode, onFinal, onReset }) {
               </button>
             </div>
 
-            <form className="challenge" onSubmit={handleSubmit}>
-              <label>{currentStation.challenge.prompt}</label>
-
-              {currentStation.challenge.type === 'choice' && (
-                <div className="choice-grid">
-                  {currentStation.challenge.options.map((option) => (
-                    <button
-                      className={answer === option ? 'selected' : ''}
-                      key={option}
-                      onClick={() => setAnswer(option)}
-                      type="button"
-                    >
-                      {option}
-                    </button>
-                  ))}
+            {currentStation.riddle && !currentStation.isTreasure ? (
+              <>
+                <div className="guardian-banner">
+                  <span className="guardian-icon">🧩</span>
+                  <p className="guardian-intro">{currentStation.riddle.guardian.intro}</p>
                 </div>
-              )}
 
-              <div className="challenge-actions">
-                <button className="primary-action" type="submit">
-                  {currentStation.challenge.type === 'confirm'
-                    ? '✅ Confirmar'
-                    : '📨 Enviar a Grace'}
-                </button>
+                <div className="riddle-steps">
+                  {currentStation.riddle.steps.map((step, idx) => {
+                    const stepIdx = getCurrentStep();
+                    const isActive = idx === stepIdx && !isComplete();
+                    const isDone = idx < stepIdx || isComplete();
+                    const failCount = idx === stepIdx ? getStepFails() : 0;
+                    return (
+                      <div
+                        key={idx}
+                        className={`riddle-step ${isActive ? 'active' : ''} ${isDone ? 'done' : ''}`}
+                      >
+                        <div className="step-header">
+                          <span className="step-icon">{isDone ? '✅' : isActive ? '🧩' : '🔒'}</span>
+                          <span className="step-label">Fragmento {idx + 1}/3</span>
+                        </div>
+                        {isActive && (
+                          <>
+                            <p className="step-text">{step.text}</p>
+                            <div className="choice-grid">
+                              {step.options.map((opt) => (
+                                <button
+                                  className={answer === opt ? 'selected' : ''}
+                                  key={opt}
+                                  onClick={() => setAnswer(opt)}
+                                  type="button"
+                                >
+                                  {opt}
+                                </button>
+                              ))}
+                            </div>
+                            {failCount >= 3 && (
+                              <button
+                                type="button"
+                                className="adult-help-button"
+                                onClick={handleAdultHelp}
+                              >
+                                👤 Pedir ayuda a un adulto
+                              </button>
+                            )}
+                          </>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
 
-                <button
-                  type="button"
-                  className="ghost-button"
-                  onClick={() => setShowHint((h) => !h)}
-                >
-                  💡 Necesito pista
+                <button className="primary-action" type="button" onClick={handleRiddleAnswer}>
+                  📨 Enviar a Grace
                 </button>
 
                 <button type="button" className="ghost-button skip" onClick={skipStation}>
                   ⏭ Saltar
                 </button>
-              </div>
-            </form>
 
-            {showHint && currentStation.challenge.hint && (
+                {feedback && <p className="feedback">{feedback}</p>}
+              </>
+            ) : currentStation.isTreasure ? (
+              <>
+                <div className="guardian-banner treasure-banner">
+                  <span className="guardian-icon">
+                    {currentStation.treasure.type === 'map' ? '🗺️' : '📽️'}
+                  </span>
+                  <h2>{currentStation.treasure.title}</h2>
+                </div>
+
+                <div className="objects-collection">
+                  <p>Tienes {collectedObjects.length} de {currentStation.treasure.requiredObjects.length} objetos:</p>
+                  <div className="objects-grid">
+                    {stations
+                      .filter((s) => s.riddle?.keyObject)
+                      .map((s) => {
+                        const has = collectedObjects.includes(s.riddle.keyObject.id);
+                        return (
+                          <span
+                            key={s.id}
+                            className={`object-chip ${has ? 'collected' : 'missing'}`}
+                            title={s.riddle.keyObject.name}
+                          >
+                            {has ? s.riddle.keyObject.icon : '❓'}
+                          </span>
+                        );
+                      })}
+                  </div>
+                </div>
+
+                {hasAllTreasureObjects() ? (
+                  <form className="challenge" onSubmit={handleSubmit}>
+                    <label>{currentStation.challenge.prompt}</label>
+                    <button className="primary-action" type="submit">
+                      ✅ {currentStation.challenge.type === 'confirm' ? 'Revelar tesoro' : 'Confirmar'}
+                    </button>
+                  </form>
+                ) : (
+                  <p className="missing-objects-note">
+                    Sigue explorando para reunir todos los objetos.
+                  </p>
+                )}
+
+                {feedback && <p className="feedback">{feedback}</p>}
+              </>
+            ) : (
+              <form className="challenge" onSubmit={handleSubmit}>
+                <label>{currentStation.challenge.prompt}</label>
+
+                {currentStation.challenge.type === 'choice' && (
+                  <div className="choice-grid">
+                    {currentStation.challenge.options.map((option) => (
+                      <button
+                        className={answer === option ? 'selected' : ''}
+                        key={option}
+                        onClick={() => setAnswer(option)}
+                        type="button"
+                      >
+                        {option}
+                      </button>
+                    ))}
+                  </div>
+                )}
+
+                <div className="challenge-actions">
+                  <button className="primary-action" type="submit">
+                    {currentStation.challenge.type === 'confirm'
+                      ? '✅ Confirmar'
+                      : '📨 Enviar a Grace'}
+                  </button>
+
+                  <button
+                    type="button"
+                    className="ghost-button"
+                    onClick={() => setShowHint((h) => !h)}
+                  >
+                    💡 Necesito pista
+                  </button>
+
+                  <button type="button" className="ghost-button skip" onClick={skipStation}>
+                    ⏭ Saltar
+                  </button>
+                </div>
+              </form>
+            )}
+
+            {showHint && currentStation.challenge.hint && !currentStation.riddle && (
               <p className="hint-bubble">💡 Pista: {currentStation.challenge.hint}</p>
             )}
 
-            {feedback && <p className="feedback">{feedback}</p>}
+            {feedback && !currentStation.riddle && !currentStation.isTreasure && (
+              <p className="feedback">{feedback}</p>
+            )}
 
             <div className="crystal-strip" aria-label="Cristales recuperados">
               {stations.map((station) => (
@@ -412,6 +607,25 @@ function Adventure({ itinerary, userName, mode, onFinal, onReset }) {
                 />
               ))}
             </div>
+
+            {collectedObjects.length > 0 && (
+              <div className="inventory-strip" aria-label="Objetos recolectados">
+                {stations
+                  .filter((s) => s.riddle?.keyObject)
+                  .map((s) => {
+                    const has = collectedObjects.includes(s.riddle.keyObject.id);
+                    return (
+                      <span
+                        key={s.id}
+                        className={`inv-item ${has ? 'collected' : ''}`}
+                        title={s.riddle.keyObject.name}
+                      >
+                        {has ? s.riddle.keyObject.icon : '○'}
+                      </span>
+                    );
+                  })}
+              </div>
+            )}
           </article>
         </div>
 
@@ -421,7 +635,11 @@ function Adventure({ itinerary, userName, mode, onFinal, onReset }) {
               ? '🎉 ¡Misión completa!'
               : `💎 ${completedCount} de ${totalCount} cristales`}
           </span>
-
+          {collectedObjects.length > 0 && (
+            <span>
+              🧩 {collectedObjects.length} objetos
+            </span>
+          )}
           <button
             type="button"
             className="adult-toggle"
@@ -474,13 +692,30 @@ function App() {
   const [mode, setMode] = useState(saved?.mode || 'normal');
 
   function handleStart(name, itId, m) {
+    setFinalObjects([]);
     setUserName(name);
     setItinerary(itineraries[itId]);
     setMode(m);
     setPhase('adventure');
   }
 
-  function handleFinal() {
+  function handleFinal(objects) {
+    setFinalObjects(objects || []);
+    setPhase('final');
+  }
+
+  function handleReset() {
+    localStorage.removeItem(STORAGE_KEY);
+    setFinalObjects([]);
+    setPhase('lobby');
+    setItinerary(null);
+    setUserName('');
+  }
+
+  const [finalObjects, setFinalObjects] = useState([]);
+
+  function handleFinal(objects) {
+    setFinalObjects(objects || []);
     setPhase('final');
   }
 
@@ -501,6 +736,7 @@ function App() {
         itinerary={itinerary}
         userName={userName}
         modeLabel={modeLabels[mode]?.label || ''}
+        collectedObjects={finalObjects}
         onReset={handleReset}
       />
     );
