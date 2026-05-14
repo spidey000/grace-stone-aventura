@@ -4,8 +4,8 @@
   "description": "Audio-aventura familiar en la Ciutat de les Arts i les Ciències.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f7fbf8",
-  "theme_color": "#0e8277",
+  "background_color": "#101613",
+  "theme_color": "#101613",
   "icons": [
     {
       "src": "/bravestone-icon.svg",
@@ -15,4 +15,3 @@
     }
   ]
 }
-

@@ -151,17 +151,16 @@ function FinalScreen({ itinerary, userName, collectedObjects, onReset }) {
   const tagline = isOceanografic
     ? 'El océano necesita exploradores valientes como tú.'
     : 'La ciencia necesita mentes curiosas como la tuya.';
+  const finalStory = isOceanografic
+    ? '¡Misión cumplida, {username}! Has cruzado el Oceanogràfic como un auténtico explorador. Tiburones sin huesos, belugas blancas como el hielo, pingüinos que vuelan bajo el agua... lo has visto todo con tus propios ojos. El Dr. Bravestone está orgulloso de ti. El océano entero te ha visto y te necesita.'
+    : '¡Lo lograste, {username}! Has explorado el Museu de les Ciències como un verdadero científico. El péndulo que prueba que la Tierra gira, el código secreto del ADN, la magia de la metamorfosis... lo has descifrado todo. El Dr. Bravestone te nombra oficialmente miembro de su equipo. La ciencia te necesita.';
 
   return (
     <main className="app-shell final-shell">
       <div className="final-card">
         <span className="final-badge">{itinerary.icon}</span>
         <h1>¡{userName}, misión completa!</h1>
-        <p>
-          {isOceanografic
-            ? '¡Misión cumplida, {userName}! Has cruzado el Oceanogràfic como un auténtico explorador. Tiburones sin huesos, belugas blancas como el hielo, pingüinos que vuelan bajo el agua... lo has visto todo con tus propios ojos. El Dr. Bravestone está orgulloso de ti. El océano entero te ha visto y te necesita.'
-            : '¡Lo lograste, {userName}! Has explorado el Museu de les Ciències como un verdadero científico. El péndulo que prueba que la Tierra gira, el código secreto del ADN, la magia de la metamorfosis... lo has descifrado todo. El Dr. Bravestone te nombra oficialmente miembro de su equipo. La ciencia te necesita.'}
-        </p>
+        <p>{renderStory(finalStory, userName)}</p>
 
         {collectedObjects.length > 0 && (
           <div className="final-objects">
@@ -488,10 +487,6 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                   })}
                 </div>
 
-                <button type="button" className="ghost-button skip" onClick={skipStation}>
-                  ⏭ Saltar
-                </button>
-
                 {feedback && <p className="feedback">{feedback}</p>}
               </>
             ) : currentStation.isTreasure ? (
@@ -571,9 +566,6 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                     💡 Necesito pista
                   </button>
 
-                  <button type="button" className="ghost-button skip" onClick={skipStation}>
-                    ⏭ Saltar
-                  </button>
                 </div>
               </div>
             )}
@@ -677,6 +669,7 @@ function App() {
   const [phase, setPhase] = useState(saved && isValid ? 'adventure' : 'lobby');
   const [itinerary, setItinerary] = useState(isValid ? itineraries[saved.itineraryId] : null);
   const [userName, setUserName] = useState(saved?.userName || '');
+  const [finalObjects, setFinalObjects] = useState([]);
 
   function handleStart(name, itId) {
     setFinalObjects([]);
@@ -693,20 +686,6 @@ function App() {
   function handleReset() {
     localStorage.removeItem(STORAGE_KEY);
     setFinalObjects([]);
-    setPhase('lobby');
-    setItinerary(null);
-    setUserName('');
-  }
-
-  const [finalObjects, setFinalObjects] = useState([]);
-
-  function handleFinal(objects) {
-    setFinalObjects(objects || []);
-    setPhase('final');
-  }
-
-  function handleReset() {
-    localStorage.removeItem(STORAGE_KEY);
     setPhase('lobby');
     setItinerary(null);
     setUserName('');
