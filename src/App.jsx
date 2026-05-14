@@ -21,6 +21,18 @@ function renderStory(story, userName) {
   return story.replace(/\{username\}/g, userName || 'Explorador');
 }
 
+function getStationRiddles(station) {
+  return station.riddles || (station.riddle ? [station.riddle] : []);
+}
+
+function getStationKeyObjects(station) {
+  return getStationRiddles(station).map((riddle) => riddle.keyObject).filter(Boolean);
+}
+
+function getItineraryKeyObjects(stations) {
+  return stations.flatMap(getStationKeyObjects);
+}
+
 function useNarration(userName) {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -155,17 +167,16 @@ function FinalScreen({ itinerary, userName, collectedObjects, onReset }) {
           <div className="final-objects">
             <p><strong>Objetos recolectados:</strong></p>
             <div className="objects-grid">
-              {itinerary.stations
-                .filter((s) => s.riddle?.keyObject)
-                .map((s) => {
-                  const has = collectedObjects.includes(s.riddle.keyObject.id);
+              {getItineraryKeyObjects(itinerary.stations)
+                .map((keyObject) => {
+                  const has = collectedObjects.includes(keyObject.id);
                   return (
                     <span
-                      key={s.id}
+                      key={keyObject.id}
                       className={`object-chip ${has ? 'collected' : 'missing'}`}
-                      title={s.riddle.keyObject.name}
+                      title={keyObject.name}
                     >
-                      {has ? s.riddle.keyObject.icon : '❓'} {has && s.riddle.keyObject.name}
+                      {has ? keyObject.icon : '❓'} {has && keyObject.name}
                     </span>
                   );
                 })}
@@ -262,11 +273,19 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
   }
 
   function getCurrentStep() {
-    return riddleStep[currentStation.id] || 0;
+    return riddleStep[`${currentStation.id}_${getCurrentRiddleIndex()}`] || 0;
+  }
+
+  function getCurrentRiddleIndex() {
+    return riddleStep[`${currentStation.id}_riddle`] || 0;
+  }
+
+  function getCurrentRiddle() {
+    return getStationRiddles(currentStation)[getCurrentRiddleIndex()];
   }
 
   function getStepFails() {
-    const key = `${currentStation.id}_${getCurrentStep()}`;
+    const key = `${currentStation.id}_${getCurrentRiddleIndex()}_${getCurrentStep()}`;
     return riddleFails[key] || 0;
   }
 
@@ -281,7 +300,7 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
   }
 
   function handleRiddleChoiceAnswer(option) {
-    const riddle = currentStation.riddle;
+    const riddle = getCurrentRiddle();
     if (!riddle) return;
 
     const stepIdx = getCurrentStep();
@@ -292,7 +311,7 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
     if (step.answer === '*' || option === step.answer) {
       advanceRiddleStep(riddle, stepIdx);
     } else {
-      const key = `${currentStation.id}_${stepIdx}`;
+      const key = `${currentStation.id}_${getCurrentRiddleIndex()}_${stepIdx}`;
       const fails = (riddleFails[key] || 0) + 1;
       setRiddleFails((prev) => ({ ...prev, [key]: fails }));
       setFeedback(step.hint);
@@ -305,9 +324,22 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
         ? collectedObjects
         : [...collectedObjects, riddle.keyObject.id];
       setCollectedObjects(newObjects);
+      const nextRiddleIdx = getCurrentRiddleIndex() + 1;
+      const riddles = getStationRiddles(currentStation);
+      if (nextRiddleIdx < riddles.length) {
+        setRiddleStep((prev) => ({
+          ...prev,
+          [`${currentStation.id}_riddle`]: nextRiddleIdx,
+          [`${currentStation.id}_${nextRiddleIdx}`]: 0,
+        }));
+        setFeedback(`${riddle.finalSuccess} Siguiente acertijo: ${riddles[nextRiddleIdx].guardian.name}.`);
+        setAnswer('');
+        setShowHint(false);
+        return;
+      }
       completeStation(riddle.finalSuccess, newObjects);
     } else {
-      setRiddleStep((prev) => ({ ...prev, [currentStation.id]: stepIdx + 1 }));
+      setRiddleStep((prev) => ({ ...prev, [`${currentStation.id}_${getCurrentRiddleIndex()}`]: stepIdx + 1 }));
       setFeedback('¡Fragmento recuperado!');
       setAnswer('');
       setShowHint(false);
@@ -315,7 +347,7 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
   }
 
   function handleAdultHelp() {
-    const riddle = currentStation.riddle;
+    const riddle = getCurrentRiddle();
     if (!riddle) return;
     const stepIdx = getCurrentStep();
     advanceRiddleStep(riddle, stepIdx);
@@ -329,6 +361,10 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
   function isComplete() {
     return completedSet.has(currentStation.id);
   }
+
+  const currentRiddles = getStationRiddles(currentStation);
+  const currentRiddle = getCurrentRiddle();
+  const currentRiddleIndex = getCurrentRiddleIndex();
 
   return (
     <main className="app-shell">
@@ -397,15 +433,15 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
               </button>
             </div>
 
-            {currentStation.riddle && !currentStation.isTreasure ? (
+            {currentRiddle && !currentStation.isTreasure ? (
               <>
                 <div className="guardian-banner">
                   <span className="guardian-icon">🧩</span>
-                  <p className="guardian-intro">{currentStation.riddle.guardian.intro}</p>
+                  <p className="guardian-intro">{currentRiddle.guardian.intro}</p>
                 </div>
 
                 <div className="riddle-steps">
-                  {currentStation.riddle.steps.map((step, idx) => {
+                  {currentRiddle.steps.map((step, idx) => {
                     const stepIdx = getCurrentStep();
                     const isActive = idx === stepIdx && !isComplete();
                     const isDone = idx < stepIdx || isComplete();
@@ -417,7 +453,9 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                       >
                         <div className="step-header">
                           <span className="step-icon">{isDone ? '✅' : isActive ? '🧩' : '🔒'}</span>
-                          <span className="step-label">Fragmento {idx + 1}/3</span>
+                          <span className="step-label">
+                            Acertijo {currentRiddleIndex + 1}/{currentRiddles.length} · Fragmento {idx + 1}/3
+                          </span>
                         </div>
                         {isActive && (
                           <>
@@ -468,17 +506,16 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                 <div className="objects-collection">
                   <p>Tienes {collectedObjects.length} de {currentStation.treasure.requiredObjects.length} objetos:</p>
                   <div className="objects-grid">
-                    {stations
-                      .filter((s) => s.riddle?.keyObject)
-                      .map((s) => {
-                        const has = collectedObjects.includes(s.riddle.keyObject.id);
+                    {getItineraryKeyObjects(stations)
+                      .map((keyObject) => {
+                        const has = collectedObjects.includes(keyObject.id);
                         return (
                           <span
-                            key={s.id}
+                            key={keyObject.id}
                             className={`object-chip ${has ? 'collected' : 'missing'}`}
-                            title={s.riddle.keyObject.name}
+                            title={keyObject.name}
                           >
-                            {has ? s.riddle.keyObject.icon : '❓'}
+                            {has ? keyObject.icon : '❓'}
                           </span>
                         );
                       })}
@@ -541,11 +578,11 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
               </div>
             )}
 
-            {showHint && currentStation.challenge.hint && !currentStation.riddle && (
+            {showHint && currentStation.challenge.hint && !currentRiddle && (
               <p className="hint-bubble">💡 Pista: {currentStation.challenge.hint}</p>
             )}
 
-            {feedback && !currentStation.riddle && !currentStation.isTreasure && (
+            {feedback && !currentRiddle && !currentStation.isTreasure && (
               <p className="feedback">{feedback}</p>
             )}
 
@@ -562,17 +599,16 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
 
             {collectedObjects.length > 0 && (
               <div className="inventory-strip" aria-label="Objetos recolectados">
-                {stations
-                  .filter((s) => s.riddle?.keyObject)
-                  .map((s) => {
-                    const has = collectedObjects.includes(s.riddle.keyObject.id);
+                {getItineraryKeyObjects(stations)
+                  .map((keyObject) => {
+                    const has = collectedObjects.includes(keyObject.id);
                     return (
                       <span
-                        key={s.id}
+                        key={keyObject.id}
                         className={`inv-item ${has ? 'collected' : ''}`}
-                        title={s.riddle.keyObject.name}
+                        title={keyObject.name}
                       >
-                        {has ? s.riddle.keyObject.icon : '○'}
+                        {has ? keyObject.icon : '○'}
                       </span>
                     );
                   })}

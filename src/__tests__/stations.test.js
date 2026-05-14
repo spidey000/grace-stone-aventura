@@ -6,6 +6,10 @@ const allStations = [
   ...itineraries.museu.stations.map(s => ({ ...s, itinerary: 'museu' })),
 ];
 
+function getRiddles(station) {
+  return station.riddles || (station.riddle ? [station.riddle] : []);
+}
+
 describe('itineraries structure', () => {
   it('has both itineraries', () => {
     expect(Object.keys(itineraries)).toEqual(['oceanografic', 'museu']);
@@ -21,8 +25,8 @@ describe('itineraries structure', () => {
     }
   });
 
-  it('oceanografic has 16 stations (v2)', () => {
-    expect(itineraries.oceanografic.stations.length).toBe(16);
+  it('oceanografic has 18 stations (v3 multi-riddle route)', () => {
+    expect(itineraries.oceanografic.stations.length).toBe(18);
   });
 
   it('museu has 10 stations (v2 + final)', () => {
@@ -80,49 +84,67 @@ describe('each station', () => {
 
 describe('riddle structure', () => {
   for (const st of allStations) {
-    if (!st.riddle) continue;
+    const riddles = getRiddles(st);
+    if (!riddles.length) continue;
 
-    it(`${st.itinerary} ${st.id} (${st.shortName}) has valid riddle type`, () => {
-      expect(['chain', 'steps']).toContain(st.riddle.type);
+    it(`${st.itinerary} ${st.id} (${st.shortName}) has valid riddle types`, () => {
+      riddles.forEach((riddle) => {
+        expect(['chain', 'steps']).toContain(riddle.type);
+      });
     });
 
-    it(`${st.itinerary} ${st.id} (${st.shortName}) has 3 riddle steps`, () => {
-      expect(st.riddle.steps).toHaveLength(3);
+    it(`${st.itinerary} ${st.id} (${st.shortName}) has 3 riddle steps each`, () => {
+      riddles.forEach((riddle) => {
+        expect(riddle.steps).toHaveLength(3);
+      });
     });
 
     it(`${st.itinerary} ${st.id} (${st.shortName}) each step has required fields`, () => {
-      st.riddle.steps.forEach((step, i) => {
-        expect(step.text).toBeTruthy();
-        expect(step.answer).toBeDefined();
-        expect(step.options.length).toBeGreaterThanOrEqual(2);
-        expect(step.hint).toBeTruthy();
+      riddles.forEach((riddle) => {
+        riddle.steps.forEach((step) => {
+          expect(step.text).toBeTruthy();
+          expect(step.answer).toBeDefined();
+          expect(step.options.length).toBeGreaterThanOrEqual(2);
+          expect(step.hint).toBeTruthy();
+        });
       });
     });
 
     it(`${st.itinerary} ${st.id} (${st.shortName}) has keyObject with all fields`, () => {
-      expect(st.riddle.keyObject).toBeDefined();
-      expect(st.riddle.keyObject.id).toBeTruthy();
-      expect(st.riddle.keyObject.name).toBeTruthy();
-      expect(st.riddle.keyObject.icon).toBeTruthy();
-      expect(st.riddle.keyObject.description).toBeTruthy();
+      riddles.forEach((riddle) => {
+        expect(riddle.keyObject).toBeDefined();
+        expect(riddle.keyObject.id).toBeTruthy();
+        expect(riddle.keyObject.name).toBeTruthy();
+        expect(riddle.keyObject.icon).toBeTruthy();
+        expect(riddle.keyObject.description).toBeTruthy();
+      });
     });
 
     it(`${st.itinerary} ${st.id} (${st.shortName}) has finalSuccess`, () => {
-      expect(st.riddle.finalSuccess).toBeTruthy();
+      riddles.forEach((riddle) => {
+        expect(riddle.finalSuccess).toBeTruthy();
+      });
     });
 
     it(`${st.itinerary} ${st.id} (${st.shortName}) has guardian with name and intro`, () => {
-      expect(st.riddle.guardian).toBeDefined();
-      expect(st.riddle.guardian.name).toBeTruthy();
-      expect(st.riddle.guardian.intro).toBeTruthy();
+      riddles.forEach((riddle) => {
+        expect(riddle.guardian).toBeDefined();
+        expect(riddle.guardian.name).toBeTruthy();
+        expect(riddle.guardian.intro).toBeTruthy();
+      });
     });
   }
 
   it('all non-intro/non-treasure stations have riddles', () => {
     for (const st of allStations) {
       if (st.id === '00' || st.isTreasure) continue;
-      expect(st.riddle).toBeDefined();
+      expect(getRiddles(st).length).toBeGreaterThan(0);
     }
+  });
+
+  it('oceanografic main stations can contain multiple riddles', () => {
+    const multiRiddleStations = itineraries.oceanografic.stations.filter((st) => getRiddles(st).length > 1);
+    expect(multiRiddleStations.length).toBeGreaterThanOrEqual(8);
   });
 });
 

@@ -1,6 +1,6 @@
 const crystalSound = '/audio/fx/crystal-unlock.mp3';
 
-export const oceanograficStations = [
+const oceanograficBaseStations = [
   {
     id: '00',
     routeOrder: 0,
@@ -1020,3 +1020,273 @@ export const oceanograficStations = [
     },
   },
 ];
+
+function makeBonusRiddle(station, suffix, guardianName, icon, objectName, facts) {
+  const [first, second, third] = facts;
+  const objectId = `mapa-${station.shortName.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-')}-${suffix}`;
+
+  return {
+    type: 'steps',
+    guardian: {
+      name: guardianName,
+      intro: `${guardianName} guarda otra pista de ${station.area}. Para conseguirla, observa la zona con calma y completa las tres señales.`,
+    },
+    steps: [
+      {
+        text: first.text,
+        answer: first.answer,
+        options: first.options,
+        hint: first.hint,
+      },
+      {
+        text: second.text,
+        answer: second.answer,
+        options: second.options,
+        hint: second.hint,
+      },
+      {
+        text: third.text,
+        answer: third.answer,
+        options: third.options,
+        hint: third.hint,
+      },
+    ],
+    finalSuccess: `Nueva pista conseguida: ${objectName}. ${guardianName} añade su fragmento al mapa del océano.`,
+    keyObject: {
+      id: objectId,
+      name: objectName,
+      icon,
+      description: `Una pieza adicional del mapa vinculada a ${station.area}.`,
+    },
+  };
+}
+
+const extraRiddleSpecs = {
+  '00': [
+    ['acceso-tiburones', 'Tiburón Cabeza de Pala', '🦈', 'Pieza del Mapa — Acceso Tiburones', [
+      { text: 'En el Edificio de Acceso, busca un tiburón con la cabeza ancha. ¿A qué se parece?', answer: 'A una pala', options: ['A una pala', 'A una estrella', 'A una pluma'], hint: 'Su nombre oficial habla de una cabeza de pala.' },
+      { text: '¿Qué otros animales marinos pueden verse en esta entrada?', answer: '*', options: ['Tortugas marinas', 'Medusas', 'Tiburones'], hint: 'Cualquiera de esas pistas sirve en el edificio de acceso.' },
+      { text: 'La columna inmersiva de agua hace que parezca que estás...', answer: 'Bajo el agua', options: ['Bajo el agua', 'En una montaña', 'En el desierto'], hint: 'Mira arriba y alrededor: todo invita a entrar en el océano.' },
+    ]],
+  ],
+  '01': [
+    ['posidonia', 'Posidonia Guardiana', '🌿', 'Pieza del Mapa — Posidonia', [
+      { text: 'Busca la posidonia. ¿Es una planta marina o una roca?', answer: 'Una planta marina', options: ['Una planta marina', 'Una roca', 'Un pez'], hint: 'Tiene hojas y forma praderas submarinas.' },
+      { text: '¿Qué crea la posidonia bajo el agua?', answer: 'Praderas', options: ['Praderas', 'Nubes', 'Montañas'], hint: 'Son como campos verdes en el fondo del mar.' },
+      { text: '¿Por qué es importante para los animales pequeños?', answer: 'Les da refugio', options: ['Les da refugio', 'Los empuja', 'Los seca'], hint: 'Muchos animales se esconden entre sus hojas.' },
+    ]],
+    ['raya', 'Raya Mosaico', '◇', 'Pieza del Mapa — Raya Mosaico', [
+      { text: 'Busca una raya. ¿Su cuerpo parece plano o redondo como una pelota?', answer: 'Plano', options: ['Plano', 'Redondo', 'Cuadrado'], hint: 'Las rayas parecen deslizarse pegadas al fondo.' },
+      { text: '¿Dónde suele camuflarse una raya?', answer: 'En el fondo', options: ['En el fondo', 'En el techo', 'En una rama'], hint: 'Mira cerca de la arena o las rocas.' },
+      { text: 'Si ves dibujos en su piel, ¿qué palabra encaja mejor?', answer: 'Mosaico', options: ['Mosaico', 'Rayas de tigre', 'Lunares gigantes'], hint: 'La tabla menciona la raya mosaico.' },
+    ]],
+  ],
+  '02': [
+    ['aviario', 'Ibis Escarlata', '🪶', 'Pieza del Mapa — Aviario', [
+      { text: 'En el aviario, busca un ave muy llamativa. ¿Qué color puede destacar?', answer: 'Rojo', options: ['Rojo', 'Azul eléctrico', 'Negro entero'], hint: 'El ibis escarlata destaca por su color rojo.' },
+      { text: '¿Qué usan las aves para cubrir su cuerpo?', answer: 'Plumas', options: ['Plumas', 'Escamas', 'Conchas'], hint: 'Mira sus alas y cuello.' },
+      { text: '¿Qué forma tienen muchas aves de humedal para buscar comida?', answer: '*', options: ['Pico largo', 'Patas largas', 'Cuello largo'], hint: 'Cualquiera de esas señales ayuda en humedales.' },
+    ]],
+    ['galapago', 'Galápago del Humedal', '🐢', 'Pieza del Mapa — Galápago', [
+      { text: 'Busca un galápago. ¿Vive más cerca del agua o de la nieve?', answer: 'Del agua', options: ['Del agua', 'De la nieve', 'Del fuego'], hint: 'Los galápagos son tortugas de agua dulce.' },
+      { text: '¿Qué lleva para protegerse?', answer: 'Caparazón', options: ['Caparazón', 'Plumas', 'Melena'], hint: 'Es una armadura dura.' },
+      { text: 'Los humedales mezclan...', answer: 'Agua y tierra', options: ['Agua y tierra', 'Hielo y lava', 'Arena y nieve'], hint: 'Es un lugar fronterizo entre dos mundos.' },
+    ]],
+  ],
+  '03': [
+    ['conservacion', 'Jara de Cartagena', '🌱', 'Pieza del Mapa — Conservación', [
+      { text: 'Esta zona habla de proteger especies. ¿Qué palabra encaja mejor?', answer: 'Conservación', options: ['Conservación', 'Carrera', 'Ruido'], hint: 'Busca señales de cuidado y recuperación.' },
+      { text: '¿Qué necesita una tortuga mediterránea para vivir segura?', answer: '*', options: ['Refugio', 'Alimento', 'Espacio tranquilo'], hint: 'Todas son necesidades reales.' },
+      { text: 'Si una especie tiene pocos ejemplares, debemos...', answer: 'Protegerla', options: ['Protegerla', 'Molestarla', 'Ignorarla'], hint: 'La misión es cuidar la vida.' },
+    ]],
+  ],
+  '04': [
+    ['kelp', 'Bosque de Kelp', '🌊', 'Pieza del Mapa — Kelp', [
+      { text: 'En mares templados, ¿qué tipo de agua esperas?', answer: 'Más fría', options: ['Más fría', 'Hirviendo', 'Sin agua'], hint: 'Templado no es tropical.' },
+      { text: 'Busca una señal del bosque de kelp. ¿A qué se parece el kelp?', answer: 'A plantas largas', options: ['A plantas largas', 'A piedras redondas', 'A nubes'], hint: 'Forma bosques submarinos.' },
+      { text: '¿Qué animales pueden esconderse en un bosque submarino?', answer: '*', options: ['Peces', 'Tiburones pequeños', 'Crustáceos'], hint: 'Los bosques dan refugio a muchas especies.' },
+    ]],
+  ],
+  '05': [
+    ['sala-oval', 'Medusa Invertida', '🪼', 'Pieza del Mapa — Sala Oval', [
+      { text: 'En la Sala Oval, busca una medusa invertida. ¿Dónde puede estar orientada?', answer: 'Hacia arriba', options: ['Hacia arriba', 'Corriendo', 'Volando'], hint: 'Invertida significa colocada al revés de lo esperado.' },
+      { text: '¿Qué estructura viva aparece junto a esta sala?', answer: 'Arrecife', options: ['Arrecife', 'Bosque seco', 'Montaña'], hint: 'La tabla habla de arrecife vivo.' },
+      { text: 'Un arrecife ofrece a los peces...', answer: 'Refugio', options: ['Refugio', 'Zapatos', 'Sombreros'], hint: 'Los peces se esconden y viven entre sus formas.' },
+    ]],
+    ['pez-globo', 'Pez Globo', '🐡', 'Pieza del Mapa — Pez Globo', [
+      { text: 'Busca el pez globo. ¿Qué puede hacer para defenderse?', answer: 'Inflarse', options: ['Inflarse', 'Cantar', 'Caminar'], hint: 'Su nombre da la pista.' },
+      { text: '¿Qué pez azul famoso aparece en tropicales?', answer: 'Pez cirujano azul', options: ['Pez cirujano azul', 'Pez luna', 'Caballito'], hint: 'La tabla lo menciona junto a los peces tropicales.' },
+      { text: 'El pez payaso suele vivir cerca de...', answer: 'Anémonas', options: ['Anémonas', 'Pingüinos', 'Cocodrilos'], hint: 'Es su refugio clásico en el arrecife.' },
+    ]],
+  ],
+  '08': [
+    ['experiencias', 'Auditorio Mar Rojo', '🎬', 'Pieza del Mapa — Experiencias', [
+      { text: 'El Mar Rojo puede ser paso hacia una experiencia. ¿Cuál aparece en la tabla?', answer: 'Cine 4D', options: ['Cine 4D', 'Teleférico', 'Tren polar'], hint: 'Dura unos 13 minutos.' },
+      { text: 'Otra experiencia usa realidad...', answer: 'Mixta', options: ['Mixta', 'Dormida', 'Invisible'], hint: 'La tabla la llama inmersión o realidad mixta.' },
+      { text: 'Si una experiencia requiere entrada aparte, conviene...', answer: 'Planificarla', options: ['Planificarla', 'Ignorar horarios', 'Llegar tarde'], hint: 'Algunas no permiten acceso tardío.' },
+    ]],
+  ],
+  '09': [
+    ['agora', 'Ágora del Mar', '🔊', 'Pieza del Mapa — Ágora', [
+      { text: 'El delfinario también es un espacio...', answer: 'Educativo', options: ['Educativo', 'Subterráneo secreto', 'De nieve'], hint: 'La tabla habla de espacio educativo y científico.' },
+      { text: '¿Qué tipo de comportamientos se observan?', answer: 'Naturales', options: ['Naturales', 'Robóticos', 'De juguete'], hint: 'La idea es aprender observando.' },
+      { text: 'Para un pase con asiento conviene llegar...', answer: 'Con tiempo', options: ['Con tiempo', 'Después del final', 'Sin mirar horarios'], hint: 'La duración incluye asiento y pase.' },
+    ]],
+  ],
+  '11': [
+    ['pinguino-rey', 'Pingüino Rey', '🐧', 'Pieza del Mapa — Pingüino Rey', [
+      { text: 'Además del pingüino Juanito, la tabla menciona al...', answer: 'Pingüino Rey', options: ['Pingüino Rey', 'Pez payaso', 'Ibis'], hint: 'Su nombre suena a corona.' },
+      { text: 'Los pingüinos viven en la zona...', answer: 'Antártica', options: ['Antártica', 'Tropical', 'Desértica'], hint: 'Es la zona fría del recorrido.' },
+      { text: 'Aunque son aves, bajo el agua parecen...', answer: 'Volar', options: ['Volar', 'Dormir', 'Excavar'], hint: 'Usan las alas como aletas.' },
+    ]],
+  ],
+  '12': [
+    ['aves-articas', 'Frailecillo Coletudo', '🪽', 'Pieza del Mapa — Aves Árticas', [
+      { text: 'En el Ártico no solo hay belugas. ¿Qué otro tipo de animal menciona la tabla?', answer: 'Aves', options: ['Aves', 'Leones', 'Jirafas'], hint: 'Arao, eider y frailecillo son aves.' },
+      { text: 'El iglú ártico tiene...', answer: 'Dos niveles', options: ['Dos niveles', 'Diez plantas', 'Una pista de lava'], hint: 'La tabla menciona un iglú de dos niveles.' },
+      { text: 'Las belugas son famosas por sus...', answer: 'Sonidos', options: ['Sonidos', 'Plumas', 'Caparazones'], hint: 'Las llaman canarios del mar.' },
+    ]],
+  ],
+  '14': [
+    ['pez-sierra', 'Pez Sierra', '🪚', 'Pieza del Mapa — Pez Sierra', [
+      { text: 'En Océanos, busca un animal con una forma parecida a una sierra. ¿Cuál es?', answer: 'Pez sierra', options: ['Pez sierra', 'Pez payaso', 'Medusa luna'], hint: 'Su nombre describe su hocico.' },
+      { text: 'El túnel de Océanos mide aproximadamente...', answer: '35 m', options: ['35 m', '3 m', '350 km'], hint: 'La tabla indica 35 metros.' },
+      { text: 'La tabla menciona una adición reciente: peces...', answer: 'Luna', options: ['Luna', 'Rey', 'Globo'], hint: 'Su nombre recuerda al satélite de la Tierra.' },
+    ]],
+  ],
+};
+
+const insertedStations = {
+  '02': [
+    {
+      id: '02B',
+      routeOrder: 2.5,
+      minMode: 'normal',
+      shortName: 'Lago Vivo',
+      title: 'El lago que respira',
+      area: 'Lago Vivo + Flamencos europeos',
+      routeHint: 'Al pasar por el lago exterior, observa aves, anfibios o señales de vida en el agua.',
+      adultHint: 'Estación breve y flexible; si no distinguís especies, basta con observar el lago.',
+      childAction: 'Busca un ave acuática o una pista de flamencos europeos.',
+      story: '{username}, este lago parece tranquilo, pero está lleno de señales. Aves que se posan, anfibios escondidos y flamencos que colorean el recorrido nos recuerdan que el agua dulce también forma parte del gran mapa del océano.',
+      reward: { name: 'Cristal del Lago Vivo', sound: crystalSound, color: '#4f9f7a' },
+      duration: '15-20 min',
+      color: '#4f9f7a',
+      optional: false,
+      sources: ['https://www.oceanografic.org/planifica-tu-visita/plano-del-acuario/'],
+      challenge: {
+        type: 'observe',
+        prompt: 'Observa el lago y confirma cuando hayas encontrado una pista de vida.',
+        success: 'Lago Vivo registrado.',
+        hint: 'Sirven aves, ranas, plantas o flamencos visibles desde el recorrido.',
+      },
+      backupChallenge: {
+        type: 'confirm',
+        prompt: 'Si no podéis parar, confirma al pasar junto al lago.',
+        success: 'Paso por Lago Vivo guardado.',
+      },
+      riddles: [],
+    },
+  ],
+  '05': [
+    {
+      id: '05B',
+      routeOrder: 5.5,
+      minMode: 'normal',
+      shortName: 'Misterios',
+      title: 'Los acuarios joya',
+      area: 'Misterios del Mar',
+      routeHint: 'Busca los acuarios pequeños tipo joya y observa criaturas raras de cerca.',
+      adultHint: 'Funciona bien como parada corta porque los acuarios concentran detalles visibles.',
+      childAction: 'Elige el animal más extraño que veas.',
+      story: '{username}, hemos llegado a los Misterios del Mar. Aquí el océano guarda criaturas pequeñas y sorprendentes: caballitos, anguilas jardineras, camarones mantis y peces que parecen hojas o cofres vivientes.',
+      reward: { name: 'Cristal de los Misterios', sound: crystalSound, color: '#7a5ccf' },
+      duration: '10-15 min',
+      color: '#7a5ccf',
+      optional: false,
+      sources: ['https://www.oceanografic.org/habitat/misterios-del-mar/'],
+      challenge: {
+        type: 'familyVote',
+        prompt: 'Elegid la criatura más misteriosa que habéis visto.',
+        options: ['Caballito de mar', 'Camarón mantis', 'Pez extraño'],
+        answer: '*',
+        success: 'Misterio observado.',
+        hint: 'No hace falta acertar una especie exacta; elegid la que más os sorprenda.',
+      },
+      backupChallenge: {
+        type: 'confirm',
+        prompt: 'Si la zona está llena, confirma tras mirar un acuario joya.',
+        success: 'Misterios del Mar registrados.',
+      },
+      riddles: [],
+    },
+  ],
+};
+
+const insertedRiddleSpecs = {
+  '02B': [
+    ['lago-aves', 'Cormorán del Lago', '🪶', 'Pieza del Mapa — Lago Vivo', [
+      { text: 'En el Lago Vivo, ¿qué animal puedes buscar primero?', answer: '*', options: ['Un ave', 'Una rana', 'Un flamenco'], hint: 'La tabla menciona cormorán, focha, rana y flamencos.' },
+      { text: 'La rana común vive entre...', answer: 'Agua y tierra', options: ['Agua y tierra', 'Hielo y fuego', 'Nubes y rocas'], hint: 'Es un anfibio.' },
+      { text: 'Los flamencos europeos destacan por sus patas...', answer: 'Largas', options: ['Largas', 'Invisibles', 'Con ruedas'], hint: 'Mira su silueta.' },
+    ]],
+    ['lago-flamencos', 'Flamenco Europeo', '🦩', 'Pieza del Mapa — Flamenco Europeo', [
+      { text: '¿Qué color buscas para localizar flamencos?', answer: 'Rosa', options: ['Rosa', 'Verde oscuro', 'Azul'], hint: 'Aunque el tono varía, el rosa es su pista clásica.' },
+      { text: '¿Qué forma tiene su cuello?', answer: 'Largo y curvado', options: ['Largo y curvado', 'Corto y cuadrado', 'Plano'], hint: 'Su cuello dibuja una curva elegante.' },
+      { text: 'En el lago, las aves suelen caminar por...', answer: 'La orilla', options: ['La orilla', 'El techo', 'Un túnel'], hint: 'Mira donde se juntan agua y tierra.' },
+    ]],
+  ],
+  '05B': [
+    ['caballito', 'Caballito de Mar', '♞', 'Pieza del Mapa — Caballito de Mar', [
+      { text: 'Busca un caballito de mar. ¿Su forma recuerda a qué animal terrestre?', answer: 'Caballo', options: ['Caballo', 'Elefante', 'Gato'], hint: 'Su nombre lo dice.' },
+      { text: '¿Qué parte usa para agarrarse?', answer: 'La cola', options: ['La cola', 'Las alas', 'Las patas'], hint: 'Su cola puede sujetarse a plantas o corales.' },
+      { text: '¿Se mueve rápido o con calma?', answer: 'Con calma', options: ['Con calma', 'Rapidísimo', 'Volando'], hint: 'Observa su movimiento lento.' },
+    ]],
+    ['mantis', 'Camarón Mantis', '🦐', 'Pieza del Mapa — Camarón Mantis', [
+      { text: 'El camarón mantis es famoso por sus golpes. ¿Qué parte usa?', answer: 'Sus patas delanteras', options: ['Sus patas delanteras', 'Su pico', 'Sus plumas'], hint: 'Son como pequeños brazos de combate.' },
+      { text: '¿Qué tipo de animal es?', answer: 'Crustáceo', options: ['Crustáceo', 'Ave', 'Mamífero'], hint: 'Como cangrejos y camarones.' },
+      { text: 'En Misterios del Mar, los acuarios son pequeños como...', answer: 'Joyas', options: ['Joyas', 'Montañas', 'Piscinas gigantes'], hint: 'La tabla los llama acuarios joya.' },
+    ]],
+    ['pez-hoja', 'Pez Hoja', '🍃', 'Pieza del Mapa — Pez Hoja', [
+      { text: 'El pez hoja se camufla pareciéndose a...', answer: 'Una hoja', options: ['Una hoja', 'Una rueda', 'Una estrella'], hint: 'Su nombre es literal.' },
+      { text: '¿Para qué sirve camuflarse?', answer: 'Para esconderse', options: ['Para esconderse', 'Para hacer ruido', 'Para secarse'], hint: 'Es una defensa y una estrategia de caza.' },
+      { text: 'Si un animal parece objeto, debes mirar...', answer: 'Despacio', options: ['Despacio', 'Sin mirar', 'Corriendo'], hint: 'Los misterios requieren observación lenta.' },
+    ]],
+  ],
+};
+
+function applyMultipleRiddles(station) {
+  const baseRiddles = station.riddles || (station.riddle ? [station.riddle] : []);
+  const specs = [...(extraRiddleSpecs[station.id] || []), ...(insertedRiddleSpecs[station.id] || [])];
+  const extraRiddles = specs.map(([suffix, guardian, icon, objectName, facts]) =>
+    makeBonusRiddle(station, suffix, guardian, icon, objectName, facts)
+  );
+  const riddles = [...baseRiddles, ...extraRiddles];
+  if (!riddles.length) return station;
+  return { ...station, riddle: riddles[0], riddles };
+}
+
+function withInsertedStations(stations) {
+  return stations.flatMap((station) => [
+    applyMultipleRiddles(station),
+    ...(insertedStations[station.id] || []).map(applyMultipleRiddles),
+  ]);
+}
+
+function collectRequiredObjects(stations) {
+  return stations.flatMap((station) => (station.riddles || (station.riddle ? [station.riddle] : []))
+    .map((riddle) => riddle.keyObject?.id)
+    .filter(Boolean));
+}
+
+export const oceanograficStations = withInsertedStations(oceanograficBaseStations).map((station) => {
+  if (!station.isTreasure) return station;
+  const requiredObjects = collectRequiredObjects(withInsertedStations(oceanograficBaseStations).filter((s) => !s.isTreasure));
+  return {
+    ...station,
+    treasure: {
+      ...station.treasure,
+      requiredObjects,
+    },
+  };
+});

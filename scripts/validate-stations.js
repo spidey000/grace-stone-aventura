@@ -31,6 +31,10 @@ function check(label, condition, isError = true) {
   }
 }
 
+function getRiddles(station) {
+  return station.riddles || (station.riddle ? [station.riddle] : []);
+}
+
 for (const [itId, it] of Object.entries(itineraries)) {
   console.log(`\n========================================`);
   console.log(` Itinerario: ${it.title} (${itId})`);
@@ -84,30 +88,34 @@ for (const [itId, it] of Object.entries(itineraries)) {
       console.warn(`  ADVERTENCIA: ${label}: falta backupChallenge`);
     }
 
-    if (st.riddle) {
-      check(`${label}: riddle.type`, VALID_RIDDLE_TYPES.includes(st.riddle.type));
-      check(`${label}: riddle.steps (array de 3)`, Array.isArray(st.riddle.steps) && st.riddle.steps.length === 3);
-      check(`${label}: riddle.finalSuccess`, !!st.riddle.finalSuccess);
-      check(`${label}: riddle.keyObject`, !!st.riddle.keyObject);
-      check(`${label}: riddle.guardian.name`, !!st.riddle.guardian?.name);
-      check(`${label}: riddle.guardian.intro`, !!st.riddle.guardian?.intro);
+    const riddles = getRiddles(st);
+    if (riddles.length) {
+      riddles.forEach((riddle, riddleIndex) => {
+        const riddleLabel = `${label}: riddle[${riddleIndex}]`;
+        check(`${riddleLabel}.type`, VALID_RIDDLE_TYPES.includes(riddle.type));
+        check(`${riddleLabel}.steps (array de 3)`, Array.isArray(riddle.steps) && riddle.steps.length === 3);
+        check(`${riddleLabel}.finalSuccess`, !!riddle.finalSuccess);
+        check(`${riddleLabel}.keyObject`, !!riddle.keyObject);
+        check(`${riddleLabel}.guardian.name`, !!riddle.guardian?.name);
+        check(`${riddleLabel}.guardian.intro`, !!riddle.guardian?.intro);
 
-      if (st.riddle.keyObject) {
-        check(`${label}: riddle.keyObject.id`, !!st.riddle.keyObject.id);
-        check(`${label}: riddle.keyObject.name`, !!st.riddle.keyObject.name);
-        check(`${label}: riddle.keyObject.icon`, !!st.riddle.keyObject.icon);
-        check(`${label}: riddle.keyObject.description`, !!st.riddle.keyObject.description);
-      }
+        if (riddle.keyObject) {
+          check(`${riddleLabel}.keyObject.id`, !!riddle.keyObject.id);
+          check(`${riddleLabel}.keyObject.name`, !!riddle.keyObject.name);
+          check(`${riddleLabel}.keyObject.icon`, !!riddle.keyObject.icon);
+          check(`${riddleLabel}.keyObject.description`, !!riddle.keyObject.description);
+        }
 
-      if (Array.isArray(st.riddle.steps)) {
-        st.riddle.steps.forEach((step, i) => {
-          const stepLabel = `${label}: riddle.step[${i}]`;
+        if (Array.isArray(riddle.steps)) {
+          riddle.steps.forEach((step, i) => {
+            const stepLabel = `${riddleLabel}.step[${i}]`;
           check(`${stepLabel}.text`, !!step.text);
           check(`${stepLabel}.answer`, step.answer !== undefined && step.answer !== '');
           check(`${stepLabel}.options (array >= 2)`, Array.isArray(step.options) && step.options.length >= 2);
           check(`${stepLabel}.hint`, !!step.hint);
-        });
-      }
+          });
+        }
+      });
     }
 
     if (st.isTreasure) {

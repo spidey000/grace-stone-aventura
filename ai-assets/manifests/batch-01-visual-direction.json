@@ -1,0 +1,89 @@
+{
+  "batch_id": "batch-01-visual-direction",
+  "purpose": "Fix the base visual direction before producing the full asset set.",
+  "prompt_file": "ai-assets/prompts/batch-01-visual-direction.md",
+  "global_negative_prompt": "no readable text, no random letters, no watermark, no logo, no brand marks, no gore, no realistic weapons, no horror, no photorealistic child, no cluttered composition, no low contrast, no blurry details, no generic flat vector, no neon sci-fi, no modern city, no beige-only palette",
+  "assets": [
+    {
+      "asset_id": "backgrounds-jungle-night",
+      "asset_family": "backgrounds",
+      "state": "visual-direction",
+      "prompt_section": "backgrounds/jungle-night",
+      "prompt_version": "v01",
+      "target_exports": [
+        "ai-assets/exports/webp/backgrounds-jungle-night-desktop-1920x1080.webp",
+        "ai-assets/exports/webp/backgrounds-jungle-night-mobile-1080x1920.webp"
+      ],
+      "accepted": false,
+      "review_notes": []
+    },
+    {
+      "asset_id": "backgrounds-ancient-ruins",
+      "asset_family": "backgrounds",
+      "state": "visual-direction",
+      "prompt_section": "backgrounds/ancient-ruins",
+      "prompt_version": "v01",
+      "target_exports": [
+        "ai-assets/exports/webp/backgrounds-ancient-ruins-desktop-1920x1080.webp",
+        "ai-assets/exports/webp/backgrounds-ancient-ruins-mobile-1080x1920.webp"
+      ],
+      "accepted": false,
+      "review_notes": []
+    },
+    {
+      "asset_id": "patterns-carved-symbols",
+      "asset_family": "patterns",
+      "state": "visual-direction",
+      "prompt_section": "patterns/carved-symbols",
+      "prompt_version": "v01",
+      "target_exports": [
+        "ai-assets/exports/webp/patterns-carved-symbols-1024.webp"
+      ],
+      "accepted": false,
+      "review_notes": []
+    },
+    {
+      "asset_id": "guardian-banner-default",
+      "asset_family": "guardian-banner",
+      "state": "default",
+      "prompt_section": "guardian-banner/default",
+      "prompt_version": "v01",
+      "target_exports": [
+        "ai-assets/exports/webp/guardian-banner-default-1440x360.webp"
+      ],
+      "accepted": false,
+      "review_notes": []
+    },
+    {
+      "asset_id": "key-object-compass",
+      "asset_family": "key-object-icons",
+      "state": "default",
+      "prompt_section": "key-object-icons/compass",
+      "prompt_version": "v01",
+      "target_exports": [
+        "ai-assets/exports/png/key-object-compass-1024.png",
+        "ai-assets/exports/png/key-object-compass-512.png",
+        "ai-assets/exports/png/key-object-compass-256.png",
+        "ai-assets/exports/png/key-object-compass-96.png"
+      ],
+      "accepted": false,
+      "review_notes": []
+    },
+    {
+      "asset_id": "crystal-gems-full",
+      "asset_family": "crystal-gems",
+      "state": "full",
+      "prompt_section": "crystal-gems/full",
+      "prompt_version": "v01",
+      "target_exports": [
+        "ai-assets/exports/png/crystal-gems-full-1024.png",
+        "ai-assets/exports/png/crystal-gems-full-512.png",
+        "ai-assets/exports/png/crystal-gems-full-256.png",
+        "ai-assets/exports/png/crystal-gems-full-96.png"
+      ],
+      "accepted": false,
+      "review_notes": []
+    }
+  ]
+}
+
