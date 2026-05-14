@@ -1026,7 +1026,7 @@ function makeBonusRiddle(station, suffix, guardianName, icon, objectName, facts)
   const objectId = `mapa-${station.shortName.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-')}-${suffix}`;
 
   return {
-    type: 'steps',
+    type: 'chain',
     guardian: {
       name: guardianName,
       intro: `${guardianName} guarda otra pista de ${station.area}. Para conseguirla, observa la zona con calma y completa las tres señales.`,
@@ -1255,13 +1255,141 @@ const insertedRiddleSpecs = {
   ],
 };
 
+const supplementalRiddleSpecs = {
+  '00': [
+    ['acceso-medusas', 'Medusa de Cristal', '🪼', 'Pieza del Mapa — Acceso Medusas', [
+      { text: 'En la entrada, busca animales que parecen flotar sin huesos. ¿Qué son?', answer: 'Medusas', options: ['Medusas', 'Focas', 'Pingüinos'], hint: 'Tienen forma de campana y tentáculos.' },
+      { text: '¿Cómo se mueven las medusas?', answer: 'Flotando', options: ['Flotando', 'Corriendo', 'Saltando por rocas'], hint: 'Parecen bailar dentro del agua.' },
+      { text: 'Si ves la playa interior, ¿qué mundo anuncia?', answer: 'El océano', options: ['El océano', 'La montaña', 'El espacio'], hint: 'Arena, agua y vida marina son la puerta de la misión.' },
+    ]],
+    ['acceso-tortuga', 'Tortuga Marina de Entrada', '🐢', 'Pieza del Mapa — Acceso Tortugas', [
+      { text: 'Busca una tortuga marina. ¿Qué usa para nadar?', answer: 'Aletas', options: ['Aletas', 'Alas', 'Patas con ruedas'], hint: 'Sus patas parecen remos.' },
+      { text: '¿Qué protege la espalda de una tortuga?', answer: 'Caparazón', options: ['Caparazón', 'Plumas', 'Bigotes'], hint: 'Es una armadura natural.' },
+      { text: 'Cuando una tortuga sube a respirar, necesita...', answer: 'Aire', options: ['Aire', 'Arena mágica', 'Fuego'], hint: 'Las tortugas marinas respiran aire.' },
+    ]],
+  ],
+  '02B': [
+    ['lago-rana', 'Rana Común', '🐸', 'Pieza del Mapa — Rana del Lago', [
+      { text: 'La rana común vive entre dos mundos. ¿Cuáles?', answer: 'Agua y tierra', options: ['Agua y tierra', 'Hielo y desierto', 'Aire y fuego'], hint: 'Es un anfibio.' },
+      { text: '¿Qué puede hacer una rana para moverse rápido?', answer: 'Saltar', options: ['Saltar', 'Volar como avión', 'Rodar'], hint: 'Mira sus patas traseras.' },
+      { text: 'En un lago vivo, una rana indica que hay...', answer: 'Vida', options: ['Vida', 'Nieve', 'Ruido de motor'], hint: 'Los anfibios son señales de ecosistema.' },
+    ]],
+  ],
+  '03': [
+    ['tortuga-mediterranea', 'Tortuga Mediterránea', '🐢', 'Pieza del Mapa — Tortuga Mediterránea', [
+      { text: 'La tortuga mediterránea vive en tierra. ¿Qué la protege?', answer: 'Caparazón', options: ['Caparazón', 'Aletas gigantes', 'Plumas'], hint: 'Mira su espalda dura.' },
+      { text: '¿Conviene tocarla o observarla con respeto?', answer: 'Observarla con respeto', options: ['Observarla con respeto', 'Tocarla', 'Asustarla'], hint: 'Los exploradores cuidan a los animales.' },
+      { text: 'Si una especie está amenazada, la misión es...', answer: 'Protegerla', options: ['Protegerla', 'Molestarla', 'Olvidarla'], hint: 'Aquí la palabra clave es conservación.' },
+    ]],
+  ],
+  '04': [
+    ['morena-templada', 'Morena de la Roca', '〰️', 'Pieza del Mapa — Morena', [
+      { text: 'Busca un animal alargado que se esconde entre rocas. ¿Qué forma tiene?', answer: 'Alargada', options: ['Alargada', 'Redonda', 'Cuadrada'], hint: 'Parece una serpiente marina.' },
+      { text: '¿Dónde se refugian muchos animales de mares templados?', answer: 'Entre rocas', options: ['Entre rocas', 'En árboles secos', 'En el cielo'], hint: 'Mira grietas y huecos.' },
+      { text: 'Para encontrar animales escondidos hay que mirar...', answer: 'Despacio', options: ['Despacio', 'Sin mirar', 'Corriendo'], hint: 'El camuflaje exige paciencia.' },
+    ]],
+  ],
+  '06': [
+    ['islas-aldabra', 'Tortuga de Aldabra', '🐢', 'Pieza del Mapa — Aldabra', [
+      { text: 'En las islas también hay tortugas gigantes. ¿Cómo se mueven?', answer: 'Despacio', options: ['Despacio', 'Rapidísimo', 'Volando'], hint: 'Son fuertes y tranquilas.' },
+      { text: '¿Qué isla aparece en su nombre?', answer: 'Aldabra', options: ['Aldabra', 'Islandia', 'Marte'], hint: 'La tabla menciona tortugas de Aldabra.' },
+      { text: 'Una tortuga gigante enseña al explorador...', answer: 'Paciencia', options: ['Paciencia', 'Prisa', 'Ruido'], hint: 'Su poder es la calma.' },
+    ]],
+    ['ganso-hawai', 'Ganso de Hawái', '🪶', 'Pieza del Mapa — Ganso de Hawái', [
+      { text: 'El ganso de Hawái es un...', answer: 'Ave', options: ['Ave', 'Pez', 'Reptil'], hint: 'Tiene plumas y pico.' },
+      { text: '¿Qué unidad temática ayuda a entender las islas?', answer: 'Maquetas', options: ['Maquetas', 'Cohetes', 'Submarinos de juguete'], hint: 'La tabla habla de maquetas realistas.' },
+      { text: 'Las islas son mundos rodeados de...', answer: 'Agua', options: ['Agua', 'Fuego', 'Cristal'], hint: 'Piensa en tierra en medio del océano.' },
+    ]],
+  ],
+  '07': [
+    ['aldabra-capazon', 'Caparazón Centenario', '🛡️', 'Pieza del Mapa — Caparazón Gigante', [
+      { text: 'El caparazón de una tortuga gigante parece...', answer: 'Una armadura', options: ['Una armadura', 'Una nube', 'Un ala'], hint: 'Es duro y la protege.' },
+      { text: '¿Una tortuga gigante vive pocos días o muchísimos años?', answer: 'Muchísimos años', options: ['Muchísimos años', 'Pocos días', 'Una hora'], hint: 'Algunas superan un siglo.' },
+      { text: 'Para observarla bien conviene estar...', answer: 'Tranquilo', options: ['Tranquilo', 'Gritando', 'Saltando encima'], hint: 'La calma es parte de la misión.' },
+    ]],
+    ['aldabra-islas', 'Guardiana de las Seychelles', '🏝️', 'Pieza del Mapa — Islas Seychelles', [
+      { text: 'Las tortugas de Aldabra vienen de un mundo de...', answer: 'Islas', options: ['Islas', 'Volcanes de hielo', 'Ciudades'], hint: 'Aldabra está en las Seychelles.' },
+      { text: '¿Qué necesitan las islas para que vivan animales únicos?', answer: 'Cuidado', options: ['Cuidado', 'Basura', 'Ruido'], hint: 'Los ecosistemas insulares son delicados.' },
+      { text: 'Si un animal vive muchos años, guarda muchas...', answer: 'Historias', options: ['Historias', 'Ruedas', 'Linternas'], hint: 'Bravestone lo ve como memoria viva.' },
+    ]],
+  ],
+  '08': [
+    ['backstage-arca', 'Puerta de Backstage', '🔑', 'Pieza del Mapa — Experiencias de Conservación', [
+      { text: 'El Backstage Tour dura mucho más que una parada normal. ¿Cuánto indica la tabla?', answer: '75 min', options: ['75 min', '5 min', 'Una semana'], hint: 'Es una visita larga entre bastidores.' },
+      { text: 'ARCA del Mar habla de rescate y cuidado. ¿Qué palabra encaja?', answer: 'Conservación', options: ['Conservación', 'Carrera', 'Fiesta'], hint: 'ARCA está ligada al cuidado de animales.' },
+      { text: 'Para estas experiencias se pide calzado...', answer: 'Cerrado', options: ['Cerrado', 'De playa', 'Invisible'], hint: 'La tabla lo marca como restricción.' },
+    ]],
+    ['manos-lago-guiado', 'Guía del Lago Vivo', '🧭', 'Pieza del Mapa — Experiencias Guiadas', [
+      { text: 'El mar en tus manos incluye un acuario de...', answer: 'Contacto', options: ['Contacto', 'Hielo', 'Arena seca'], hint: 'Es una experiencia para descubrir tocando con cuidado.' },
+      { text: '¿Qué experiencia guiada está adaptada a movilidad reducida y carritos?', answer: 'Lago Vivo guiado', options: ['Lago Vivo guiado', 'Backstage Tour', 'Realidad Mixta'], hint: 'La tabla lo indica como accesible.' },
+      { text: 'Si una experiencia tiene edad mínima, los exploradores deben...', answer: 'Comprobarla antes', options: ['Comprobarla antes', 'Llegar tarde', 'Entrar sin mirar'], hint: 'Algunas empiezan en 4, 6 u 8 años.' },
+    ]],
+  ],
+  '09': [
+    ['delfin-mular', 'Delfín Mular Científico', '🐬', 'Pieza del Mapa — Delfín Mular', [
+      { text: 'El delfín mular es un...', answer: 'Mamífero', options: ['Mamífero', 'Pez', 'Ave'], hint: 'Respira aire como nosotros.' },
+      { text: 'En el Ágora del Mar se observan comportamientos...', answer: 'Naturales', options: ['Naturales', 'Robóticos', 'Inventados'], hint: 'La tabla destaca la observación natural.' },
+      { text: 'Un espacio educativo sirve para...', answer: 'Aprender', options: ['Aprender', 'Correr sin mirar', 'Dormir de pie'], hint: 'Bravestone quiere ciencia y respeto.' },
+    ]],
+  ],
+  '10': [
+    ['flamenco-patas', 'Pata Larga Rosa', '🦩', 'Pieza del Mapa — Patas de Flamenco', [
+      { text: '¿Qué parte del flamenco es muy larga?', answer: 'Las patas', options: ['Las patas', 'Las orejas', 'La cola de pez'], hint: 'Mira cómo camina en el agua.' },
+      { text: '¿Qué forma tiene su cuello?', answer: 'Curvada', options: ['Curvada', 'Cuadrada', 'En zigzag de metal'], hint: 'Dibuja una S suave.' },
+      { text: 'Los flamencos suelen vivir cerca de...', answer: 'Humedales', options: ['Humedales', 'Cuevas secas', 'Montañas nevadas'], hint: 'Buscan agua poco profunda.' },
+    ]],
+    ['flamenco-color', 'Pluma Rosa', '🪶', 'Pieza del Mapa — Color Flamenco', [
+      { text: 'El color rosa del flamenco viene de lo que...', answer: 'Come', options: ['Come', 'Sueña', 'Escucha'], hint: 'Alimentos con pigmentos tiñen sus plumas.' },
+      { text: '¿Qué alimentos ayudan a ese color?', answer: 'Gambitas y algas', options: ['Gambitas y algas', 'Chocolate', 'Pan seco'], hint: 'La historia lo cuenta.' },
+      { text: 'Si ves plumas rosas, has encontrado una pista de...', answer: 'Flamenco', options: ['Flamenco', 'Beluga', 'Tiburón'], hint: 'Es el guardián rosado.' },
+    ]],
+  ],
+  '11': [
+    ['pinguino-hielo', 'Hielo Antártico', '🧊', 'Pieza del Mapa — Hielo Antártico', [
+      { text: 'El pingüino Juanito y el Rey viven en una zona...', answer: 'Fría', options: ['Fría', 'Tropical', 'Desértica'], hint: 'Estamos en el Antártico.' },
+      { text: '¿Qué les ayuda a moverse bajo el agua?', answer: 'Aletas', options: ['Aletas', 'Manos', 'Alas de avión'], hint: 'Sus alas funcionan como aletas.' },
+      { text: 'Cuando nadan rápido parecen...', answer: 'Torpedos', options: ['Torpedos', 'Caracoles', 'Globos'], hint: 'Bravestone los describe como veloces bajo el agua.' },
+    ]],
+  ],
+  '12': [
+    ['kylu-cria', 'Kylu, Cría de Beluga', '🐋', 'Pieza del Mapa — Kylu', [
+      { text: 'Kylu es una cría de...', answer: 'Beluga', options: ['Beluga', 'Tiburón', 'Pingüino'], hint: 'La tabla menciona a Kylu en el Ártico.' },
+      { text: 'Las belugas viven en aguas...', answer: 'Frías', options: ['Frías', 'Hirviendo', 'Sin agua'], hint: 'El hábitat es ártico.' },
+      { text: 'El iglú ártico se puede explorar en...', answer: 'Dos niveles', options: ['Dos niveles', 'Una sola roca', 'Diez túneles secretos'], hint: 'La tabla menciona dos niveles.' },
+    ]],
+  ],
+  '13': [
+    ['cocodrilo-nido', 'Nido del Cocodrilario', '🥚', 'Pieza del Mapa — Nido Antiguo', [
+      { text: 'El cocodrilario incluye zona de reproducción y...', answer: 'Anidamiento', options: ['Anidamiento', 'Patinaje', 'Vuelo'], hint: 'Los huevos necesitan nido.' },
+      { text: '¿De dónde nacen los cocodrilos?', answer: 'Huevos', options: ['Huevos', 'Conchas de caracol', 'Flores'], hint: 'Son reptiles.' },
+      { text: 'Para proteger un nido hay que mantener...', answer: 'Distancia', options: ['Distancia', 'Ruido', 'Prisa'], hint: 'Observar sin molestar.' },
+    ]],
+    ['cocodrilo-hocico', 'Hocico Fino Africano', '🐊', 'Pieza del Mapa — Hocico Fino', [
+      { text: 'Este cocodrilo se llama hociquifino por su...', answer: 'Hocico', options: ['Hocico', 'Ala', 'Pluma'], hint: 'El nombre da la pista.' },
+      { text: '¿Su piel parece blanda o cubierta de placas?', answer: 'Cubierta de placas', options: ['Cubierta de placas', 'Blanda como nube', 'Con plumas'], hint: 'Son escamas duras.' },
+      { text: 'Un cocodrilo espera con mucha...', answer: 'Paciencia', options: ['Paciencia', 'Música', 'Prisa'], hint: 'Es el maestro de la espera.' },
+    ]],
+  ],
+  '14': [
+    ['tortuga-verde', 'Tortuga Verde de Océanos', '🐢', 'Pieza del Mapa — Tortuga Verde', [
+      { text: 'En Océanos también puede aparecer una tortuga...', answer: 'Verde', options: ['Verde', 'Rey', 'De fuego'], hint: 'La tabla menciona tortuga verde.' },
+      { text: 'Comparte el gran tanque con tiburones y...', answer: 'Rayas', options: ['Rayas', 'Flamencos', 'Ranas'], hint: 'Pez sierra y pez guitarra son parientes de rayas.' },
+      { text: 'El tanque enorme de Océanos tiene miles de metros cúbicos. ¿Es grande o pequeño?', answer: 'Grande', options: ['Grande', 'Pequeño', 'Seco'], hint: 'La tabla indica 6.000 m³.' },
+    ]],
+  ],
+};
+
 function applyMultipleRiddles(station) {
   const baseRiddles = station.riddles || (station.riddle ? [station.riddle] : []);
-  const specs = [...(extraRiddleSpecs[station.id] || []), ...(insertedRiddleSpecs[station.id] || [])];
+  const specs = [
+    ...(extraRiddleSpecs[station.id] || []),
+    ...(insertedRiddleSpecs[station.id] || []),
+    ...(supplementalRiddleSpecs[station.id] || []),
+  ];
   const extraRiddles = specs.map(([suffix, guardian, icon, objectName, facts]) =>
     makeBonusRiddle(station, suffix, guardian, icon, objectName, facts)
   );
-  const riddles = [...baseRiddles, ...extraRiddles];
+  const riddles = [...baseRiddles, ...extraRiddles].map((riddle) => ({ ...riddle, type: 'chain' }));
   if (!riddles.length) return station;
   return { ...station, riddle: riddles[0], riddles };
 }
