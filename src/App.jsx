@@ -256,39 +256,6 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
     setFeedback(successMsg);
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    const challenge = currentStation.challenge;
-
-    if (challenge.type === 'confirm') {
-      completeStation();
-      return;
-    }
-
-    if (challenge.type === 'choice') {
-      if (challenge.answer === '*') {
-        completeStation();
-        return;
-      }
-      if (answer === challenge.answer) {
-        completeStation();
-      } else {
-        setFeedback('Bravestone dice: prueba otra opción o mira bien la zona.');
-      }
-      return;
-    }
-
-    if (challenge.type === 'text') {
-      const normalized = answer.trim().toLowerCase();
-      const accepted = (challenge.acceptedAnswers || []).map((a) => a.trim().toLowerCase());
-      if (accepted.includes(normalized) || challenge.answer === '*') {
-        completeStation();
-      } else {
-        setFeedback('Bravestone dice: prueba con otra palabra o mira los carteles.');
-      }
-    }
-  }
-
   function skipStation() {
     const backup = currentStation.backupChallenge;
     completeStation(backup?.success || 'Estación saltada. La aventura continúa.');
@@ -303,8 +270,17 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
     return riddleFails[key] || 0;
   }
 
-  function handleRiddleAnswer(event) {
-    event.preventDefault();
+  function handleChoiceAnswer(option) {
+    const challenge = currentStation.challenge;
+    setAnswer(option);
+    if (challenge.answer === '*' || option === challenge.answer) {
+      completeStation();
+    } else {
+      setFeedback('Bravestone dice: prueba otra opción o mira bien la zona.');
+    }
+  }
+
+  function handleRiddleChoiceAnswer(option) {
     const riddle = currentStation.riddle;
     if (!riddle) return;
 
@@ -312,11 +288,8 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
     const step = riddle.steps[stepIdx];
     if (!step) return;
 
-    if (step.answer === '*') {
-      advanceRiddleStep(riddle, stepIdx);
-      return;
-    }
-    if (answer === step.answer) {
+    setAnswer(option);
+    if (step.answer === '*' || option === step.answer) {
       advanceRiddleStep(riddle, stepIdx);
     } else {
       const key = `${currentStation.id}_${stepIdx}`;
@@ -454,7 +427,7 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                                 <button
                                   className={answer === opt ? 'selected' : ''}
                                   key={opt}
-                                  onClick={() => setAnswer(opt)}
+                                  onClick={() => handleRiddleChoiceAnswer(opt)}
                                   type="button"
                                 >
                                   {opt}
@@ -476,10 +449,6 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                     );
                   })}
                 </div>
-
-                <button className="primary-action" type="button" onClick={handleRiddleAnswer}>
-                  📨 Enviar a Bravestone
-                </button>
 
                 <button type="button" className="ghost-button skip" onClick={skipStation}>
                   ⏭ Saltar
@@ -517,12 +486,12 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                 </div>
 
                 {hasAllTreasureObjects() ? (
-                  <form className="challenge" onSubmit={handleSubmit}>
+                  <div className="challenge">
                     <label>{currentStation.challenge.prompt}</label>
-                    <button className="primary-action" type="submit">
-                      ✅ {currentStation.challenge.type === 'confirm' ? 'Revelar tesoro' : 'Confirmar'}
+                    <button className="primary-action" type="button" onClick={completeStation}>
+                      ✅ Revelar tesoro
                     </button>
-                  </form>
+                  </div>
                 ) : (
                   <p className="missing-objects-note">
                     Sigue explorando para reunir todos los objetos.
@@ -532,16 +501,16 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                 {feedback && <p className="feedback">{feedback}</p>}
               </>
             ) : (
-              <form className="challenge" onSubmit={handleSubmit}>
+              <div className="challenge">
                 <label>{currentStation.challenge.prompt}</label>
 
-                {currentStation.challenge.type === 'choice' && (
+                {(currentStation.challenge.type === 'choice' || currentStation.challenge.type === 'familyVote') && (
                   <div className="choice-grid">
                     {currentStation.challenge.options.map((option) => (
                       <button
                         className={answer === option ? 'selected' : ''}
                         key={option}
-                        onClick={() => setAnswer(option)}
+                        onClick={() => handleChoiceAnswer(option)}
                         type="button"
                       >
                         {option}
@@ -550,13 +519,13 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                   </div>
                 )}
 
-                <div className="challenge-actions">
-                  <button className="primary-action" type="submit">
-                    {currentStation.challenge.type === 'confirm'
-                      ? '✅ Confirmar'
-                      : '📨 Enviar a Bravestone'}
+                {currentStation.challenge.type === 'confirm' && (
+                  <button className="primary-action" type="button" onClick={completeStation}>
+                    ✅ Confirmar
                   </button>
+                )}
 
+                <div className="challenge-actions">
                   <button
                     type="button"
                     className="ghost-button"
@@ -569,7 +538,7 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                     ⏭ Saltar
                   </button>
                 </div>
-              </form>
+              </div>
             )}
 
             {showHint && currentStation.challenge.hint && !currentStation.riddle && (
