@@ -1,0 +1,20 @@
+{
+  "pack_id": "oceanografic-ui-pack-v1",
+  "theme": "Oceanogràfic Jumanji",
+  "assets": [
+    {
+      "asset_id": "background-oceanografic-shell",
+      "family": "backgrounds",
+      "prompt_file": "ai-assets/prompts/backgrounds.md",
+      "prompt_section": "backgrounds/oceanografic-shell",
+      "ui_use": "lobby, mission shell",
+      "placement": "full-bleed background",
+      "sizes": ["1920x1080", "1080x1920"],
+      "formats": ["webp", "png"],
+      "source_path": "ai-assets/sources/backgrounds/oceanografic-shell",
+      "export_paths": ["ai-assets/exports/backgrounds/oceanografic-shell-desktop-1920x1080.webp"],
+      "status": "draft"
+    }
+  ]
+}
+

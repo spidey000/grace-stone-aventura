@@ -36,12 +36,14 @@ function getItineraryKeyObjects(stations) {
 function useNarration(userName) {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [activeSource, setActiveSource] = useState(null);
 
   const speak = useCallback(
-    async (story) => {
-      const resolved = renderStory(story, userName);
+    async (text, sourceId = 'story') => {
+      const resolved = renderStory(text, userName);
       setIsLoading(true);
       setIsSpeaking(true);
+      setActiveSource(sourceId);
 
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(resolved);
@@ -51,25 +53,32 @@ function useNarration(userName) {
       utterance.onend = () => {
         setIsSpeaking(false);
         setIsLoading(false);
+        setActiveSource(null);
       };
       utterance.onerror = () => {
         setIsSpeaking(false);
         setIsLoading(false);
+        setActiveSource(null);
       };
       window.speechSynthesis.speak(utterance);
     },
     [userName]
   );
 
+  const speakStory = useCallback((text) => speak(text, 'story'), [speak]);
+  const speakGuardian = useCallback((text) => speak(text, 'guardian'), [speak]);
+  const speakTreasure = useCallback((text) => speak(text, 'treasure'), [speak]);
+
   function stop() {
     window.speechSynthesis.cancel();
     setIsSpeaking(false);
     setIsLoading(false);
+    setActiveSource(null);
   }
 
   useEffect(() => () => window.speechSynthesis.cancel(), []);
 
-  return { speakStory: speak, stopSpeaking: stop, isSpeaking, isLoading };
+  return { speakStory, speakGuardian, speakTreasure, stopSpeaking: stop, isSpeaking, isLoading, activeSource };
 }
 
 function Lobby({ onStart }) {
@@ -227,7 +236,7 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
   const [showAdult, setShowAdult] = useState(false);
   const [showHint, setShowHint] = useState(false);
 
-  const { speakStory, stopSpeaking, isSpeaking, isLoading } = useNarration(userName);
+  const { speakStory, speakGuardian, speakTreasure, stopSpeaking, isSpeaking, isLoading, activeSource } = useNarration(userName);
 
   const currentStation = stations[currentIndex];
   const completedSet = useMemo(() => new Set(completed), [completed]);
@@ -425,10 +434,10 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
               <button
                 className="icon-button"
                 type="button"
-                onClick={() => speakStory(currentStation.story)}
+                onClick={() => isSpeaking && activeSource === 'story' ? stopSpeaking() : speakStory(currentStation.story)}
                 disabled={isLoading}
               >
-                {isSpeaking ? '⏸ Pausar voz' : '🔊 Escuchar a Bravestone'}
+                {isSpeaking && activeSource === 'story' ? '⏸ Pausar voz' : '🔊 Escuchar a Bravestone'}
               </button>
             </div>
 
@@ -437,6 +446,15 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                 <div className="guardian-banner">
                   <span className="guardian-icon">🧩</span>
                   <p className="guardian-intro">{currentRiddle.guardian.intro}</p>
+                  <button
+                    className="guardian-audio-btn"
+                    type="button"
+                    onClick={() => isSpeaking && activeSource === 'guardian' ? stopSpeaking() : speakGuardian(currentRiddle.guardian.intro)}
+                    disabled={isLoading && activeSource !== 'guardian'}
+                    aria-label="Escuchar guardián"
+                  >
+                    {isSpeaking && activeSource === 'guardian' ? '⏸' : '🔊'}
+                  </button>
                 </div>
 
                 <div className="riddle-steps">
@@ -496,6 +514,15 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                     {currentStation.treasure.type === 'map' ? '🗺️' : '📽️'}
                   </span>
                   <h2>{currentStation.treasure.title}</h2>
+                  <button
+                    className="guardian-audio-btn"
+                    type="button"
+                    onClick={() => isSpeaking && activeSource === 'treasure' ? stopSpeaking() : speakTreasure(currentStation.treasure.title)}
+                    disabled={isLoading && activeSource !== 'treasure'}
+                    aria-label="Escuchar título del tesoro"
+                  >
+                    {isSpeaking && activeSource === 'treasure' ? '⏸' : '🔊'}
+                  </button>
                 </div>
 
                 <div className="objects-collection">

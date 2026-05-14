@@ -665,11 +665,40 @@ h2 {
 }
 
 .guardian-intro {
+  flex: 1;
   margin: 0;
   color: #fff0bf;
   font-size: 0.96rem;
   font-style: italic;
   line-height: 1.5;
+}
+
+.guardian-audio-btn {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 240, 191, 0.3);
+  background: transparent;
+  color: #fff0bf;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  margin-top: 2px;
+  padding: 0;
+  line-height: 1;
+}
+
+.guardian-audio-btn:hover {
+  background: rgba(255, 240, 191, 0.12);
+  border-color: rgba(255, 240, 191, 0.6);
+}
+
+.guardian-audio-btn:active {
+  transform: scale(0.92);
 }
 
 .treasure-banner {
