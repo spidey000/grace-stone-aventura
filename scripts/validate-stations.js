@@ -1,12 +1,3 @@
-/**
- * Script de validación de datos de estaciones.
- *
- * Uso: node scripts/validate-stations.js
- *
- * Comprueba que cada estación en src/data/stations.js
- * tiene todos los campos obligatorios.
- */
-
 import { itineraries } from '../src/data/stations.js';
 
 let errors = 0;
@@ -29,7 +20,8 @@ const REQUIRED_STATION_FIELDS = [
 ];
 
 const VALID_MODES = ['short', 'normal', 'complete'];
-const VALID_CHALLENGE_TYPES = ['confirm', 'choice', 'text'];
+const VALID_CHALLENGE_TYPES = ['confirm', 'choice', 'text', 'familyVote', 'observe'];
+const VALID_RIDDLE_TYPES = ['chain', 'steps'];
 
 function check(label, condition, isError = true) {
   if (!condition) {
@@ -90,6 +82,39 @@ for (const [itId, it] of Object.entries(itineraries)) {
     } else {
       warnings++;
       console.warn(`  ADVERTENCIA: ${label}: falta backupChallenge`);
+    }
+
+    if (st.riddle) {
+      check(`${label}: riddle.type`, VALID_RIDDLE_TYPES.includes(st.riddle.type));
+      check(`${label}: riddle.steps (array de 3)`, Array.isArray(st.riddle.steps) && st.riddle.steps.length === 3);
+      check(`${label}: riddle.finalSuccess`, !!st.riddle.finalSuccess);
+      check(`${label}: riddle.keyObject`, !!st.riddle.keyObject);
+      check(`${label}: riddle.guardian.name`, !!st.riddle.guardian?.name);
+      check(`${label}: riddle.guardian.intro`, !!st.riddle.guardian?.intro);
+
+      if (st.riddle.keyObject) {
+        check(`${label}: riddle.keyObject.id`, !!st.riddle.keyObject.id);
+        check(`${label}: riddle.keyObject.name`, !!st.riddle.keyObject.name);
+        check(`${label}: riddle.keyObject.icon`, !!st.riddle.keyObject.icon);
+        check(`${label}: riddle.keyObject.description`, !!st.riddle.keyObject.description);
+      }
+
+      if (Array.isArray(st.riddle.steps)) {
+        st.riddle.steps.forEach((step, i) => {
+          const stepLabel = `${label}: riddle.step[${i}]`;
+          check(`${stepLabel}.text`, !!step.text);
+          check(`${stepLabel}.answer`, step.answer !== undefined && step.answer !== '');
+          check(`${stepLabel}.options (array >= 2)`, Array.isArray(step.options) && step.options.length >= 2);
+          check(`${stepLabel}.hint`, !!step.hint);
+        });
+      }
+    }
+
+    if (st.isTreasure) {
+      check(`${label}: isTreasure tiene requiredObjects`, Array.isArray(st.treasure?.requiredObjects) && st.treasure.requiredObjects.length > 0);
+      check(`${label}: treasure.type`, ['map', 'lantern'].includes(st.treasure?.type));
+      check(`${label}: treasure.title`, !!st.treasure?.title);
+      check(`${label}: treasure.message`, !!st.treasure?.message);
     }
   }
 }
