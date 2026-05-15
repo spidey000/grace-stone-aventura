@@ -4,670 +4,9 @@
   "prompt_base_dir": "ai-assets/prompts",
   "assets": [
     {
-      "asset_id": "background-oceanografic-shell",
-      "family": "backgrounds",
-      "prompt_file": "ai-assets/prompts/backgrounds.md",
-      "prompt_section": "backgrounds/oceanografic-shell",
-      "ui_use": "lobby, mission shell, general app background",
-      "placement": "full-bleed",
-      "sizes": [
-        "1920x1080",
-        "1080x1920"
-      ],
-      "formats": [
-        "webp",
-        "png"
-      ],
-      "source_path": "ai-assets/sources/backgrounds/oceanografic-shell",
-      "export_paths": [
-        "ai-assets/exports/backgrounds/background-oceanografic-shell-desktop-1920x1080.webp",
-        "ai-assets/exports/backgrounds/background-oceanografic-shell-mobile-1080x1920.webp"
-      ],
-      "status": "ready",
-      "updated_at": "2026-05-15T00:34:50.000Z",
-      "last_exported_at": "2026-05-15T00:34:50.000Z"
-    },
-    {
-      "asset_id": "background-oceanografic-treasure",
-      "family": "backgrounds",
-      "prompt_file": "ai-assets/prompts/backgrounds.md",
-      "prompt_section": "backgrounds/oceanografic-treasure",
-      "ui_use": "final completion screen",
-      "placement": "full-bleed",
-      "sizes": [
-        "1920x1080",
-        "1080x1920"
-      ],
-      "formats": [
-        "webp",
-        "png"
-      ],
-      "source_path": "ai-assets/sources/backgrounds/oceanografic-treasure",
-      "export_paths": [
-        "ai-assets/exports/backgrounds/background-oceanografic-treasure-desktop-1920x1080.webp",
-        "ai-assets/exports/backgrounds/background-oceanografic-treasure-mobile-1080x1920.webp"
-      ],
-      "status": "ready",
-      "updated_at": "2026-05-15T00:35:03.000Z",
-      "last_exported_at": "2026-05-15T00:35:03.000Z"
-    },
-    {
-      "asset_id": "pattern-ocean-floor-tile",
-      "family": "patterns",
-      "prompt_file": "ai-assets/prompts/patterns.md",
-      "prompt_section": "patterns/ocean-floor-tile",
-      "ui_use": "panel surfaces, margins, passive texture",
-      "placement": "seamless tile",
-      "sizes": [
-        "1024x1024"
-      ],
-      "formats": [
-        "webp",
-        "png"
-      ],
-      "source_path": "ai-assets/sources/patterns/ocean-floor-tile",
-      "export_paths": [
-        "ai-assets/exports/patterns/pattern-ocean-floor-tile-1024.png"
-      ],
-      "status": "ready",
-      "updated_at": "2026-05-15T00:35:18.000Z",
-      "last_exported_at": "2026-05-15T00:35:18.000Z"
-    },
-    {
-      "asset_id": "brand-itinerary-oceanografic-badge",
-      "family": "brand",
-      "prompt_file": "ai-assets/prompts/brand.md",
-      "prompt_section": "brand/itinerary-oceanografic-badge",
-      "ui_use": "lobby itinerary selector, passport cover, final certification",
-      "placement": "square badge",
-      "sizes": [
-        "1024x1024",
-        "512x512",
-        "256x256"
-      ],
-      "formats": [
-        "png"
-      ],
-      "source_path": "ai-assets/sources/brand/itinerary-oceanografic-badge",
-      "export_paths": [
-        "ai-assets/exports/brand/brand-itinerary-oceanografic-badge-1024.png"
-      ],
-      "status": "ready",
-      "updated_at": "2026-05-15T00:35:32.000Z",
-      "last_exported_at": "2026-05-15T00:35:32.000Z"
-    },
-    {
-      "asset_id": "brand-itinerary-museu-badge-secondary",
-      "family": "brand",
-      "prompt_file": "ai-assets/prompts/brand.md",
-      "prompt_section": "brand/itinerary-museu-badge-secondary",
-      "ui_use": "secondary itinerary selector card",
-      "placement": "square badge",
-      "sizes": [
-        "1024x1024",
-        "512x512",
-        "256x256"
-      ],
-      "formats": [
-        "png"
-      ],
-      "source_path": "ai-assets/sources/brand/itinerary-museu-badge-secondary",
-      "export_paths": [
-        "ai-assets/exports/brand/brand-itinerary-museu-badge-secondary-1024.png"
-      ],
-      "status": "ready",
-      "updated_at": "2026-05-15T00:35:44.000Z",
-      "last_exported_at": "2026-05-15T00:35:44.000Z"
-    },
-    {
-      "asset_id": "brand-app-icon-oceanografic",
-      "family": "brand",
-      "prompt_file": "ai-assets/prompts/brand.md",
-      "prompt_section": "brand/app-icon-oceanografic",
-      "ui_use": "PWA icon, favicon source, share preview",
-      "placement": "rounded-square icon",
-      "sizes": [
-        "1024x1024",
-        "512x512",
-        "192x192"
-      ],
-      "formats": [
-        "png"
-      ],
-      "source_path": "ai-assets/sources/brand/app-icon-oceanografic",
-      "export_paths": [
-        "ai-assets/exports/brand/app-icon-oceanografic-1024.png"
-      ],
-      "status": "ready",
-      "updated_at": "2026-05-15T00:36:28.000Z",
-      "last_exported_at": "2026-05-15T00:36:28.000Z"
-    },
-    {
-      "asset_id": "ui-mission-panel-surface",
-      "family": "ui",
-      "prompt_file": "ai-assets/prompts/ui.md",
-      "prompt_section": "ui/mission-panel-surface",
-      "ui_use": "station card and route screen",
-      "placement": "large panel surface",
-      "sizes": [
-        "1600x1200"
-      ],
-      "formats": [
-        "png",
-        "webp"
-      ],
-      "source_path": "ai-assets/sources/ui/mission-panel-surface",
-      "export_paths": [
-        "ai-assets/exports/ui/ui-mission-panel-surface-1600x1200.png"
-      ],
-      "status": "ready",
-      "updated_at": "2026-05-15T00:37:13.000Z",
-      "last_exported_at": "2026-05-15T00:37:13.000Z"
-    },
-    {
-      "asset_id": "ui-final-panel-surface",
-      "family": "ui",
-      "prompt_file": "ai-assets/prompts/ui.md",
-      "prompt_section": "ui/final-panel-surface",
-      "ui_use": "final screen card and certificate base",
-      "placement": "large panel surface",
-      "sizes": [
-        "1600x1200"
-      ],
-      "formats": [
-        "png",
-        "webp"
-      ],
-      "source_path": "ai-assets/sources/ui/final-panel-surface",
-      "export_paths": [
-        "ai-assets/exports/ui/ui-final-panel-surface-1600x1200.png"
-      ],
-      "status": "ready",
-      "updated_at": "2026-05-15T00:37:31.000Z",
-      "last_exported_at": "2026-05-15T00:37:31.000Z"
-    },
-    {
-      "asset_id": "ui-guardian-banner",
-      "family": "ui",
-      "prompt_file": "ai-assets/prompts/ui.md",
-      "prompt_section": "ui/guardian-banner",
-      "ui_use": "riddle intro, treasure banner, status ribbon",
-      "placement": "wide banner",
-      "sizes": [
-        "1440x360",
-        "720x240"
-      ],
-      "formats": [
-        "png",
-        "webp"
-      ],
-      "source_path": "ai-assets/sources/ui/guardian-banner",
-      "export_paths": [
-        "ai-assets/exports/ui/ui-guardian-banner-1440x360.png"
-      ],
-      "status": "ready",
-      "updated_at": "2026-05-15T00:38:18.000Z",
-      "last_exported_at": "2026-05-15T00:38:18.000Z"
-    },
-    {
-      "asset_id": "ui-state-icon-set",
-      "family": "ui",
-      "prompt_file": "ai-assets/prompts/ui.md",
-      "prompt_section": "ui/state-icon-set",
-      "ui_use": "route steps and riddle steps",
-      "placement": "small state icons",
-      "sizes": [
-        "96x96",
-        "48x48",
-        "32x32"
-      ],
-      "formats": [
-        "png"
-      ],
-      "source_path": "ai-assets/sources/ui/state-icon-set",
-      "export_paths": [
-        "ai-assets/exports/ui/ui-state-icon-set-locked-96.png",
-        "ai-assets/exports/ui/ui-state-icon-set-active-96.png",
-        "ai-assets/exports/ui/ui-state-icon-set-completed-96.png",
-        "ai-assets/exports/ui/ui-state-icon-set-done-96.png"
-      ],
-      "status": "ready",
-      "updated_at": "2026-05-15T00:51:07.000Z",
-      "last_exported_at": "2026-05-15T00:51:07.000Z"
-    },
-    {
-      "asset_id": "ui-adult-help-badge",
-      "family": "ui",
-      "prompt_file": "ai-assets/prompts/ui.md",
-      "prompt_section": "ui/adult-help-badge",
-      "ui_use": "adult help button",
-      "placement": "small icon badge",
-      "sizes": [
-        "256x256",
-        "64x64",
-        "32x32"
-      ],
-      "formats": [
-        "png"
-      ],
-      "source_path": "ai-assets/sources/ui/adult-help-badge",
-      "export_paths": [
-        "ai-assets/exports/ui/ui-adult-help-badge-256.png"
-      ],
-      "status": "ready",
-      "updated_at": "2026-05-15T00:41:09.000Z",
-      "last_exported_at": "2026-05-15T00:41:09.000Z"
-    },
-    {
-      "asset_id": "collectibles-crystal-set",
-      "family": "collectibles",
-      "prompt_file": "ai-assets/prompts/collectibles.md",
-      "prompt_section": "collectibles/crystal-set",
-      "ui_use": "progress strip, mission footer, final screen",
-      "placement": "transparent icon set",
-      "sizes": [
-        "512x512",
-        "256x256",
-        "96x96"
-      ],
-      "formats": [
-        "png"
-      ],
-      "source_path": "ai-assets/sources/collectibles/crystal-set",
-      "variants": [
-        {
-          "variant_id": "crystal-entry",
-          "label": "Cristal de la Entrada"
-        },
-        {
-          "variant_id": "crystal-mediterranean",
-          "label": "Cristal Mediterráneo"
-        },
-        {
-          "variant_id": "crystal-wetlands",
-          "label": "Cristal de los Humedales"
-        },
-        {
-          "variant_id": "crystal-shell",
-          "label": "Cristal de Caparazón"
-        },
-        {
-          "variant_id": "crystal-temperate",
-          "label": "Cristal Templado"
-        },
-        {
-          "variant_id": "crystal-tropical",
-          "label": "Cristal Tropical"
-        },
-        {
-          "variant_id": "crystal-islands",
-          "label": "Cristal de las Islas"
-        },
-        {
-          "variant_id": "crystal-oceanic-islands",
-          "label": "Cristal de las Islas Oceánicas"
-        },
-        {
-          "variant_id": "crystal-reef",
-          "label": "Cristal del Arrecife"
-        },
-        {
-          "variant_id": "crystal-blue-jump",
-          "label": "Cristal del Salto Azul"
-        },
-        {
-          "variant_id": "crystal-pink",
-          "label": "Cristal Rosa"
-        },
-        {
-          "variant_id": "crystal-antarctic",
-          "label": "Cristal Antártico"
-        },
-        {
-          "variant_id": "crystal-arctic",
-          "label": "Cristal Ártico"
-        },
-        {
-          "variant_id": "crystal-old-scales",
-          "label": "Cristal de Escamas Antiguas"
-        },
-        {
-          "variant_id": "crystal-depths",
-          "label": "Cristal de las Profundidades"
-        },
-        {
-          "variant_id": "insignia-honor",
-          "label": "Insignia de Explorador Honorífico"
-        },
-        {
-          "variant_id": "crystal-lagoon",
-          "label": "Cristal del Lago Vivo"
-        },
-        {
-          "variant_id": "crystal-mysteries",
-          "label": "Cristal de los Misterios"
-        }
-      ],
-      "status": "ready",
-      "export_paths": [
-        "ai-assets/exports/collectibles/collectibles-crystal-entry-96.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-entry-256.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-entry-512.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-mediterranean-96.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-mediterranean-256.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-mediterranean-512.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-wetlands-96.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-wetlands-256.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-wetlands-512.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-shell-96.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-shell-256.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-shell-512.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-temperate-96.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-temperate-256.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-temperate-512.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-tropical-96.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-tropical-256.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-tropical-512.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-islands-96.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-islands-256.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-islands-512.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-oceanic-islands-96.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-oceanic-islands-256.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-oceanic-islands-512.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-reef-96.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-reef-256.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-reef-512.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-blue-jump-96.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-blue-jump-256.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-blue-jump-512.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-pink-96.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-pink-256.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-pink-512.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-antarctic-96.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-antarctic-256.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-antarctic-512.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-arctic-96.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-arctic-256.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-arctic-512.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-old-scales-96.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-old-scales-256.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-old-scales-512.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-depths-96.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-depths-256.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-depths-512.svg",
-        "ai-assets/exports/collectibles/collectibles-insignia-honor-96.svg",
-        "ai-assets/exports/collectibles/collectibles-insignia-honor-256.svg",
-        "ai-assets/exports/collectibles/collectibles-insignia-honor-512.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-lagoon-96.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-lagoon-256.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-lagoon-512.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-mysteries-96.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-mysteries-256.svg",
-        "ai-assets/exports/collectibles/collectibles-crystal-mysteries-512.svg"
-      ],
-      "updated_at": "2026-05-15T03:30:00.000Z",
-      "last_exported_at": "2026-05-15T03:30:00.000Z"
-    },
-    {
-      "asset_id": "collectibles-map-pieces",
-      "family": "collectibles",
-      "prompt_file": "ai-assets/prompts/collectibles.md",
-      "prompt_section": "collectibles/map-pieces",
-      "ui_use": "objects grid, inventory strip, treasure reveal",
-      "placement": "transparent icon set",
-      "sizes": [
-        "512x512",
-        "256x256",
-        "96x96"
-      ],
-      "formats": [
-        "png"
-      ],
-      "source_path": "ai-assets/sources/collectibles/map-pieces",
-      "variants": [
-        {
-          "variant_id": "map-piece-mediterranean",
-          "label": "Pieza del Mapa - Mediterráneo"
-        },
-        {
-          "variant_id": "map-piece-wetlands",
-          "label": "Pieza del Mapa - Humedales"
-        },
-        {
-          "variant_id": "map-piece-turtles",
-          "label": "Pieza del Mapa - Tortugas"
-        },
-        {
-          "variant_id": "map-piece-temperate",
-          "label": "Pieza del Mapa - Templados"
-        },
-        {
-          "variant_id": "map-piece-tropical",
-          "label": "Pieza del Mapa - Tropicales"
-        },
-        {
-          "variant_id": "map-piece-islands",
-          "label": "Pieza del Mapa - Islas"
-        },
-        {
-          "variant_id": "map-piece-oceanic-islands",
-          "label": "Pieza del Mapa - Islas Oceánicas"
-        },
-        {
-          "variant_id": "map-piece-reef",
-          "label": "Pieza del Mapa - Arrecife"
-        },
-        {
-          "variant_id": "map-piece-dolphins",
-          "label": "Pieza del Mapa - Delfines"
-        },
-        {
-          "variant_id": "map-piece-flamingos",
-          "label": "Pieza del Mapa - Flamencos"
-        },
-        {
-          "variant_id": "map-piece-antarctic",
-          "label": "Pieza del Mapa - Antártico"
-        },
-        {
-          "variant_id": "map-piece-belugas",
-          "label": "Pieza del Mapa - Belugas"
-        },
-        {
-          "variant_id": "map-piece-crocodiles",
-          "label": "Pieza del Mapa - Cocodrilos"
-        },
-        {
-          "variant_id": "map-piece-sharks",
-          "label": "Pieza del Mapa - Tiburones"
-        }
-      ],
-      "status": "ready",
-      "export_paths": [
-        "ai-assets/exports/collectibles/collectibles-map-piece-mediterranean-96.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-mediterranean-256.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-mediterranean-512.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-wetlands-96.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-wetlands-256.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-wetlands-512.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-turtles-96.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-turtles-256.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-turtles-512.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-temperate-96.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-temperate-256.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-temperate-512.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-tropical-96.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-tropical-256.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-tropical-512.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-islands-96.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-islands-256.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-islands-512.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-oceanic-islands-96.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-oceanic-islands-256.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-oceanic-islands-512.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-reef-96.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-reef-256.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-reef-512.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-dolphins-96.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-dolphins-256.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-dolphins-512.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-flamingos-96.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-flamingos-256.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-flamingos-512.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-antarctic-96.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-antarctic-256.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-antarctic-512.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-belugas-96.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-belugas-256.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-belugas-512.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-crocodiles-96.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-crocodiles-256.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-crocodiles-512.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-sharks-96.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-sharks-256.svg",
-        "ai-assets/exports/collectibles/collectibles-map-piece-sharks-512.svg"
-      ],
-      "updated_at": "2026-05-15T03:30:00.000Z",
-      "last_exported_at": "2026-05-15T03:30:00.000Z"
-    },
-    {
-      "asset_id": "collectibles-treasure-map",
-      "family": "collectibles",
-      "prompt_file": "ai-assets/prompts/collectibles.md",
-      "prompt_section": "collectibles/treasure-map",
-      "ui_use": "final treasure reveal",
-      "placement": "celebration illustration",
-      "sizes": [
-        "1920x1080",
-        "1080x1920",
-        "1440x900"
-      ],
-      "formats": [
-        "png",
-        "webp"
-      ],
-      "source_path": "ai-assets/sources/collectibles/treasure-map",
-      "export_paths": [
-        "ai-assets/exports/collectibles/collectibles-treasure-map-1920x1080.png"
-      ],
-      "status": "ready",
-      "updated_at": "2026-05-15T00:42:27.000Z",
-      "last_exported_at": "2026-05-15T00:42:27.000Z"
-    },
-    {
-      "asset_id": "collectibles-final-insignia",
-      "family": "collectibles",
-      "prompt_file": "ai-assets/prompts/collectibles.md",
-      "prompt_section": "collectibles/final-insignia",
-      "ui_use": "final screen and passport cover",
-      "placement": "badge",
-      "sizes": [
-        "1024x1024",
-        "512x512",
-        "256x256",
-        "96x96"
-      ],
-      "formats": [
-        "png"
-      ],
-      "source_path": "ai-assets/sources/collectibles/final-insignia",
-      "export_paths": [
-        "ai-assets/exports/collectibles/collectibles-final-insignia-1024.png"
-      ],
-      "status": "ready",
-      "updated_at": "2026-05-15T00:43:17.000Z",
-      "last_exported_at": "2026-05-15T00:43:17.000Z"
-    },
-    {
-      "asset_id": "print-passport-cover",
-      "family": "print",
-      "prompt_file": "ai-assets/prompts/print.md",
-      "prompt_section": "print/passport-cover",
-      "ui_use": "printable passport cover",
-      "placement": "A4 portrait",
-      "sizes": [
-        "2480x3508"
-      ],
-      "formats": [
-        "png",
-        "webp"
-      ],
-      "source_path": "ai-assets/sources/print/passport-cover",
-      "export_paths": [
-        "ai-assets/exports/print/print-passport-cover-2480x3508.png"
-      ],
-      "status": "ready",
-      "updated_at": "2026-05-15T00:45:09.000Z",
-      "last_exported_at": "2026-05-15T00:45:09.000Z"
-    },
-    {
-      "asset_id": "print-passport-crystal-sheet",
-      "family": "print",
-      "prompt_file": "ai-assets/prompts/print.md",
-      "prompt_section": "print/passport-crystal-sheet",
-      "ui_use": "printable crystal sheet",
-      "placement": "A4 portrait",
-      "sizes": [
-        "2480x3508"
-      ],
-      "formats": [
-        "png"
-      ],
-      "source_path": "ai-assets/sources/print/passport-crystal-sheet",
-      "export_paths": [
-        "ai-assets/exports/print/print-passport-crystal-sheet-2480x3508.png"
-      ],
-      "status": "ready",
-      "updated_at": "2026-05-15T00:45:56.000Z",
-      "last_exported_at": "2026-05-15T00:45:56.000Z"
-    },
-    {
-      "asset_id": "print-passport-activity-page",
-      "family": "print",
-      "prompt_file": "ai-assets/prompts/print.md",
-      "prompt_section": "print/passport-activity-page",
-      "ui_use": "printable activity page",
-      "placement": "A4 portrait",
-      "sizes": [
-        "2480x3508"
-      ],
-      "formats": [
-        "png"
-      ],
-      "source_path": "ai-assets/sources/print/passport-activity-page",
-      "export_paths": [
-        "ai-assets/exports/print/print-passport-activity-page-2480x3508.png"
-      ],
-      "status": "ready",
-      "updated_at": "2026-05-15T00:51:24.000Z",
-      "last_exported_at": "2026-05-15T00:51:24.000Z"
-    },
-    {
-      "asset_id": "print-passport-back-cover",
-      "family": "print",
-      "prompt_file": "ai-assets/prompts/print.md",
-      "prompt_section": "print/passport-back-cover",
-      "ui_use": "printable passport back cover",
-      "placement": "A4 portrait",
-      "sizes": [
-        "2480x3508"
-      ],
-      "formats": [
-        "png"
-      ],
-      "source_path": "ai-assets/sources/print/passport-back-cover",
-      "export_paths": [
-        "ai-assets/exports/print/print-passport-back-cover-2480x3508.png"
-      ],
-      "status": "ready",
-      "updated_at": "2026-05-15T00:49:53.000Z",
-      "last_exported_at": "2026-05-15T00:49:53.000Z"
-    },
-    {
       "asset_id": "audio-crystal-unlock",
       "family": "audio",
-      "prompt_file": "ai-assets/prompts/audio.md",
-      "prompt_section": "audio/crystal-unlock",
+      "prompt_file": "ai-assets/prompts/promptaudio-crystal-unlock.md",
       "ui_use": "reward unlock feedback",
       "placement": "short sfx",
       "sizes": [
@@ -685,8 +24,1310 @@
         "ai-assets/exports/audio/audio-crystal-unlock.ogg"
       ],
       "status": "ready",
-      "updated_at": "2026-05-15T00:49:53.000Z",
-      "last_exported_at": "2026-05-15T00:49:53.000Z"
+      "updated_at": "2026-05-15T02:01:08.000Z",
+      "last_exported_at": "2026-05-15T02:01:08.000Z"
+    },
+    {
+      "asset_id": "background-oceanografic-shell",
+      "family": "backgrounds",
+      "prompt_file": "ai-assets/prompts/promptbackground-oceanografic-shell.md",
+      "ui_use": "lobby, mission shell, general app background",
+      "placement": "full-bleed",
+      "sizes": [
+        "1920x1080",
+        "1080x1920"
+      ],
+      "formats": [
+        "webp",
+        "png"
+      ],
+      "source_path": "ai-assets/sources/backgrounds/oceanografic-shell",
+      "export_paths": [
+        "ai-assets/exports/backgrounds/background-oceanografic-shell-desktop-1920x1080.webp",
+        "ai-assets/exports/backgrounds/background-oceanografic-shell-mobile-1080x1920.webp"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:02:28.000Z",
+      "last_exported_at": "2026-05-15T02:02:28.000Z"
+    },
+    {
+      "asset_id": "background-oceanografic-treasure",
+      "family": "backgrounds",
+      "prompt_file": "ai-assets/prompts/promptbackground-oceanografic-treasure.md",
+      "ui_use": "final completion screen",
+      "placement": "full-bleed",
+      "sizes": [
+        "1920x1080",
+        "1080x1920"
+      ],
+      "formats": [
+        "webp",
+        "png"
+      ],
+      "source_path": "ai-assets/sources/backgrounds/oceanografic-treasure",
+      "export_paths": [
+        "ai-assets/exports/backgrounds/background-oceanografic-treasure-desktop-1920x1080.webp",
+        "ai-assets/exports/backgrounds/background-oceanografic-treasure-mobile-1080x1920.webp"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:03:17.000Z",
+      "last_exported_at": "2026-05-15T02:03:17.000Z"
+    },
+    {
+      "asset_id": "pattern-ocean-floor-tile",
+      "family": "patterns",
+      "prompt_file": "ai-assets/prompts/promptpattern-ocean-floor-tile.md",
+      "ui_use": "panel surfaces, margins, passive texture",
+      "placement": "seamless tile",
+      "sizes": [
+        "1024x1024"
+      ],
+      "formats": [
+        "webp",
+        "png"
+      ],
+      "source_path": "ai-assets/sources/patterns/ocean-floor-tile",
+      "export_paths": [
+        "ai-assets/exports/patterns/pattern-ocean-floor-tile-1024.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:04:04.000Z",
+      "last_exported_at": "2026-05-15T02:04:04.000Z"
+    },
+    {
+      "asset_id": "brand-itinerary-oceanografic-badge",
+      "family": "brand",
+      "prompt_file": "ai-assets/prompts/promptbrand-itinerary-oceanografic-badge.md",
+      "ui_use": "lobby itinerary selector, passport cover, final certification",
+      "placement": "square badge",
+      "sizes": [
+        "1024x1024",
+        "512x512",
+        "256x256"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/brand/itinerary-oceanografic-badge",
+      "export_paths": [
+        "ai-assets/exports/brand/brand-itinerary-oceanografic-badge-1024.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:04:49.000Z",
+      "last_exported_at": "2026-05-15T02:04:49.000Z"
+    },
+    {
+      "asset_id": "brand-itinerary-museu-badge-secondary",
+      "family": "brand",
+      "prompt_file": "ai-assets/prompts/promptbrand-itinerary-museu-badge-secondary.md",
+      "ui_use": "secondary itinerary selector card",
+      "placement": "square badge",
+      "sizes": [
+        "1024x1024",
+        "512x512",
+        "256x256"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/brand/itinerary-museu-badge-secondary",
+      "export_paths": [
+        "ai-assets/exports/brand/brand-itinerary-museu-badge-secondary-1024.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:08:15.000Z",
+      "last_exported_at": "2026-05-15T02:08:15.000Z"
+    },
+    {
+      "asset_id": "brand-app-icon-oceanografic",
+      "family": "brand",
+      "prompt_file": "ai-assets/prompts/promptbrand-app-icon-oceanografic.md",
+      "ui_use": "PWA icon, favicon source, share preview",
+      "placement": "rounded-square icon",
+      "sizes": [
+        "1024x1024",
+        "512x512",
+        "192x192"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/brand/app-icon-oceanografic",
+      "export_paths": [
+        "ai-assets/exports/brand/app-icon-oceanografic-1024.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:09:01.000Z",
+      "last_exported_at": "2026-05-15T02:09:01.000Z"
+    },
+    {
+      "asset_id": "ui-mission-panel-surface",
+      "family": "ui",
+      "prompt_file": "ai-assets/prompts/promptui-mission-panel-surface.md",
+      "ui_use": "station card and route screen",
+      "placement": "large panel surface",
+      "sizes": [
+        "1600x1200"
+      ],
+      "formats": [
+        "png",
+        "webp"
+      ],
+      "source_path": "ai-assets/sources/ui/mission-panel-surface",
+      "export_paths": [
+        "ai-assets/exports/ui/ui-mission-panel-surface-1600x1200.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:10:52.000Z",
+      "last_exported_at": "2026-05-15T02:10:52.000Z"
+    },
+    {
+      "asset_id": "ui-final-panel-surface",
+      "family": "ui",
+      "prompt_file": "ai-assets/prompts/promptui-final-panel-surface.md",
+      "ui_use": "final screen card and certificate base",
+      "placement": "large panel surface",
+      "sizes": [
+        "1600x1200"
+      ],
+      "formats": [
+        "png",
+        "webp"
+      ],
+      "source_path": "ai-assets/sources/ui/final-panel-surface",
+      "export_paths": [
+        "ai-assets/exports/ui/ui-final-panel-surface-1600x1200.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:11:37.000Z",
+      "last_exported_at": "2026-05-15T02:11:37.000Z"
+    },
+    {
+      "asset_id": "ui-guardian-banner",
+      "family": "ui",
+      "prompt_file": "ai-assets/prompts/promptui-guardian-banner.md",
+      "ui_use": "riddle intro, treasure banner, status ribbon",
+      "placement": "wide banner",
+      "sizes": [
+        "1440x360",
+        "720x240"
+      ],
+      "formats": [
+        "png",
+        "webp"
+      ],
+      "source_path": "ai-assets/sources/ui/guardian-banner",
+      "export_paths": [
+        "ai-assets/exports/ui/ui-guardian-banner-1440x360.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:12:20.000Z",
+      "last_exported_at": "2026-05-15T02:12:20.000Z"
+    },
+    {
+      "asset_id": "ui-state-icon-set-locked",
+      "family": "ui",
+      "prompt_file": "ai-assets/prompts/promptui-state-icon-set-locked.md",
+      "variant_of": "ui-state-icon-set",
+      "ui_use": "route steps and riddle steps - locked state",
+      "placement": "small state icon",
+      "sizes": [
+        "96x96",
+        "48x48",
+        "32x32"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/ui/state-icon-set/locked",
+      "export_paths": [
+        "ai-assets/exports/ui/ui-state-icon-set-locked-96.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:13:35.000Z",
+      "last_exported_at": "2026-05-15T02:13:35.000Z"
+    },
+    {
+      "asset_id": "ui-state-icon-set-active",
+      "family": "ui",
+      "prompt_file": "ai-assets/prompts/promptui-state-icon-set-active.md",
+      "variant_of": "ui-state-icon-set",
+      "ui_use": "route steps and riddle steps - active state",
+      "placement": "small state icon",
+      "sizes": [
+        "96x96",
+        "48x48",
+        "32x32"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/ui/state-icon-set/active",
+      "export_paths": [
+        "ai-assets/exports/ui/ui-state-icon-set-active-96.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:14:19.000Z",
+      "last_exported_at": "2026-05-15T02:14:19.000Z"
+    },
+    {
+      "asset_id": "ui-state-icon-set-completed",
+      "family": "ui",
+      "prompt_file": "ai-assets/prompts/promptui-state-icon-set-completed.md",
+      "variant_of": "ui-state-icon-set",
+      "ui_use": "route steps and riddle steps - completed state",
+      "placement": "small state icon",
+      "sizes": [
+        "96x96",
+        "48x48",
+        "32x32"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/ui/state-icon-set/completed",
+      "export_paths": [
+        "ai-assets/exports/ui/ui-state-icon-set-completed-96.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:17:45.000Z",
+      "last_exported_at": "2026-05-15T02:17:45.000Z"
+    },
+    {
+      "asset_id": "ui-state-icon-set-done",
+      "family": "ui",
+      "prompt_file": "ai-assets/prompts/promptui-state-icon-set-done.md",
+      "variant_of": "ui-state-icon-set",
+      "ui_use": "route steps and riddle steps - done state",
+      "placement": "small state icon",
+      "sizes": [
+        "96x96",
+        "48x48",
+        "32x32"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/ui/state-icon-set/done",
+      "export_paths": [
+        "ai-assets/exports/ui/ui-state-icon-set-done-96.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:19:00.000Z",
+      "last_exported_at": "2026-05-15T02:19:00.000Z"
+    },
+    {
+      "asset_id": "ui-adult-help-badge",
+      "family": "ui",
+      "prompt_file": "ai-assets/prompts/promptui-adult-help-badge.md",
+      "ui_use": "adult help button",
+      "placement": "small icon badge",
+      "sizes": [
+        "256x256",
+        "64x64",
+        "32x32"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/ui/adult-help-badge",
+      "export_paths": [
+        "ai-assets/exports/ui/ui-adult-help-badge-256.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:19:46.000Z",
+      "last_exported_at": "2026-05-15T02:19:46.000Z"
+    },
+    {
+      "asset_id": "collectibles-treasure-map",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-treasure-map.md",
+      "ui_use": "final treasure reveal",
+      "placement": "celebration illustration",
+      "sizes": [
+        "1920x1080",
+        "1080x1920",
+        "1440x900"
+      ],
+      "formats": [
+        "png",
+        "webp"
+      ],
+      "source_path": "ai-assets/sources/collectibles/treasure-map",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-treasure-map-1920x1080.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:20:31.000Z",
+      "last_exported_at": "2026-05-15T02:20:31.000Z"
+    },
+    {
+      "asset_id": "collectibles-final-insignia",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-final-insignia.md",
+      "ui_use": "final screen and passport cover",
+      "placement": "badge",
+      "sizes": [
+        "1024x1024",
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/final-insignia",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-final-insignia-1024.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:21:16.000Z",
+      "last_exported_at": "2026-05-15T02:21:16.000Z"
+    },
+    {
+      "asset_id": "collectibles-crystal-entry",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-crystal-entry.md",
+      "variant_of": "crystal-set",
+      "label": "Cristal de la Entrada",
+      "palette": "teal and gold",
+      "ui_use": "progress strip, mission footer, final screen",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/crystal-set/crystal-entry",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-crystal-entry-96.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-entry-256.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-entry-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:22:31.000Z",
+      "last_exported_at": "2026-05-15T02:22:31.000Z"
+    },
+    {
+      "asset_id": "collectibles-crystal-mediterranean",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-crystal-mediterranean.md",
+      "variant_of": "crystal-set",
+      "label": "Cristal Mediterráneo",
+      "palette": "marine teal",
+      "ui_use": "progress strip, mission footer, final screen",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/crystal-set/crystal-mediterranean",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-crystal-mediterranean-96.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-mediterranean-256.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-mediterranean-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:23:15.000Z",
+      "last_exported_at": "2026-05-15T02:23:15.000Z"
+    },
+    {
+      "asset_id": "collectibles-crystal-wetlands",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-crystal-wetlands.md",
+      "variant_of": "crystal-set",
+      "label": "Cristal de los Humedales",
+      "palette": "green-blue marsh",
+      "ui_use": "progress strip, mission footer, final screen",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/crystal-set/crystal-wetlands",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-crystal-wetlands-96.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-wetlands-256.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-wetlands-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:23:59.000Z",
+      "last_exported_at": "2026-05-15T02:23:59.000Z"
+    },
+    {
+      "asset_id": "collectibles-crystal-shell",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-crystal-shell.md",
+      "variant_of": "crystal-set",
+      "label": "Cristal de Caparazón",
+      "palette": "olive and bone",
+      "ui_use": "progress strip, mission footer, final screen",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/crystal-set/crystal-shell",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-crystal-shell-96.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-shell-256.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-shell-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:25:03.000Z",
+      "last_exported_at": "2026-05-15T02:25:03.000Z"
+    },
+    {
+      "asset_id": "collectibles-crystal-temperate",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-crystal-temperate.md",
+      "variant_of": "crystal-set",
+      "label": "Cristal Templado",
+      "palette": "cool sea green",
+      "ui_use": "progress strip, mission footer, final screen",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/crystal-set/crystal-temperate",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-crystal-temperate-96.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-temperate-256.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-temperate-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:26:19.000Z",
+      "last_exported_at": "2026-05-15T02:26:19.000Z"
+    },
+    {
+      "asset_id": "collectibles-crystal-tropical",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-crystal-tropical.md",
+      "variant_of": "crystal-set",
+      "label": "Cristal Tropical",
+      "palette": "coral gold and bright reef",
+      "ui_use": "progress strip, mission footer, final screen",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/crystal-set/crystal-tropical",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-crystal-tropical-96.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-tropical-256.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-tropical-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:27:33.000Z",
+      "last_exported_at": "2026-05-15T02:27:33.000Z"
+    },
+    {
+      "asset_id": "collectibles-crystal-islands",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-crystal-islands.md",
+      "variant_of": "crystal-set",
+      "label": "Cristal de las Islas",
+      "palette": "sea green and moss",
+      "ui_use": "progress strip, mission footer, final screen",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/crystal-set/crystal-islands",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-crystal-islands-96.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-islands-256.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-islands-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:28:49.000Z",
+      "last_exported_at": "2026-05-15T02:28:49.000Z"
+    },
+    {
+      "asset_id": "collectibles-crystal-oceanic-islands",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-crystal-oceanic-islands.md",
+      "variant_of": "crystal-set",
+      "label": "Cristal de las Islas Oceánicas",
+      "palette": "muted sand and seaweed",
+      "ui_use": "progress strip, mission footer, final screen",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/crystal-set/crystal-oceanic-islands",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-crystal-oceanic-islands-96.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-oceanic-islands-256.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-oceanic-islands-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:30:05.000Z",
+      "last_exported_at": "2026-05-15T02:30:05.000Z"
+    },
+    {
+      "asset_id": "collectibles-crystal-reef",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-crystal-reef.md",
+      "variant_of": "crystal-set",
+      "label": "Cristal del Arrecife",
+      "palette": "coral red and turquoise",
+      "ui_use": "progress strip, mission footer, final screen",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/crystal-set/crystal-reef",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-crystal-reef-96.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-reef-256.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-reef-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:31:21.000Z",
+      "last_exported_at": "2026-05-15T02:31:21.000Z"
+    },
+    {
+      "asset_id": "collectibles-crystal-blue-jump",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-crystal-blue-jump.md",
+      "variant_of": "crystal-set",
+      "label": "Cristal del Salto Azul",
+      "palette": "bright cobalt",
+      "ui_use": "progress strip, mission footer, final screen",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/crystal-set/crystal-blue-jump",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-crystal-blue-jump-96.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-blue-jump-256.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-blue-jump-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:32:37.000Z",
+      "last_exported_at": "2026-05-15T02:32:37.000Z"
+    },
+    {
+      "asset_id": "collectibles-crystal-pink",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-crystal-pink.md",
+      "variant_of": "crystal-set",
+      "label": "Cristal Rosa",
+      "palette": "soft rose",
+      "ui_use": "progress strip, mission footer, final screen",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/crystal-set/crystal-pink",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-crystal-pink-96.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-pink-256.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-pink-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:35:11.000Z",
+      "last_exported_at": "2026-05-15T02:35:11.000Z"
+    },
+    {
+      "asset_id": "collectibles-crystal-antarctic",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-crystal-antarctic.md",
+      "variant_of": "crystal-set",
+      "label": "Cristal Antártico",
+      "palette": "ice blue",
+      "ui_use": "progress strip, mission footer, final screen",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/crystal-set/crystal-antarctic",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-crystal-antarctic-96.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-antarctic-256.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-antarctic-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:36:00.000Z",
+      "last_exported_at": "2026-05-15T02:36:00.000Z"
+    },
+    {
+      "asset_id": "collectibles-crystal-arctic",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-crystal-arctic.md",
+      "variant_of": "crystal-set",
+      "label": "Cristal Ártico",
+      "palette": "pale ice and white",
+      "ui_use": "progress strip, mission footer, final screen",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/crystal-set/crystal-arctic",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-crystal-arctic-96.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-arctic-256.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-arctic-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:36:45.000Z",
+      "last_exported_at": "2026-05-15T02:36:45.000Z"
+    },
+    {
+      "asset_id": "collectibles-crystal-old-scales",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-crystal-old-scales.md",
+      "variant_of": "crystal-set",
+      "label": "Cristal de Escamas Antiguas",
+      "palette": "deep olive and stone",
+      "ui_use": "progress strip, mission footer, final screen",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/crystal-set/crystal-old-scales",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-crystal-old-scales-96.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-old-scales-256.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-old-scales-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:38:00.000Z",
+      "last_exported_at": "2026-05-15T02:38:00.000Z"
+    },
+    {
+      "asset_id": "collectibles-crystal-depths",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-crystal-depths.md",
+      "variant_of": "crystal-set",
+      "label": "Cristal de las Profundidades",
+      "palette": "dark ocean blue",
+      "ui_use": "progress strip, mission footer, final screen",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/crystal-set/crystal-depths",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-crystal-depths-96.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-depths-256.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-depths-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:38:45.000Z",
+      "last_exported_at": "2026-05-15T02:38:45.000Z"
+    },
+    {
+      "asset_id": "collectibles-insignia-honor",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-insignia-honor.md",
+      "variant_of": "crystal-set",
+      "label": "Insignia de Explorador Honorífico",
+      "palette": "amethyst and gold",
+      "ui_use": "progress strip, mission footer, final screen",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/crystal-set/insignia-honor",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-insignia-honor-96.png",
+        "ai-assets/exports/collectibles/collectibles-insignia-honor-256.png",
+        "ai-assets/exports/collectibles/collectibles-insignia-honor-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:40:00.000Z",
+      "last_exported_at": "2026-05-15T02:40:00.000Z"
+    },
+    {
+      "asset_id": "collectibles-crystal-lagoon",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-crystal-lagoon.md",
+      "variant_of": "crystal-set",
+      "label": "Cristal del Lago Vivo",
+      "palette": "freshwater teal",
+      "ui_use": "progress strip, mission footer, final screen",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/crystal-set/crystal-lagoon",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-crystal-lagoon-96.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-lagoon-256.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-lagoon-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:41:55.000Z",
+      "last_exported_at": "2026-05-15T02:41:55.000Z"
+    },
+    {
+      "asset_id": "collectibles-crystal-mysteries",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-crystal-mysteries.md",
+      "variant_of": "crystal-set",
+      "label": "Cristal de los Misterios",
+      "palette": "violet marine glow",
+      "ui_use": "progress strip, mission footer, final screen",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/crystal-set/crystal-mysteries",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-crystal-mysteries-96.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-mysteries-256.png",
+        "ai-assets/exports/collectibles/collectibles-crystal-mysteries-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:42:41.000Z",
+      "last_exported_at": "2026-05-15T02:42:41.000Z"
+    },
+    {
+      "asset_id": "collectibles-map-piece-mediterranean",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-map-piece-mediterranean.md",
+      "variant_of": "map-pieces",
+      "label": "Pieza del Mapa - Mediterráneo",
+      "cue": "octopus",
+      "ui_use": "objects grid, inventory strip, treasure reveal",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/map-pieces/map-piece-mediterranean",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-map-piece-mediterranean-96.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-mediterranean-256.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-mediterranean-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:43:30.000Z",
+      "last_exported_at": "2026-05-15T02:43:30.000Z"
+    },
+    {
+      "asset_id": "collectibles-map-piece-wetlands",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-map-piece-wetlands.md",
+      "variant_of": "map-pieces",
+      "label": "Pieza del Mapa - Humedales",
+      "cue": "water bird",
+      "ui_use": "objects grid, inventory strip, treasure reveal",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/map-pieces/map-piece-wetlands",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-map-piece-wetlands-96.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-wetlands-256.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-wetlands-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:44:18.000Z",
+      "last_exported_at": "2026-05-15T02:44:18.000Z"
+    },
+    {
+      "asset_id": "collectibles-map-piece-turtles",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-map-piece-turtles.md",
+      "variant_of": "map-pieces",
+      "label": "Pieza del Mapa - Tortugas",
+      "cue": "turtle shell",
+      "ui_use": "objects grid, inventory strip, treasure reveal",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/map-pieces/map-piece-turtles",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-map-piece-turtles-96.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-turtles-256.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-turtles-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:45:02.000Z",
+      "last_exported_at": "2026-05-15T02:45:02.000Z"
+    },
+    {
+      "asset_id": "collectibles-map-piece-temperate",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-map-piece-temperate.md",
+      "variant_of": "map-pieces",
+      "label": "Pieza del Mapa - Templados",
+      "cue": "seal",
+      "ui_use": "objects grid, inventory strip, treasure reveal",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/map-pieces/map-piece-temperate",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-map-piece-temperate-96.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-temperate-256.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-temperate-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:45:51.000Z",
+      "last_exported_at": "2026-05-15T02:45:51.000Z"
+    },
+    {
+      "asset_id": "collectibles-map-piece-tropical",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-map-piece-tropical.md",
+      "variant_of": "map-pieces",
+      "label": "Pieza del Mapa - Tropicales",
+      "cue": "reef fish",
+      "ui_use": "objects grid, inventory strip, treasure reveal",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/map-pieces/map-piece-tropical",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-map-piece-tropical-96.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-tropical-256.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-tropical-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:46:35.000Z",
+      "last_exported_at": "2026-05-15T02:46:35.000Z"
+    },
+    {
+      "asset_id": "collectibles-map-piece-islands",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-map-piece-islands.md",
+      "variant_of": "map-pieces",
+      "label": "Pieza del Mapa - Islas",
+      "cue": "sea lion",
+      "ui_use": "objects grid, inventory strip, treasure reveal",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/map-pieces/map-piece-islands",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-map-piece-islands-96.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-islands-256.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-islands-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:47:21.000Z",
+      "last_exported_at": "2026-05-15T02:47:21.000Z"
+    },
+    {
+      "asset_id": "collectibles-map-piece-oceanic-islands",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-map-piece-oceanic-islands.md",
+      "variant_of": "map-pieces",
+      "label": "Pieza del Mapa - Islas Oceánicas",
+      "cue": "giant turtle",
+      "ui_use": "objects grid, inventory strip, treasure reveal",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/map-pieces/map-piece-oceanic-islands",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-map-piece-oceanic-islands-96.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-oceanic-islands-256.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-oceanic-islands-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:48:13.000Z",
+      "last_exported_at": "2026-05-15T02:48:13.000Z"
+    },
+    {
+      "asset_id": "collectibles-map-piece-reef",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-map-piece-reef.md",
+      "variant_of": "map-pieces",
+      "label": "Pieza del Mapa - Arrecife",
+      "cue": "coral",
+      "ui_use": "objects grid, inventory strip, treasure reveal",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/map-pieces/map-piece-reef",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-map-piece-reef-96.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-reef-256.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-reef-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:48:56.000Z",
+      "last_exported_at": "2026-05-15T02:48:56.000Z"
+    },
+    {
+      "asset_id": "collectibles-map-piece-dolphins",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-map-piece-dolphins.md",
+      "variant_of": "map-pieces",
+      "label": "Pieza del Mapa - Delfines",
+      "cue": "dolphin",
+      "ui_use": "objects grid, inventory strip, treasure reveal",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/map-pieces/map-piece-dolphins",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-map-piece-dolphins-96.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-dolphins-256.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-dolphins-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T03:00:53.000Z",
+      "last_exported_at": "2026-05-15T03:00:53.000Z"
+    },
+    {
+      "asset_id": "collectibles-map-piece-flamingos",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-map-piece-flamingos.md",
+      "variant_of": "map-pieces",
+      "label": "Pieza del Mapa - Flamencos",
+      "cue": "flamingo",
+      "ui_use": "objects grid, inventory strip, treasure reveal",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/map-pieces/map-piece-flamingos",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-map-piece-flamingos-96.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-flamingos-256.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-flamingos-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:52:22.000Z",
+      "last_exported_at": "2026-05-15T02:52:22.000Z"
+    },
+    {
+      "asset_id": "collectibles-map-piece-antarctic",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-map-piece-antarctic.md",
+      "variant_of": "map-pieces",
+      "label": "Pieza del Mapa - Antártico",
+      "cue": "penguin",
+      "ui_use": "objects grid, inventory strip, treasure reveal",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/map-pieces/map-piece-antarctic",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-map-piece-antarctic-96.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-antarctic-256.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-antarctic-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:53:07.000Z",
+      "last_exported_at": "2026-05-15T02:53:07.000Z"
+    },
+    {
+      "asset_id": "collectibles-map-piece-belugas",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-map-piece-belugas.md",
+      "variant_of": "map-pieces",
+      "label": "Pieza del Mapa - Belugas",
+      "cue": "beluga",
+      "ui_use": "objects grid, inventory strip, treasure reveal",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/map-pieces/map-piece-belugas",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-map-piece-belugas-96.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-belugas-256.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-belugas-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:53:53.000Z",
+      "last_exported_at": "2026-05-15T02:53:53.000Z"
+    },
+    {
+      "asset_id": "collectibles-map-piece-crocodiles",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-map-piece-crocodiles.md",
+      "variant_of": "map-pieces",
+      "label": "Pieza del Mapa - Cocodrilos",
+      "cue": "crocodile",
+      "ui_use": "objects grid, inventory strip, treasure reveal",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/map-pieces/map-piece-crocodiles",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-map-piece-crocodiles-96.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-crocodiles-256.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-crocodiles-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:54:45.000Z",
+      "last_exported_at": "2026-05-15T02:54:45.000Z"
+    },
+    {
+      "asset_id": "collectibles-map-piece-sharks",
+      "family": "collectibles",
+      "prompt_file": "ai-assets/prompts/promptcollectibles-map-piece-sharks.md",
+      "variant_of": "map-pieces",
+      "label": "Pieza del Mapa - Tiburones",
+      "cue": "shark",
+      "ui_use": "objects grid, inventory strip, treasure reveal",
+      "placement": "transparent icon",
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/collectibles/map-pieces/map-piece-sharks",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-map-piece-sharks-96.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-sharks-256.png",
+        "ai-assets/exports/collectibles/collectibles-map-piece-sharks-512.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:55:32.000Z",
+      "last_exported_at": "2026-05-15T02:55:32.000Z"
+    },
+    {
+      "asset_id": "print-passport-cover",
+      "family": "print",
+      "prompt_file": "ai-assets/prompts/promptprint-passport-cover.md",
+      "ui_use": "printable passport cover",
+      "placement": "A4 portrait",
+      "sizes": [
+        "2480x3508"
+      ],
+      "formats": [
+        "png",
+        "webp"
+      ],
+      "source_path": "ai-assets/sources/print/passport-cover",
+      "export_paths": [
+        "ai-assets/exports/print/print-passport-cover-2480x3508.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:56:21.000Z",
+      "last_exported_at": "2026-05-15T02:56:21.000Z"
+    },
+    {
+      "asset_id": "print-passport-crystal-sheet",
+      "family": "print",
+      "prompt_file": "ai-assets/prompts/promptprint-passport-crystal-sheet.md",
+      "ui_use": "printable crystal sheet",
+      "placement": "A4 portrait",
+      "sizes": [
+        "2480x3508"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/print/passport-crystal-sheet",
+      "export_paths": [
+        "ai-assets/exports/print/print-passport-crystal-sheet-2480x3508.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:57:13.000Z",
+      "last_exported_at": "2026-05-15T02:57:13.000Z"
+    },
+    {
+      "asset_id": "print-passport-activity-page",
+      "family": "print",
+      "prompt_file": "ai-assets/prompts/promptprint-passport-activity-page.md",
+      "ui_use": "printable activity page",
+      "placement": "A4 portrait",
+      "sizes": [
+        "2480x3508"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/print/passport-activity-page",
+      "export_paths": [
+        "ai-assets/exports/print/print-passport-activity-page-2480x3508.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:58:05.000Z",
+      "last_exported_at": "2026-05-15T02:58:05.000Z"
+    },
+    {
+      "asset_id": "print-passport-back-cover",
+      "family": "print",
+      "prompt_file": "ai-assets/prompts/promptprint-passport-back-cover.md",
+      "ui_use": "printable passport back cover",
+      "placement": "A4 portrait",
+      "sizes": [
+        "2480x3508"
+      ],
+      "formats": [
+        "png"
+      ],
+      "source_path": "ai-assets/sources/print/passport-back-cover",
+      "export_paths": [
+        "ai-assets/exports/print/print-passport-back-cover-2480x3508.png"
+      ],
+      "status": "ready",
+      "updated_at": "2026-05-15T02:58:54.000Z",
+      "last_exported_at": "2026-05-15T02:58:54.000Z"
     }
   ]
 }

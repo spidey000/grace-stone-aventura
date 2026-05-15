@@ -239,12 +239,13 @@ def cmd_grok_imagine(page, context, request):
     page.keyboard.insert_text(prompt)
     page.wait_for_timeout(500)
     page.keyboard.press('Enter')
+    page.wait_for_timeout(20000)
 
     deadline = time.time() + timeout_ms / 1000
     saved = []
 
     while time.time() < deadline and len(saved) < max_images:
-        page.wait_for_timeout(2000)
+        page.wait_for_timeout(5000)
         imgs = page.locator('img').all()
         for img in imgs:
             try:

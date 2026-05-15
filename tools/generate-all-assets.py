@@ -65,7 +65,7 @@ def save_manifest(manifest):
 
 def read_prompt(asset):
     prompt_file = REPO_ROOT / asset['prompt_file']
-    section_key = asset['prompt_section']
+    section_key = asset.get('prompt_section', 'Grok Prompt')
     section_name = section_key.split('/')[-1]
     if not prompt_file.exists():
         return f"Generate an image for {section_name}"
@@ -88,7 +88,7 @@ def read_prompt(asset):
             result = ' '.join(prompt_lines).strip()
             if result:
                 return result[:500]
-    return f"Generate an image for {section_key}"
+    return f"Generate an image for {section_name}"
 
 
 def resize_and_crop(img, target_w, target_h):
@@ -203,11 +203,12 @@ def generate_asset_via_grok(page, asset, dry_run=False):
             page.keyboard.insert_text(prompt)
             page.wait_for_timeout(500)
             page.keyboard.press('Enter')
-            deadline = time.time() + 120
+            page.wait_for_timeout(25000)
+            deadline = time.time() + 180
             images_found = []
             seen_hashes = set()
             while time.time() < deadline:
-                page.wait_for_timeout(3000)
+                page.wait_for_timeout(5000)
                 imgs = page.locator('img').all()
                 for img in imgs:
                     try:
@@ -225,7 +226,8 @@ def generate_asset_via_grok(page, asset, dry_run=False):
                         images_found.append(img_data)
                     except Exception:
                         pass
-                if images_found:
+                if len(images_found) >= 2:
+                    page.wait_for_timeout(5000)
                     break
             if not images_found:
                 print(f'    No images generated, retrying ({attempt+1}/3)')

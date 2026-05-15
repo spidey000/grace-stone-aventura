@@ -5,7 +5,7 @@ Biblioteca de prompts y manifiestos para producir los assets visuales y de audio
 ## Estructura
 
 - `brief/`: estilo, tokens, guía, checklist y plantilla de manifiesto.
-- `prompts/`: prompts listos para cada familia de asset.
+- `prompts/`: un prompt individual `prompt{asset_id}.md` por cada asset generable.
 - `manifests/`: lotes y catálogos de lo que hay que generar.
 - `sources/`: archivos editables de trabajo.
 - `exports/`: salidas finales organizadas por uso.
@@ -23,10 +23,36 @@ Biblioteca de prompts y manifiestos para producir los assets visuales y de audio
 ## Flujo
 
 1. Abrir `brief/generation-guide.md`.
-2. Elegir la familia en `prompts/`.
-3. Generar variaciones con los tamaños indicados.
+2. Elegir el asset en `prompts/prompt{asset_id}.md`.
+3. Pasar el contenido del archivo a Grok como prompt único.
 4. Guardar fuentes en `sources/` y salidas en `exports/`.
 5. Registrar cada asset en `manifests/oceanografic-ui-pack.json`.
+
+## Estructura de prompts
+
+Cada `prompts/prompt{asset_id}.md` sigue la fórmula Grok optimizada:
+
+```
+[Style] + [Subject] + [Background/Palette] + [Mood] + [Technical details] + [Negative prompt]
+```
+
+- **Style first**: "Flat vector illustration", "Cinematic concept art", "Premium badge design"
+- **Paleta explícita**: colores de la guía de estilo
+- **Sujeto concreto**: descripción del asset única
+- **Negative prompt al final**: "no text, no watermark, no logo, no clutter"
+
+## Assets por familia
+
+| Familia | Assets | Prompt files |
+|---------|--------|-------------|
+| audio | 1 | `promptaudio-crystal-unlock.md` |
+| backgrounds | 2 | `promptbackground-*.md` |
+| patterns | 1 | `promptpattern-ocean-floor-tile.md` |
+| brand | 3 | `promptbrand-*.md` |
+| ui | 8 | `promptui-*.md` |
+| collectibles | 34 | `promptcollectibles-*.md` (18 cristales + 14 mapas + tesoro + insignia) |
+| print | 4 | `promptprint-*.md` |
+| **Total** | **53** | **53 prompts individuales** |
 
 ## Automatización local
 
