@@ -129,6 +129,17 @@ h2 {
   margin: 0 auto;
 }
 
+.mission-heading > div,
+.station-card,
+.story-box,
+.guardian-banner,
+.objects-collection,
+.final-objects,
+.adult-panel,
+.riddle-step {
+  min-width: 0;
+}
+
 .mission-heading {
   display: flex;
   align-items: center;
@@ -233,6 +244,28 @@ h2 {
 .route-step strong,
 .route-step small {
   display: block;
+}
+
+.route-step span,
+.route-step strong,
+.route-step small,
+.route-hint,
+.story-box p,
+.guardian-intro,
+.step-text,
+.feedback,
+.hint-bubble,
+.missing-objects-note,
+.objects-collection p,
+.final-objects p,
+.adult-panel p,
+.challenge label,
+.section-label,
+.lobby-header p,
+.lobby-error,
+.final-card p {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .route-step small {
@@ -389,7 +422,7 @@ h2 {
 
 .choice-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 10px;
 }
 
@@ -401,6 +434,7 @@ h2 {
     #ead093;
   color: #2a1d12;
   box-shadow: inset 0 -3px rgba(107, 79, 42, 0.16);
+  white-space: normal;
 }
 
 .choice-grid button.selected {
@@ -482,6 +516,7 @@ h2 {
   border: 2px solid rgba(201, 161, 90, 0.46);
   background: rgba(31, 58, 46, 0.9);
   color: #f2d8a7;
+  white-space: normal;
 }
 
 .ghost-button.skip {
@@ -899,6 +934,7 @@ h2 {
   min-height: 42px;
   padding: 0 14px;
   font-size: 0.85rem;
+  white-space: normal;
 }
 
 /* === Final === */

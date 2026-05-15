@@ -8,11 +8,12 @@ Cada estación tiene su propia carpeta con los segmentos de audio:
 public/audio/
 ├── fx/                          ← Efectos de sonido globales
 │   ├── crystal-unlock.mp3       ← Cristal desbloqueado (1-2s)
+│   ├── success-chime.mp3        ← Acierto de respuesta o fragmento
+│   ├── error-buzz.mp3           ← Error o respuesta incorrecta
 │   ├── bubbles.mp3              ← Burbujas para zona tropical
 │   ├── ice-crack.mp3            ← Hielo para pingüinos/belugas
 │   ├── laboratory.mp3           ← Laboratorio para museu
-│   ├── mystery-echo.mp3         ← Eco misterioso para inicio/final
-│   └── success-chime.mp3        ← Tono de éxito al completar
+│   └── mystery-echo.mp3         ← Eco misterioso para inicio/final
 │
 ├── oceanografic/
 │   ├── 00/
@@ -36,6 +37,8 @@ public/audio/
 | `part-1.mp3` | Narración después del nombre | 10-40s |
 | `fx/ambient.mp3` | Sonido ambiente del bioma (opcional) | 5-15s loop |
 | `fx/crystal.mp3` | Sonido de cristal desbloqueado (específico) | 1-2s |
+| `fx/success-chime.mp3` | Acierto de respuesta, fragmento o tesoro | 1-2s |
+| `fx/error-buzz.mp3` | Respuesta incorrecta o pista fallida | 0.8-1.5s |
 
 ## Textos para grabar
 
@@ -93,6 +96,9 @@ Cuando los MP3 estén listos, se modificará para:
 
 1. Intentar cargar `part-0.mp3` + nombre TTS + `part-1.mp3`
 2. Si no existe MP3, caer en Web Speech API con el texto completo
-3. Los efectos fx/ se reproducen al completar retos
+3. Los efectos `fx/` se reproducen al completar retos y al validar respuestas:
+   - `success-chime.mp3` para acierto
+   - `error-buzz.mp3` para fallo
+   - `crystal-unlock.mp3` al cerrar una estación
 
 El cambio está preparado en el hook `useNarration` en `src/App.jsx`.

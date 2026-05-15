@@ -2,6 +2,10 @@ import { useEffect, useMemo, useState, useCallback } from 'react';
 import { itineraries, filterStationsByMode } from './data/stations.js';
 
 const STORAGE_KEY = 'bravestone-progress-v1';
+const FEEDBACK_SOUNDS = {
+  success: '/audio/fx/success-chime.mp3',
+  error: '/audio/fx/error-buzz.mp3',
+};
 
 function loadProgress() {
   try {
@@ -19,6 +23,46 @@ function saveProgress(data) {
 
 function renderStory(story, userName) {
   return story.replace(/\{username\}/g, userName || 'Explorador');
+}
+
+function playSound(sound, volume = 0.7) {
+  if (!sound) return;
+
+  try {
+    const audio = new Audio(sound);
+    audio.preload = 'auto';
+    audio.volume = volume;
+    void audio.play().catch(() => {});
+  } catch {
+    // The asset may not exist yet while generation is in progress.
+  }
+}
+
+function seedRandom(seed) {
+  let hash = 2166136261;
+  for (let i = 0; i < seed.length; i += 1) {
+    hash ^= seed.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+
+  return () => {
+    hash += 0x6d2b79f5;
+    let t = Math.imul(hash ^ (hash >>> 15), 1 | hash);
+    t ^= t + Math.imul(t ^ (t >>> 7), 61 | t);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function shuffleOptions(options, seed) {
+  const shuffled = [...options];
+  const random = seedRandom(seed);
+
+  for (let i = shuffled.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
 }
 
 function getStationRiddles(station) {
@@ -39,31 +83,39 @@ function useNarration(userName) {
   const [activeSource, setActiveSource] = useState(null);
 
   const speak = useCallback(
-    async (text, sourceId = 'story') => {
-      const resolved = renderStory(text, userName);
-      setIsLoading(true);
-      setIsSpeaking(true);
-      setActiveSource(sourceId);
+    (text, sourceId = 'story') =>
+      new Promise((resolve) => {
+        const resolved = renderStory(text, userName);
+        setIsLoading(true);
+        setIsSpeaking(true);
+        setActiveSource(sourceId);
 
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(resolved);
-      utterance.lang = 'es-ES';
-      utterance.rate = 0.95;
-      utterance.pitch = 1.08;
-      utterance.onend = () => {
-        setIsSpeaking(false);
-        setIsLoading(false);
-        setActiveSource(null);
-      };
-      utterance.onerror = () => {
-        setIsSpeaking(false);
-        setIsLoading(false);
-        setActiveSource(null);
-      };
-      window.speechSynthesis.speak(utterance);
-    },
+        try {
+          window.speechSynthesis.cancel();
+          const utterance = new SpeechSynthesisUtterance(resolved);
+          utterance.lang = 'es-ES';
+          utterance.rate = 0.95;
+          utterance.pitch = 1.08;
+          const finish = () => {
+            setIsSpeaking(false);
+            setIsLoading(false);
+            setActiveSource(null);
+            resolve();
+          };
+          utterance.onend = finish;
+          utterance.onerror = finish;
+          window.speechSynthesis.speak(utterance);
+        } catch {
+          setIsSpeaking(false);
+          setIsLoading(false);
+          setActiveSource(null);
+          resolve();
+        }
+      }),
     [userName]
   );
+
+  const speakFeedback = useCallback((text) => speak(text, 'feedback'), [speak]);
 
   const speakStory = useCallback((text) => speak(text, 'story'), [speak]);
   const speakGuardian = useCallback((text) => speak(text, 'guardian'), [speak]);
@@ -78,7 +130,16 @@ function useNarration(userName) {
 
   useEffect(() => () => window.speechSynthesis.cancel(), []);
 
-  return { speakStory, speakGuardian, speakTreasure, stopSpeaking: stop, isSpeaking, isLoading, activeSource };
+  return {
+    speakStory,
+    speakGuardian,
+    speakTreasure,
+    speakFeedback,
+    stopSpeaking: stop,
+    isSpeaking,
+    isLoading,
+    activeSource,
+  };
 }
 
 function Lobby({ onStart }) {
@@ -236,7 +297,16 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
   const [showAdult, setShowAdult] = useState(false);
   const [showHint, setShowHint] = useState(false);
 
-  const { speakStory, speakGuardian, speakTreasure, stopSpeaking, isSpeaking, isLoading, activeSource } = useNarration(userName);
+  const {
+    speakStory,
+    speakGuardian,
+    speakTreasure,
+    speakFeedback,
+    stopSpeaking,
+    isSpeaking,
+    isLoading,
+    activeSource,
+  } = useNarration(userName);
 
   const currentStation = stations[currentIndex];
   const completedSet = useMemo(() => new Set(completed), [completed]);
@@ -256,8 +326,34 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
     stopSpeaking();
   }, [currentStation.id]);
 
-  function completeStation(message, finalObjects) {
+  async function announceFeedback(
+    message,
+    tone = 'success',
+    { awaitSpeech = false, playTone = true, speak = true } = {}
+  ) {
+    setFeedback(message);
+    if (playTone) {
+      playSound(tone === 'error' ? FEEDBACK_SOUNDS.error : FEEDBACK_SOUNDS.success, 0.72);
+    }
+    if (speak) {
+      const speech = speakFeedback(message);
+      if (awaitSpeech) {
+        await speech;
+      }
+    }
+  }
+
+  async function completeStation(message, finalObjects, options = {}) {
     const successMsg = message || currentStation.challenge.success;
+    if (options.playRewardSound !== false) {
+      playSound(currentStation.reward?.sound);
+    }
+    await announceFeedback(successMsg, 'success', {
+      awaitSpeech: options.awaitSpeech ?? true,
+      playTone: options.playTone ?? true,
+      speak: options.speak ?? true,
+    });
+
     if (isLastStation) {
       const objects = finalObjects || collectedObjects;
       setCompleted((prev) => {
@@ -272,12 +368,16 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
       completedSet.has(currentStation.id) ? prev : [...prev, currentStation.id]
     );
     setCurrentIndex((prev) => Math.min(prev + 1, totalCount - 1));
-    setFeedback(successMsg);
   }
 
   function skipStation() {
     const backup = currentStation.backupChallenge;
-    completeStation(backup?.success || 'Estación saltada. La aventura continúa.');
+    completeStation(backup?.success || 'Estación saltada. La aventura continúa.', undefined, {
+      playRewardSound: false,
+      awaitSpeech: false,
+      playTone: false,
+      speak: false,
+    });
   }
 
   function getCurrentStep() {
@@ -297,17 +397,19 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
     return riddleFails[key] || 0;
   }
 
-  function handleChoiceAnswer(option) {
+  async function handleChoiceAnswer(option) {
     const challenge = currentStation.challenge;
     setAnswer(option);
     if (challenge.answer === '*' || option === challenge.answer) {
-      completeStation();
+      await completeStation(challenge.success);
     } else {
-      setFeedback('Bravestone dice: prueba otra opción o mira bien la zona.');
+      void announceFeedback('Bravestone dice: prueba otra opción o mira bien la zona.', 'error', {
+        awaitSpeech: false,
+      });
     }
   }
 
-  function handleRiddleChoiceAnswer(option) {
+  async function handleRiddleChoiceAnswer(option) {
     const riddle = getCurrentRiddle();
     if (!riddle) return;
 
@@ -317,48 +419,53 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
 
     setAnswer(option);
     if (step.answer === '*' || option === step.answer) {
-      advanceRiddleStep(riddle, stepIdx);
+      await advanceRiddleStep(riddle, stepIdx);
     } else {
       const key = `${currentStation.id}_${getCurrentRiddleIndex()}_${stepIdx}`;
       const fails = (riddleFails[key] || 0) + 1;
       setRiddleFails((prev) => ({ ...prev, [key]: fails }));
-      setFeedback(step.hint);
+      void announceFeedback(step.hint, 'error', { awaitSpeech: false });
     }
   }
 
-  function advanceRiddleStep(riddle, stepIdx) {
+  async function advanceRiddleStep(riddle, stepIdx) {
     if (stepIdx >= 2) {
       const newObjects = collectedObjects.includes(riddle.keyObject.id)
         ? collectedObjects
         : [...collectedObjects, riddle.keyObject.id];
-      setCollectedObjects(newObjects);
       const nextRiddleIdx = getCurrentRiddleIndex() + 1;
       const riddles = getStationRiddles(currentStation);
       if (nextRiddleIdx < riddles.length) {
+        await announceFeedback(
+          `${riddle.finalSuccess} Siguiente acertijo: ${riddles[nextRiddleIdx].guardian.name}.`,
+          'success',
+          { awaitSpeech: true }
+        );
+        setCollectedObjects(newObjects);
         setRiddleStep((prev) => ({
           ...prev,
           [`${currentStation.id}_riddle`]: nextRiddleIdx,
           [`${currentStation.id}_${nextRiddleIdx}`]: 0,
         }));
-        setFeedback(`${riddle.finalSuccess} Siguiente acertijo: ${riddles[nextRiddleIdx].guardian.name}.`);
         setAnswer('');
         setShowHint(false);
         return;
       }
+      setCollectedObjects(newObjects);
       completeStation(riddle.finalSuccess, newObjects);
     } else {
+      await announceFeedback('¡Fragmento recuperado!', 'success', { awaitSpeech: true });
       setRiddleStep((prev) => ({ ...prev, [`${currentStation.id}_${getCurrentRiddleIndex()}`]: stepIdx + 1 }));
-      setFeedback('¡Fragmento recuperado!');
       setAnswer('');
       setShowHint(false);
     }
   }
 
-  function handleAdultHelp() {
+  async function handleAdultHelp() {
     const riddle = getCurrentRiddle();
     if (!riddle) return;
     const stepIdx = getCurrentStep();
-    advanceRiddleStep(riddle, stepIdx);
+    await advanceRiddleStep(riddle, stepIdx);
   }
 
   function hasAllTreasureObjects() {
@@ -373,6 +480,20 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
   const currentRiddles = getStationRiddles(currentStation);
   const currentRiddle = getCurrentRiddle();
   const currentRiddleIndex = getCurrentRiddleIndex();
+  const challengeOptions = useMemo(() => {
+    const options = currentStation.challenge?.options || [];
+    if (!options.length) return [];
+    return shuffleOptions(options, `${currentStation.id}:challenge`);
+  }, [currentStation.id, currentStation.challenge]);
+  const currentRiddleOptions = useMemo(
+    () => (currentRiddle
+      ? currentRiddle.steps.map((step, idx) => ({
+        ...step,
+        options: shuffleOptions(step.options, `${currentStation.id}:${currentRiddleIndex}:${idx}`),
+      }))
+      : []),
+    [currentStation.id, currentRiddle, currentRiddleIndex],
+  );
 
   return (
     <main className="app-shell">
@@ -458,7 +579,7 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                 </div>
 
                 <div className="riddle-steps">
-                  {currentRiddle.steps.map((step, idx) => {
+                  {currentRiddleOptions.map((step, idx) => {
                     const stepIdx = getCurrentStep();
                     const isActive = idx === stepIdx && !isComplete();
                     const isDone = idx < stepIdx || isComplete();
@@ -482,7 +603,7 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                                 <button
                                   className={answer === opt ? 'selected' : ''}
                                   key={opt}
-                                  onClick={() => handleRiddleChoiceAnswer(opt)}
+                                  onClick={() => void handleRiddleChoiceAnswer(opt)}
                                   type="button"
                                 >
                                   {opt}
@@ -493,7 +614,7 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                               <button
                                 type="button"
                                 className="adult-help-button"
-                                onClick={handleAdultHelp}
+                                onClick={() => void handleAdultHelp()}
                               >
                                 👤 Pedir ayuda a un adulto
                               </button>
@@ -547,7 +668,7 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                 {hasAllTreasureObjects() ? (
                   <div className="challenge">
                     <label>{currentStation.challenge.prompt}</label>
-                    <button className="primary-action" type="button" onClick={completeStation}>
+                    <button className="primary-action" type="button" onClick={() => void completeStation(currentStation.challenge.success)}>
                       ✅ Revelar tesoro
                     </button>
                   </div>
@@ -565,11 +686,11 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
 
                 {(currentStation.challenge.type === 'choice' || currentStation.challenge.type === 'familyVote') && (
                   <div className="choice-grid">
-                    {currentStation.challenge.options.map((option) => (
+                    {challengeOptions.map((option) => (
                       <button
                         className={answer === option ? 'selected' : ''}
                         key={option}
-                        onClick={() => handleChoiceAnswer(option)}
+                        onClick={() => void handleChoiceAnswer(option)}
                         type="button"
                       >
                         {option}
@@ -579,7 +700,7 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                 )}
 
                 {currentStation.challenge.type === 'confirm' && (
-                  <button className="primary-action" type="button" onClick={completeStation}>
+                  <button className="primary-action" type="button" onClick={() => void completeStation(currentStation.challenge.success)}>
                     ✅ Confirmar
                   </button>
                 )}
