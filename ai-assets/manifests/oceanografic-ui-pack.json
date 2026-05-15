@@ -10,14 +10,22 @@
       "prompt_section": "backgrounds/oceanografic-shell",
       "ui_use": "lobby, mission shell, general app background",
       "placement": "full-bleed",
-      "sizes": ["1920x1080", "1080x1920"],
-      "formats": ["webp", "png"],
+      "sizes": [
+        "1920x1080",
+        "1080x1920"
+      ],
+      "formats": [
+        "webp",
+        "png"
+      ],
       "source_path": "ai-assets/sources/backgrounds/oceanografic-shell",
       "export_paths": [
         "ai-assets/exports/backgrounds/background-oceanografic-shell-desktop-1920x1080.webp",
         "ai-assets/exports/backgrounds/background-oceanografic-shell-mobile-1080x1920.webp"
       ],
-      "status": "draft"
+      "status": "ready",
+      "updated_at": "2026-05-15T00:34:50.000Z",
+      "last_exported_at": "2026-05-15T00:34:50.000Z"
     },
     {
       "asset_id": "background-oceanografic-treasure",
@@ -26,14 +34,22 @@
       "prompt_section": "backgrounds/oceanografic-treasure",
       "ui_use": "final completion screen",
       "placement": "full-bleed",
-      "sizes": ["1920x1080", "1080x1920"],
-      "formats": ["webp", "png"],
+      "sizes": [
+        "1920x1080",
+        "1080x1920"
+      ],
+      "formats": [
+        "webp",
+        "png"
+      ],
       "source_path": "ai-assets/sources/backgrounds/oceanografic-treasure",
       "export_paths": [
         "ai-assets/exports/backgrounds/background-oceanografic-treasure-desktop-1920x1080.webp",
         "ai-assets/exports/backgrounds/background-oceanografic-treasure-mobile-1080x1920.webp"
       ],
-      "status": "draft"
+      "status": "ready",
+      "updated_at": "2026-05-15T00:35:03.000Z",
+      "last_exported_at": "2026-05-15T00:35:03.000Z"
     },
     {
       "asset_id": "pattern-ocean-floor-tile",
@@ -42,13 +58,20 @@
       "prompt_section": "patterns/ocean-floor-tile",
       "ui_use": "panel surfaces, margins, passive texture",
       "placement": "seamless tile",
-      "sizes": ["1024x1024"],
-      "formats": ["webp", "png"],
+      "sizes": [
+        "1024x1024"
+      ],
+      "formats": [
+        "webp",
+        "png"
+      ],
       "source_path": "ai-assets/sources/patterns/ocean-floor-tile",
       "export_paths": [
         "ai-assets/exports/patterns/pattern-ocean-floor-tile-1024.png"
       ],
-      "status": "draft"
+      "status": "ready",
+      "updated_at": "2026-05-15T00:35:18.000Z",
+      "last_exported_at": "2026-05-15T00:35:18.000Z"
     },
     {
       "asset_id": "brand-itinerary-oceanografic-badge",
@@ -57,13 +80,21 @@
       "prompt_section": "brand/itinerary-oceanografic-badge",
       "ui_use": "lobby itinerary selector, passport cover, final certification",
       "placement": "square badge",
-      "sizes": ["1024x1024", "512x512", "256x256"],
-      "formats": ["png"],
+      "sizes": [
+        "1024x1024",
+        "512x512",
+        "256x256"
+      ],
+      "formats": [
+        "png"
+      ],
       "source_path": "ai-assets/sources/brand/itinerary-oceanografic-badge",
       "export_paths": [
         "ai-assets/exports/brand/brand-itinerary-oceanografic-badge-1024.png"
       ],
-      "status": "draft"
+      "status": "ready",
+      "updated_at": "2026-05-15T00:35:32.000Z",
+      "last_exported_at": "2026-05-15T00:35:32.000Z"
     },
     {
       "asset_id": "brand-itinerary-museu-badge-secondary",
@@ -72,13 +103,21 @@
       "prompt_section": "brand/itinerary-museu-badge-secondary",
       "ui_use": "secondary itinerary selector card",
       "placement": "square badge",
-      "sizes": ["1024x1024", "512x512", "256x256"],
-      "formats": ["png"],
+      "sizes": [
+        "1024x1024",
+        "512x512",
+        "256x256"
+      ],
+      "formats": [
+        "png"
+      ],
       "source_path": "ai-assets/sources/brand/itinerary-museu-badge-secondary",
       "export_paths": [
         "ai-assets/exports/brand/brand-itinerary-museu-badge-secondary-1024.png"
       ],
-      "status": "draft"
+      "status": "ready",
+      "updated_at": "2026-05-15T00:35:44.000Z",
+      "last_exported_at": "2026-05-15T00:35:44.000Z"
     },
     {
       "asset_id": "brand-app-icon-oceanografic",
@@ -87,13 +126,21 @@
       "prompt_section": "brand/app-icon-oceanografic",
       "ui_use": "PWA icon, favicon source, share preview",
       "placement": "rounded-square icon",
-      "sizes": ["1024x1024", "512x512", "192x192"],
-      "formats": ["png"],
+      "sizes": [
+        "1024x1024",
+        "512x512",
+        "192x192"
+      ],
+      "formats": [
+        "png"
+      ],
       "source_path": "ai-assets/sources/brand/app-icon-oceanografic",
       "export_paths": [
         "ai-assets/exports/brand/app-icon-oceanografic-1024.png"
       ],
-      "status": "draft"
+      "status": "ready",
+      "updated_at": "2026-05-15T00:36:28.000Z",
+      "last_exported_at": "2026-05-15T00:36:28.000Z"
     },
     {
       "asset_id": "ui-mission-panel-surface",
@@ -102,13 +149,20 @@
       "prompt_section": "ui/mission-panel-surface",
       "ui_use": "station card and route screen",
       "placement": "large panel surface",
-      "sizes": ["1600x1200"],
-      "formats": ["png", "webp"],
+      "sizes": [
+        "1600x1200"
+      ],
+      "formats": [
+        "png",
+        "webp"
+      ],
       "source_path": "ai-assets/sources/ui/mission-panel-surface",
       "export_paths": [
         "ai-assets/exports/ui/ui-mission-panel-surface-1600x1200.png"
       ],
-      "status": "draft"
+      "status": "ready",
+      "updated_at": "2026-05-15T00:37:13.000Z",
+      "last_exported_at": "2026-05-15T00:37:13.000Z"
     },
     {
       "asset_id": "ui-final-panel-surface",
@@ -117,13 +171,20 @@
       "prompt_section": "ui/final-panel-surface",
       "ui_use": "final screen card and certificate base",
       "placement": "large panel surface",
-      "sizes": ["1600x1200"],
-      "formats": ["png", "webp"],
+      "sizes": [
+        "1600x1200"
+      ],
+      "formats": [
+        "png",
+        "webp"
+      ],
       "source_path": "ai-assets/sources/ui/final-panel-surface",
       "export_paths": [
         "ai-assets/exports/ui/ui-final-panel-surface-1600x1200.png"
       ],
-      "status": "draft"
+      "status": "ready",
+      "updated_at": "2026-05-15T00:37:31.000Z",
+      "last_exported_at": "2026-05-15T00:37:31.000Z"
     },
     {
       "asset_id": "ui-guardian-banner",
@@ -132,13 +193,21 @@
       "prompt_section": "ui/guardian-banner",
       "ui_use": "riddle intro, treasure banner, status ribbon",
       "placement": "wide banner",
-      "sizes": ["1440x360", "720x240"],
-      "formats": ["png", "webp"],
+      "sizes": [
+        "1440x360",
+        "720x240"
+      ],
+      "formats": [
+        "png",
+        "webp"
+      ],
       "source_path": "ai-assets/sources/ui/guardian-banner",
       "export_paths": [
         "ai-assets/exports/ui/ui-guardian-banner-1440x360.png"
       ],
-      "status": "draft"
+      "status": "ready",
+      "updated_at": "2026-05-15T00:38:18.000Z",
+      "last_exported_at": "2026-05-15T00:38:18.000Z"
     },
     {
       "asset_id": "ui-state-icon-set",
@@ -147,8 +216,14 @@
       "prompt_section": "ui/state-icon-set",
       "ui_use": "route steps and riddle steps",
       "placement": "small state icons",
-      "sizes": ["96x96", "48x48", "32x32"],
-      "formats": ["png"],
+      "sizes": [
+        "96x96",
+        "48x48",
+        "32x32"
+      ],
+      "formats": [
+        "png"
+      ],
       "source_path": "ai-assets/sources/ui/state-icon-set",
       "export_paths": [
         "ai-assets/exports/ui/ui-state-icon-set-locked-96.png",
@@ -156,7 +231,9 @@
         "ai-assets/exports/ui/ui-state-icon-set-completed-96.png",
         "ai-assets/exports/ui/ui-state-icon-set-done-96.png"
       ],
-      "status": "draft"
+      "status": "ready",
+      "updated_at": "2026-05-15T00:51:07.000Z",
+      "last_exported_at": "2026-05-15T00:51:07.000Z"
     },
     {
       "asset_id": "ui-adult-help-badge",
@@ -165,13 +242,21 @@
       "prompt_section": "ui/adult-help-badge",
       "ui_use": "adult help button",
       "placement": "small icon badge",
-      "sizes": ["256x256", "64x64", "32x32"],
-      "formats": ["png"],
+      "sizes": [
+        "256x256",
+        "64x64",
+        "32x32"
+      ],
+      "formats": [
+        "png"
+      ],
       "source_path": "ai-assets/sources/ui/adult-help-badge",
       "export_paths": [
         "ai-assets/exports/ui/ui-adult-help-badge-256.png"
       ],
-      "status": "draft"
+      "status": "ready",
+      "updated_at": "2026-05-15T00:41:09.000Z",
+      "last_exported_at": "2026-05-15T00:41:09.000Z"
     },
     {
       "asset_id": "collectibles-crystal-set",
@@ -180,30 +265,148 @@
       "prompt_section": "collectibles/crystal-set",
       "ui_use": "progress strip, mission footer, final screen",
       "placement": "transparent icon set",
-      "sizes": ["512x512", "256x256", "96x96"],
-      "formats": ["png"],
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
       "source_path": "ai-assets/sources/collectibles/crystal-set",
       "variants": [
-        { "variant_id": "crystal-entry", "label": "Cristal de la Entrada" },
-        { "variant_id": "crystal-mediterranean", "label": "Cristal Mediterráneo" },
-        { "variant_id": "crystal-wetlands", "label": "Cristal de los Humedales" },
-        { "variant_id": "crystal-shell", "label": "Cristal de Caparazón" },
-        { "variant_id": "crystal-temperate", "label": "Cristal Templado" },
-        { "variant_id": "crystal-tropical", "label": "Cristal Tropical" },
-        { "variant_id": "crystal-islands", "label": "Cristal de las Islas" },
-        { "variant_id": "crystal-oceanic-islands", "label": "Cristal de las Islas Oceánicas" },
-        { "variant_id": "crystal-reef", "label": "Cristal del Arrecife" },
-        { "variant_id": "crystal-blue-jump", "label": "Cristal del Salto Azul" },
-        { "variant_id": "crystal-pink", "label": "Cristal Rosa" },
-        { "variant_id": "crystal-antarctic", "label": "Cristal Antártico" },
-        { "variant_id": "crystal-arctic", "label": "Cristal Ártico" },
-        { "variant_id": "crystal-old-scales", "label": "Cristal de Escamas Antiguas" },
-        { "variant_id": "crystal-depths", "label": "Cristal de las Profundidades" },
-        { "variant_id": "insignia-honor", "label": "Insignia de Explorador Honorífico" },
-        { "variant_id": "crystal-lagoon", "label": "Cristal del Lago Vivo" },
-        { "variant_id": "crystal-mysteries", "label": "Cristal de los Misterios" }
+        {
+          "variant_id": "crystal-entry",
+          "label": "Cristal de la Entrada"
+        },
+        {
+          "variant_id": "crystal-mediterranean",
+          "label": "Cristal Mediterráneo"
+        },
+        {
+          "variant_id": "crystal-wetlands",
+          "label": "Cristal de los Humedales"
+        },
+        {
+          "variant_id": "crystal-shell",
+          "label": "Cristal de Caparazón"
+        },
+        {
+          "variant_id": "crystal-temperate",
+          "label": "Cristal Templado"
+        },
+        {
+          "variant_id": "crystal-tropical",
+          "label": "Cristal Tropical"
+        },
+        {
+          "variant_id": "crystal-islands",
+          "label": "Cristal de las Islas"
+        },
+        {
+          "variant_id": "crystal-oceanic-islands",
+          "label": "Cristal de las Islas Oceánicas"
+        },
+        {
+          "variant_id": "crystal-reef",
+          "label": "Cristal del Arrecife"
+        },
+        {
+          "variant_id": "crystal-blue-jump",
+          "label": "Cristal del Salto Azul"
+        },
+        {
+          "variant_id": "crystal-pink",
+          "label": "Cristal Rosa"
+        },
+        {
+          "variant_id": "crystal-antarctic",
+          "label": "Cristal Antártico"
+        },
+        {
+          "variant_id": "crystal-arctic",
+          "label": "Cristal Ártico"
+        },
+        {
+          "variant_id": "crystal-old-scales",
+          "label": "Cristal de Escamas Antiguas"
+        },
+        {
+          "variant_id": "crystal-depths",
+          "label": "Cristal de las Profundidades"
+        },
+        {
+          "variant_id": "insignia-honor",
+          "label": "Insignia de Explorador Honorífico"
+        },
+        {
+          "variant_id": "crystal-lagoon",
+          "label": "Cristal del Lago Vivo"
+        },
+        {
+          "variant_id": "crystal-mysteries",
+          "label": "Cristal de los Misterios"
+        }
       ],
-      "status": "draft"
+      "status": "ready",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-crystal-entry-96.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-entry-256.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-entry-512.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-mediterranean-96.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-mediterranean-256.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-mediterranean-512.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-wetlands-96.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-wetlands-256.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-wetlands-512.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-shell-96.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-shell-256.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-shell-512.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-temperate-96.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-temperate-256.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-temperate-512.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-tropical-96.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-tropical-256.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-tropical-512.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-islands-96.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-islands-256.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-islands-512.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-oceanic-islands-96.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-oceanic-islands-256.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-oceanic-islands-512.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-reef-96.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-reef-256.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-reef-512.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-blue-jump-96.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-blue-jump-256.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-blue-jump-512.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-pink-96.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-pink-256.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-pink-512.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-antarctic-96.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-antarctic-256.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-antarctic-512.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-arctic-96.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-arctic-256.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-arctic-512.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-old-scales-96.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-old-scales-256.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-old-scales-512.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-depths-96.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-depths-256.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-depths-512.svg",
+        "ai-assets/exports/collectibles/collectibles-insignia-honor-96.svg",
+        "ai-assets/exports/collectibles/collectibles-insignia-honor-256.svg",
+        "ai-assets/exports/collectibles/collectibles-insignia-honor-512.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-lagoon-96.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-lagoon-256.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-lagoon-512.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-mysteries-96.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-mysteries-256.svg",
+        "ai-assets/exports/collectibles/collectibles-crystal-mysteries-512.svg"
+      ],
+      "updated_at": "2026-05-15T03:30:00.000Z",
+      "last_exported_at": "2026-05-15T03:30:00.000Z"
     },
     {
       "asset_id": "collectibles-map-pieces",
@@ -212,26 +415,120 @@
       "prompt_section": "collectibles/map-pieces",
       "ui_use": "objects grid, inventory strip, treasure reveal",
       "placement": "transparent icon set",
-      "sizes": ["512x512", "256x256", "96x96"],
-      "formats": ["png"],
+      "sizes": [
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
       "source_path": "ai-assets/sources/collectibles/map-pieces",
       "variants": [
-        { "variant_id": "map-piece-mediterranean", "label": "Pieza del Mapa - Mediterráneo" },
-        { "variant_id": "map-piece-wetlands", "label": "Pieza del Mapa - Humedales" },
-        { "variant_id": "map-piece-turtles", "label": "Pieza del Mapa - Tortugas" },
-        { "variant_id": "map-piece-temperate", "label": "Pieza del Mapa - Templados" },
-        { "variant_id": "map-piece-tropical", "label": "Pieza del Mapa - Tropicales" },
-        { "variant_id": "map-piece-islands", "label": "Pieza del Mapa - Islas" },
-        { "variant_id": "map-piece-oceanic-islands", "label": "Pieza del Mapa - Islas Oceánicas" },
-        { "variant_id": "map-piece-reef", "label": "Pieza del Mapa - Arrecife" },
-        { "variant_id": "map-piece-dolphins", "label": "Pieza del Mapa - Delfines" },
-        { "variant_id": "map-piece-flamingos", "label": "Pieza del Mapa - Flamencos" },
-        { "variant_id": "map-piece-antarctic", "label": "Pieza del Mapa - Antártico" },
-        { "variant_id": "map-piece-belugas", "label": "Pieza del Mapa - Belugas" },
-        { "variant_id": "map-piece-crocodiles", "label": "Pieza del Mapa - Cocodrilos" },
-        { "variant_id": "map-piece-sharks", "label": "Pieza del Mapa - Tiburones" }
+        {
+          "variant_id": "map-piece-mediterranean",
+          "label": "Pieza del Mapa - Mediterráneo"
+        },
+        {
+          "variant_id": "map-piece-wetlands",
+          "label": "Pieza del Mapa - Humedales"
+        },
+        {
+          "variant_id": "map-piece-turtles",
+          "label": "Pieza del Mapa - Tortugas"
+        },
+        {
+          "variant_id": "map-piece-temperate",
+          "label": "Pieza del Mapa - Templados"
+        },
+        {
+          "variant_id": "map-piece-tropical",
+          "label": "Pieza del Mapa - Tropicales"
+        },
+        {
+          "variant_id": "map-piece-islands",
+          "label": "Pieza del Mapa - Islas"
+        },
+        {
+          "variant_id": "map-piece-oceanic-islands",
+          "label": "Pieza del Mapa - Islas Oceánicas"
+        },
+        {
+          "variant_id": "map-piece-reef",
+          "label": "Pieza del Mapa - Arrecife"
+        },
+        {
+          "variant_id": "map-piece-dolphins",
+          "label": "Pieza del Mapa - Delfines"
+        },
+        {
+          "variant_id": "map-piece-flamingos",
+          "label": "Pieza del Mapa - Flamencos"
+        },
+        {
+          "variant_id": "map-piece-antarctic",
+          "label": "Pieza del Mapa - Antártico"
+        },
+        {
+          "variant_id": "map-piece-belugas",
+          "label": "Pieza del Mapa - Belugas"
+        },
+        {
+          "variant_id": "map-piece-crocodiles",
+          "label": "Pieza del Mapa - Cocodrilos"
+        },
+        {
+          "variant_id": "map-piece-sharks",
+          "label": "Pieza del Mapa - Tiburones"
+        }
       ],
-      "status": "draft"
+      "status": "ready",
+      "export_paths": [
+        "ai-assets/exports/collectibles/collectibles-map-piece-mediterranean-96.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-mediterranean-256.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-mediterranean-512.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-wetlands-96.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-wetlands-256.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-wetlands-512.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-turtles-96.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-turtles-256.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-turtles-512.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-temperate-96.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-temperate-256.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-temperate-512.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-tropical-96.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-tropical-256.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-tropical-512.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-islands-96.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-islands-256.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-islands-512.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-oceanic-islands-96.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-oceanic-islands-256.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-oceanic-islands-512.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-reef-96.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-reef-256.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-reef-512.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-dolphins-96.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-dolphins-256.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-dolphins-512.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-flamingos-96.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-flamingos-256.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-flamingos-512.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-antarctic-96.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-antarctic-256.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-antarctic-512.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-belugas-96.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-belugas-256.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-belugas-512.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-crocodiles-96.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-crocodiles-256.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-crocodiles-512.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-sharks-96.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-sharks-256.svg",
+        "ai-assets/exports/collectibles/collectibles-map-piece-sharks-512.svg"
+      ],
+      "updated_at": "2026-05-15T03:30:00.000Z",
+      "last_exported_at": "2026-05-15T03:30:00.000Z"
     },
     {
       "asset_id": "collectibles-treasure-map",
@@ -240,13 +537,22 @@
       "prompt_section": "collectibles/treasure-map",
       "ui_use": "final treasure reveal",
       "placement": "celebration illustration",
-      "sizes": ["1920x1080", "1080x1920", "1440x900"],
-      "formats": ["png", "webp"],
+      "sizes": [
+        "1920x1080",
+        "1080x1920",
+        "1440x900"
+      ],
+      "formats": [
+        "png",
+        "webp"
+      ],
       "source_path": "ai-assets/sources/collectibles/treasure-map",
       "export_paths": [
         "ai-assets/exports/collectibles/collectibles-treasure-map-1920x1080.png"
       ],
-      "status": "draft"
+      "status": "ready",
+      "updated_at": "2026-05-15T00:42:27.000Z",
+      "last_exported_at": "2026-05-15T00:42:27.000Z"
     },
     {
       "asset_id": "collectibles-final-insignia",
@@ -255,13 +561,22 @@
       "prompt_section": "collectibles/final-insignia",
       "ui_use": "final screen and passport cover",
       "placement": "badge",
-      "sizes": ["1024x1024", "512x512", "256x256", "96x96"],
-      "formats": ["png"],
+      "sizes": [
+        "1024x1024",
+        "512x512",
+        "256x256",
+        "96x96"
+      ],
+      "formats": [
+        "png"
+      ],
       "source_path": "ai-assets/sources/collectibles/final-insignia",
       "export_paths": [
         "ai-assets/exports/collectibles/collectibles-final-insignia-1024.png"
       ],
-      "status": "draft"
+      "status": "ready",
+      "updated_at": "2026-05-15T00:43:17.000Z",
+      "last_exported_at": "2026-05-15T00:43:17.000Z"
     },
     {
       "asset_id": "print-passport-cover",
@@ -270,13 +585,20 @@
       "prompt_section": "print/passport-cover",
       "ui_use": "printable passport cover",
       "placement": "A4 portrait",
-      "sizes": ["2480x3508"],
-      "formats": ["png", "webp"],
+      "sizes": [
+        "2480x3508"
+      ],
+      "formats": [
+        "png",
+        "webp"
+      ],
       "source_path": "ai-assets/sources/print/passport-cover",
       "export_paths": [
         "ai-assets/exports/print/print-passport-cover-2480x3508.png"
       ],
-      "status": "draft"
+      "status": "ready",
+      "updated_at": "2026-05-15T00:45:09.000Z",
+      "last_exported_at": "2026-05-15T00:45:09.000Z"
     },
     {
       "asset_id": "print-passport-crystal-sheet",
@@ -285,13 +607,19 @@
       "prompt_section": "print/passport-crystal-sheet",
       "ui_use": "printable crystal sheet",
       "placement": "A4 portrait",
-      "sizes": ["2480x3508"],
-      "formats": ["png"],
+      "sizes": [
+        "2480x3508"
+      ],
+      "formats": [
+        "png"
+      ],
       "source_path": "ai-assets/sources/print/passport-crystal-sheet",
       "export_paths": [
         "ai-assets/exports/print/print-passport-crystal-sheet-2480x3508.png"
       ],
-      "status": "draft"
+      "status": "ready",
+      "updated_at": "2026-05-15T00:45:56.000Z",
+      "last_exported_at": "2026-05-15T00:45:56.000Z"
     },
     {
       "asset_id": "print-passport-activity-page",
@@ -300,13 +628,19 @@
       "prompt_section": "print/passport-activity-page",
       "ui_use": "printable activity page",
       "placement": "A4 portrait",
-      "sizes": ["2480x3508"],
-      "formats": ["png"],
+      "sizes": [
+        "2480x3508"
+      ],
+      "formats": [
+        "png"
+      ],
       "source_path": "ai-assets/sources/print/passport-activity-page",
       "export_paths": [
         "ai-assets/exports/print/print-passport-activity-page-2480x3508.png"
       ],
-      "status": "draft"
+      "status": "ready",
+      "updated_at": "2026-05-15T00:51:24.000Z",
+      "last_exported_at": "2026-05-15T00:51:24.000Z"
     },
     {
       "asset_id": "print-passport-back-cover",
@@ -315,13 +649,19 @@
       "prompt_section": "print/passport-back-cover",
       "ui_use": "printable passport back cover",
       "placement": "A4 portrait",
-      "sizes": ["2480x3508"],
-      "formats": ["png"],
+      "sizes": [
+        "2480x3508"
+      ],
+      "formats": [
+        "png"
+      ],
       "source_path": "ai-assets/sources/print/passport-back-cover",
       "export_paths": [
         "ai-assets/exports/print/print-passport-back-cover-2480x3508.png"
       ],
-      "status": "draft"
+      "status": "ready",
+      "updated_at": "2026-05-15T00:49:53.000Z",
+      "last_exported_at": "2026-05-15T00:49:53.000Z"
     },
     {
       "asset_id": "audio-crystal-unlock",
@@ -330,15 +670,23 @@
       "prompt_section": "audio/crystal-unlock",
       "ui_use": "reward unlock feedback",
       "placement": "short sfx",
-      "sizes": ["0.8-1.2s"],
-      "formats": ["wav", "mp3", "ogg"],
+      "sizes": [
+        "0.8-1.2s"
+      ],
+      "formats": [
+        "wav",
+        "mp3",
+        "ogg"
+      ],
       "source_path": "ai-assets/sources/audio/crystal-unlock",
       "export_paths": [
         "ai-assets/exports/audio/audio-crystal-unlock.wav",
         "ai-assets/exports/audio/audio-crystal-unlock.mp3",
         "ai-assets/exports/audio/audio-crystal-unlock.ogg"
       ],
-      "status": "draft"
+      "status": "ready",
+      "updated_at": "2026-05-15T00:49:53.000Z",
+      "last_exported_at": "2026-05-15T00:49:53.000Z"
     }
   ]
 }

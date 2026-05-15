@@ -20,6 +20,7 @@ Solo assets que la UI actual pueda usar de forma directa:
 4. Exportar en los tamaños pedidos.
 5. Guardar fuentes editables en `sources/`.
 6. Registrar el resultado en `manifests/oceanografic-ui-pack.json`.
+7. Sincronizar al runtime con `npm run assets:sync` cuando el lote esté completo.
 
 ## Reglas de prompt
 
@@ -41,3 +42,4 @@ Ejemplos:
 - `guardian-banner-oceanografic-1440x360.png`
 - `map-piece-delfines-512.png`
 
+Si usas el servidor MCP local, el tool `browser.generate` puede guardar el archivo descargado y `assets.ingest_download` lo deja ya copiado en `ai-assets/` y `public/`. El navegador real es Camoufox, controlado por un puente Python local.

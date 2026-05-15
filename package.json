@@ -8,14 +8,19 @@
     "build": "vite build",
     "preview": "vite preview",
     "check": "vite build",
+    "assets:sync": "node scripts/assets/sync-assets.mjs",
+    "assets:check": "node scripts/assets/sync-assets.mjs --check",
+    "mcp:grok": "node tools/grok-assets-mcp.mjs",
     "test": "vitest run",
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.18.0",
     "@vitejs/plugin-react": "^5.1.0",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
-    "vite": "^7.2.7"
+    "vite": "^7.2.7",
+    "zod": "^4.1.11"
   },
   "devDependencies": {
     "vitest": "^4.1.6"

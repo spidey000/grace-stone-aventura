@@ -94,6 +94,28 @@ npm run build     # build producción en dist/
 npm run preview   # vista previa del build
 ```
 
+## Assets visuales y audio
+
+```bash
+npm run mcp:grok     # servidor MCP local para controlar Grok en un browser persistente
+npm run assets:sync  # copia exports finales a public/ para uso runtime
+npm run assets:check # valida qué assets faltan
+```
+
+La carpeta `ai-assets/` guarda prompts, fuentes y exports. `public/assets/` y `public/audio/fx/` son las rutas de consumo que usa la web.
+
+El servidor MCP usa estas variables si necesitas calibrar Grok:
+
+- `GROK_URL`
+- `GROK_PROMPT_SELECTOR`
+- `GROK_SUBMIT_SELECTOR`
+- `GROK_DOWNLOAD_SELECTOR`
+- `CAMOUFOX_PYTHON`
+- `CAMOUFOX_HEADLESS`
+- `CAMOUFOX_LD_LIBRARY_PATH`
+
+El navegador se lanza con Camoufox mediante un puente Python local. Si no defines `CAMOUFOX_LD_LIBRARY_PATH`, el flujo usa las librerías descargadas en `~/.local/camoufox-libs/`.
+
 ## Deploy en Vercel
 
 Vercel detecta Vite automáticamente:

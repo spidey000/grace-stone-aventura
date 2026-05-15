@@ -85,6 +85,7 @@ h2 {
   padding: 24px;
   overflow-x: hidden;
   background:
+    url('/assets/backgrounds/background-oceanografic-shell-desktop-1920x1080.webp') center / cover no-repeat,
     radial-gradient(circle at 18% 12%, rgba(79, 147, 210, 0.22), transparent 28rem),
     radial-gradient(circle at 80% 18%, rgba(217, 107, 59, 0.18), transparent 26rem),
     linear-gradient(135deg, rgba(16, 22, 19, 0.52), rgba(16, 22, 19, 0.9)),
@@ -302,6 +303,7 @@ h2 {
   border-top: 8px solid var(--station-color);
   border-radius: 8px;
   background:
+    url('/assets/ui/ui-mission-panel-surface-1600x1200.png') center / cover no-repeat,
     linear-gradient(90deg, rgba(201, 161, 90, 0.16), transparent 18%, transparent 82%, rgba(107, 79, 42, 0.18)),
     repeating-linear-gradient(0deg, rgba(42, 29, 18, 0.03) 0 2px, transparent 2px 9px),
     linear-gradient(180deg, #f5dcaa, #d8b978);
@@ -482,16 +484,14 @@ h2 {
 .crystal-strip span {
   width: 24px;
   height: 34px;
-  border: 2px solid rgba(107, 79, 42, 0.5);
-  clip-path: polygon(50% 0, 100% 32%, 82% 100%, 18% 100%, 0 32%);
-  background: linear-gradient(145deg, #6d6757, #342818);
-  box-shadow: inset 0 2px rgba(255, 255, 255, 0.16), 0 4px 10px rgba(0, 0, 0, 0.28);
+  background:
+    url('/assets/collectibles/collectibles-crystal-entry-96.svg') center / contain no-repeat;
+  filter: grayscale(0.8) brightness(0.5);
+  transition: filter 260ms ease;
 }
 
 .crystal-strip span.lit {
-  border-color: #fff0bf;
-  background: linear-gradient(145deg, #e7fffb, var(--crystal-color));
-  box-shadow: 0 0 18px color-mix(in srgb, var(--crystal-color) 70%, transparent), inset 0 2px rgba(255, 255, 255, 0.44);
+  filter: none;
   animation: relic-glow 2.6s ease-in-out infinite;
 }
 
@@ -546,13 +546,27 @@ h2 {
   padding: 20px;
 }
 
-.lobby-card,
+.lobby-card {
+  width: min(620px, 100%);
+  padding: 34px 30px;
+  border: 2px solid var(--edge);
+  border-radius: 8px;
+  background:
+    url('/assets/ui/ui-mission-panel-surface-1600x1200.png') center / cover no-repeat,
+    radial-gradient(circle at 50% 0, rgba(217, 107, 59, 0.18), transparent 22rem),
+    linear-gradient(90deg, rgba(201, 161, 90, 0.13), transparent 18%, transparent 82%, rgba(107, 79, 42, 0.16)),
+    linear-gradient(180deg, #f5dcaa, #d8b978);
+  box-shadow: var(--deep-shadow), inset 0 0 0 1px rgba(255, 246, 205, 0.34);
+  color: var(--ink);
+}
+
 .final-card {
   width: min(620px, 100%);
   padding: 34px 30px;
   border: 2px solid var(--edge);
   border-radius: 8px;
   background:
+    url('/assets/ui/ui-final-panel-surface-1600x1200.png') center / cover no-repeat,
     radial-gradient(circle at 50% 0, rgba(217, 107, 59, 0.18), transparent 22rem),
     linear-gradient(90deg, rgba(201, 161, 90, 0.13), transparent 18%, transparent 82%, rgba(107, 79, 42, 0.16)),
     linear-gradient(180deg, #f5dcaa, #d8b978);
@@ -612,6 +626,7 @@ h2 {
   border: 2px solid rgba(107, 79, 42, 0.48);
   border-radius: 8px;
   background:
+    var(--it-image, none) center / contain no-repeat,
     linear-gradient(180deg, color-mix(in srgb, var(--it-color, var(--moss)) 16%, transparent), transparent),
     linear-gradient(145deg, #233d32, #101b16);
   color: #f7e8bc;
@@ -632,8 +647,20 @@ h2 {
 }
 
 .it-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
   font-size: 2.6rem;
   line-height: 1;
+}
+
+.it-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .itinerary-card strong {
@@ -686,6 +713,7 @@ h2 {
   border: 2px solid rgba(201, 161, 90, 0.45);
   border-radius: 8px;
   background:
+    url('/assets/ui/ui-guardian-banner-1440x360.png') center / cover no-repeat,
     linear-gradient(135deg, rgba(255, 236, 177, 0.12), transparent),
     linear-gradient(135deg, #1a3128, color-mix(in srgb, var(--station-color) 46%, #101613));
   color: #fff1bd;
@@ -694,9 +722,20 @@ h2 {
 
 .guardian-icon {
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
   font-size: 28px;
   line-height: 1;
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.38));
+}
+
+.guardian-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .guardian-intro {
@@ -741,6 +780,7 @@ h2 {
   flex-direction: column;
   text-align: center;
   background:
+    url('/assets/collectibles/collectibles-treasure-map-1920x1080.png') center / cover no-repeat,
     radial-gradient(circle at 50% 0, rgba(201, 161, 90, 0.32), transparent 10rem),
     linear-gradient(135deg, #2c2111, #1f3a2e);
 }
@@ -789,7 +829,18 @@ h2 {
 }
 
 .step-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
   font-size: 18px;
+}
+
+.step-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .step-label {
@@ -857,6 +908,10 @@ h2 {
   box-shadow: inset 0 2px rgba(255, 246, 205, 0.3);
 }
 
+.object-chip img {
+  border-radius: 4px;
+}
+
 .object-chip.collected {
   border-color: rgba(111, 209, 198, 0.72);
   background: linear-gradient(145deg, #dffffa, #6fd1c6);
@@ -888,6 +943,14 @@ h2 {
   color: rgba(42, 29, 18, 0.45);
   font-size: 20px;
   transition: transform 250ms ease, box-shadow 250ms ease;
+  overflow: hidden;
+  padding: 3px;
+}
+
+.inv-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .inv-item.collected {
@@ -958,6 +1021,14 @@ h2 {
   box-shadow: 0 0 36px rgba(201, 161, 90, 0.45), inset 0 -5px rgba(0, 0, 0, 0.34);
   font-size: 4rem;
   line-height: 1;
+  overflow: hidden;
+  padding: 8px;
+}
+
+.final-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .final-card h1 {
@@ -970,10 +1041,19 @@ h2 {
   padding: 20px;
   border: 2px solid var(--it-color, var(--gold));
   border-radius: 8px;
+  text-align: center;
   background:
+    url('/assets/collectibles/collectibles-final-insignia-1024.png') center / contain no-repeat,
     radial-gradient(circle at 50% 0, color-mix(in srgb, var(--it-color, var(--gold)) 28%, transparent), transparent 10rem),
     linear-gradient(180deg, #1b332a, #101613);
   box-shadow: inset 0 0 0 1px rgba(255, 246, 205, 0.18), 0 12px 28px rgba(0, 0, 0, 0.22);
+}
+
+.final-insig img {
+  display: block;
+  margin: 0 auto 12px;
+  max-width: 80px;
+  height: auto;
 }
 
 .final-insig strong {

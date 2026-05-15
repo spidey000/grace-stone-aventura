@@ -7,6 +7,86 @@ const FEEDBACK_SOUNDS = {
   error: '/audio/fx/error-buzz.mp3',
 };
 
+const IMAGES = {
+  itinerary: {
+    oceanografic: '/assets/brand/brand-itinerary-oceanografic-badge-1024.png',
+    museu: '/assets/brand/brand-itinerary-museu-badge-secondary-1024.png',
+  },
+  stateIcons: {
+    locked: '/assets/ui/ui-state-icon-set-locked-96.png',
+    active: '/assets/ui/ui-state-icon-set-active-96.png',
+    completed: '/assets/ui/ui-state-icon-set-completed-96.png',
+    done: '/assets/ui/ui-state-icon-set-done-96.png',
+  },
+  adultHelp: '/assets/ui/ui-adult-help-badge-256.png',
+  finalBadge: '/assets/collectibles/collectibles-final-insignia-1024.png',
+  crystalByName: (name) => {
+    const map = {
+      'Cristal de la Entrada': 'crystal-entry',
+      'Cristal Mediterráneo': 'crystal-mediterranean',
+      'Cristal de los Humedales': 'crystal-wetlands',
+      'Cristal de Caparazón': 'crystal-shell',
+      'Cristal Templado': 'crystal-temperate',
+      'Cristal Tropical': 'crystal-tropical',
+      'Cristal de las Islas': 'crystal-islands',
+      'Cristal de las Islas Oceánicas': 'crystal-oceanic-islands',
+      'Cristal del Arrecife': 'crystal-reef',
+      'Cristal del Salto Azul': 'crystal-blue-jump',
+      'Cristal Rosa': 'crystal-pink',
+      'Cristal Antártico': 'crystal-antarctic',
+      'Cristal Ártico': 'crystal-arctic',
+      'Cristal de Escamas Antiguas': 'crystal-old-scales',
+      'Cristal de las Profundidades': 'crystal-depths',
+      'Insignia de Explorador Honorífico': 'insignia-honor',
+      'Cristal del Lago Vivo': 'crystal-lagoon',
+      'Cristal de los Misterios': 'crystal-mysteries',
+      'Cristal de la Calle Menor': 'crystal-entry',
+      'Cristal de la Reacción': 'crystal-mediterranean',
+      'Cristal del Péndulo': 'crystal-wetlands',
+      'Cristal Genético': 'crystal-shell',
+      'Cristal del ADN': 'crystal-shell',
+      'Cristal de la Mariposa': 'crystal-temperate',
+      'Cristal de la Metamorfosis': 'crystal-tropical',
+      'Cristal del Táctil': 'crystal-islands',
+      'Cristal de la Electricidad': 'crystal-oceanic-islands',
+      'Cristal de la Burbuja': 'crystal-reef',
+      'Cristal del Cerebro': 'crystal-blue-jump',
+      'Cristal del Zero': 'crystal-pink',
+      'Cristal del Espacio': 'crystal-antarctic',
+      'Cristal del Tiempo': 'crystal-arctic',
+      'Cristal del Caleidoscopio': 'crystal-old-scales',
+    };
+    const id = map[name];
+    return id ? `/assets/collectibles/collectibles-${id}-96.svg` : null;
+  },
+  mapPieceById: (id) => {
+    const map = {
+      'mapa-mediterraneo': 'map-piece-mediterranean',
+      'mapa-humedales': 'map-piece-wetlands',
+      'mapa-tortugas': 'map-piece-turtles',
+      'mapa-templados': 'map-piece-temperate',
+      'mapa-tropicales': 'map-piece-tropical',
+      'mapa-islas': 'map-piece-islands',
+      'mapa-islas-oceanicas': 'map-piece-oceanic-islands',
+      'mapa-arrecife': 'map-piece-reef',
+      'mapa-delfines': 'map-piece-dolphins',
+      'mapa-flamencos': 'map-piece-flamingos',
+      'mapa-antartico': 'map-piece-antarctic',
+      'mapa-belugas': 'map-piece-belugas',
+      'mapa-cocodrilos': 'map-piece-crocodiles',
+      'mapa-tiburones': 'map-piece-sharks',
+    };
+    const vId = map[id];
+    return vId ? `/assets/collectibles/collectibles-${vId}-96.svg` : null;
+  },
+};
+
+function AssetImg({ src, alt, fallback, className, ...props }) {
+  const [failed, setFailed] = useState(false);
+  if (failed || !src) return <span className={className} {...props}>{fallback}</span>;
+  return <img src={src} alt={alt || fallback} onError={() => setFailed(true)} className={className} {...props} />;
+}
+
 function loadProgress() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
@@ -195,9 +275,9 @@ function Lobby({ onStart }) {
                   setSelected(it.id);
                   setError('');
                 }}
-                style={{ '--it-color': it.color }}
+                style={{ '--it-color': it.color, '--it-image': `url('${IMAGES.itinerary[it.id]}')` }}
               >
-                <span className="it-icon">{it.icon}</span>
+                <AssetImg src={IMAGES.itinerary[it.id]} fallback={it.icon} className="it-icon" alt={it.title} />
                 <strong>{it.title}</strong>
                 <small>{it.subtitle}</small>
               </button>
@@ -228,7 +308,9 @@ function FinalScreen({ itinerary, userName, collectedObjects, onReset }) {
   return (
     <main className="app-shell final-shell">
       <div className="final-card">
-        <span className="final-badge">{itinerary.icon}</span>
+        <span className="final-badge">
+          <AssetImg src={IMAGES.itinerary[itinerary.id]} fallback={itinerary.icon} alt={itinerary.title} style={{width:64,height:64}} />
+        </span>
         <h1>¡{userName}, misión completa!</h1>
         <p>{renderStory(finalStory, userName)}</p>
 
@@ -245,7 +327,9 @@ function FinalScreen({ itinerary, userName, collectedObjects, onReset }) {
                       className={`object-chip ${has ? 'collected' : 'missing'}`}
                       title={keyObject.name}
                     >
-                      {has ? keyObject.icon : '❓'} {has && keyObject.name}
+                            {has ? (
+                              <AssetImg src={IMAGES.mapPieceById(keyObject.id)} fallback={keyObject.icon} alt={keyObject.name} style={{width:24,height:24,verticalAlign:'middle'}} />
+                            ) : '❓'} {has && keyObject.name}
                     </span>
                   );
                 })}
@@ -254,6 +338,7 @@ function FinalScreen({ itinerary, userName, collectedObjects, onReset }) {
         )}
 
         <div className="final-insig" style={{ '--it-color': itinerary.color }}>
+          <AssetImg src={IMAGES.finalBadge} fallback={itinerary.icon} alt="Insignia" style={{width:64,height:64,display:'block',margin:'0 auto 12px'}} />
           <strong>{title}</strong>
           <span>{userName}</span>
         </div>
@@ -565,7 +650,9 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
             {currentRiddle && !currentStation.isTreasure ? (
               <>
                 <div className="guardian-banner">
-                  <span className="guardian-icon">🧩</span>
+                  <span className="guardian-icon">
+                    <AssetImg src={IMAGES.mapPieceById(currentRiddle.keyObject?.id)} fallback="🧩" alt="Acertijo" style={{width:28,height:28}} />
+                  </span>
                   <p className="guardian-intro">{currentRiddle.guardian.intro}</p>
                   <button
                     className="guardian-audio-btn"
@@ -590,7 +677,15 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                         className={`riddle-step ${isActive ? 'active' : ''} ${isDone ? 'done' : ''}`}
                       >
                         <div className="step-header">
-                          <span className="step-icon">{isDone ? '✅' : isActive ? '🧩' : '🔒'}</span>
+                          <span className="step-icon">
+                            {isDone ? (
+                              <AssetImg src={IMAGES.stateIcons.done} fallback="✅" alt="Completado" />
+                            ) : isActive ? (
+                              <AssetImg src={IMAGES.stateIcons.active} fallback="🧩" alt="Activo" />
+                            ) : (
+                              <AssetImg src={IMAGES.stateIcons.locked} fallback="🔒" alt="Bloqueado" />
+                            )}
+                          </span>
                           <span className="step-label">
                             Acertijo {currentRiddleIndex + 1}/{currentRiddles.length} · Fragmento {idx + 1}/3
                           </span>
@@ -616,7 +711,7 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                                 className="adult-help-button"
                                 onClick={() => void handleAdultHelp()}
                               >
-                                👤 Pedir ayuda a un adulto
+                                <AssetImg src={IMAGES.adultHelp} fallback="👤" alt="Ayuda" style={{width:20,height:20,verticalAlign:'middle',marginRight:6}} /> Pedir ayuda a un adulto
                               </button>
                             )}
                           </>
@@ -632,7 +727,9 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
               <>
                 <div className="guardian-banner treasure-banner">
                   <span className="guardian-icon">
-                    {currentStation.treasure.type === 'map' ? '🗺️' : '📽️'}
+                    {currentStation.treasure.type === 'map'
+                      ? <AssetImg src="/assets/collectibles/collectibles-treasure-map-1920x1080.png" fallback="🗺️" alt="Mapa del tesoro" style={{width:48,height:48}} />
+                      : '📽️'}
                   </span>
                   <h2>{currentStation.treasure.title}</h2>
                   <button
@@ -658,12 +755,14 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                             className={`object-chip ${has ? 'collected' : 'missing'}`}
                             title={keyObject.name}
                           >
-                            {has ? keyObject.icon : '❓'}
-                          </span>
-                        );
-                      })}
-                  </div>
-                </div>
+                            {has ? (
+                              <AssetImg src={IMAGES.mapPieceById(keyObject.id)} fallback={keyObject.icon} alt={keyObject.name} style={{width:24,height:24,verticalAlign:'middle'}} />
+                            ) : '❓'}
+                           </span>
+                         );
+                       })}
+                   </div>
+                 </div>
 
                 {hasAllTreasureObjects() ? (
                   <div className="challenge">
@@ -728,11 +827,14 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
 
             <div className="crystal-strip" aria-label="Cristales recuperados">
               {stations.map((station) => (
-                <span
-                  className={completedSet.has(station.id) ? 'lit' : ''}
+                <AssetImg
                   key={station.id}
-                  style={{ '--crystal-color': station.reward.color }}
+                  src={IMAGES.crystalByName(station.reward.name)}
+                  fallback="💎"
+                  alt={station.reward.name}
+                  className={completedSet.has(station.id) ? 'lit' : ''}
                   title={station.reward.name}
+                  style={{ width: 24, height: 34 }}
                 />
               ))}
             </div>
@@ -748,7 +850,9 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
                         className={`inv-item ${has ? 'collected' : ''}`}
                         title={keyObject.name}
                       >
-                        {has ? keyObject.icon : '○'}
+                        {has ? (
+                          <AssetImg src={IMAGES.mapPieceById(keyObject.id)} fallback={keyObject.icon} alt={keyObject.name} style={{width:24,height:24}} />
+                        ) : '○'}
                       </span>
                     );
                   })}
@@ -773,7 +877,7 @@ function Adventure({ itinerary, userName, onFinal, onReset }) {
             className="adult-toggle"
             onClick={() => setShowAdult((a) => !a)}
           >
-            👤 {showAdult ? 'Ocultar adulto' : 'Modo adulto'}
+            <AssetImg src={IMAGES.adultHelp} fallback="👤" alt="" style={{width:18,height:18,verticalAlign:'middle',marginRight:4}} /> {showAdult ? 'Ocultar adulto' : 'Modo adulto'}
           </button>
         </footer>
 
